@@ -4,7 +4,7 @@ import api from "./services";
 function App() {
   const [data, setData] = useState<any>([]);
   useEffect(() => {
-    api.get("api/").then((resp) => setData(resp.data));
+    api.get("api/list-posts/").then((resp) => setData(resp.data));
   }, []);
   return (
     <div className="App">
