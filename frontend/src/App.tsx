@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
-import api, { csrftoken } from "./services";
+import api from "./services";
 
-
-const CSRFToken = () => {
-
-    return <input type={"hidden"} name="csrfmiddlewaretoken" value={csrftoken ? csrftoken : ''} />
-};
 
 function App() {
   const [data, setData] = useState<any>([]);

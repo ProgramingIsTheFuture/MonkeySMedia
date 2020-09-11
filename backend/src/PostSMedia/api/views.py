@@ -1,15 +1,16 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-
+from rest_framework.authentication import  TokenAuthentication
 from PostSMedia.models import Post
 from PostSMedia.serializers import PostSerializer
 
 
+
+
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
+@authentication_classes([TokenAuthentication])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
 def list_posts_view(request):
     qs = Post.objects.all()
@@ -18,9 +19,12 @@ def list_posts_view(request):
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
+@authentication_classes([TokenAuthentication])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
 def create_posts_view(request):
+    for property, value in vars(request).items():
+        print(property, ":", value)
+    print(request.auth, request.user)
     serializer = PostSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save(user=request.user)
