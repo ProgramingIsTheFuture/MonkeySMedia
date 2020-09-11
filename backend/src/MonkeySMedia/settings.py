@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'PostSMedia',
+    'Users',
 
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
 ]
 
