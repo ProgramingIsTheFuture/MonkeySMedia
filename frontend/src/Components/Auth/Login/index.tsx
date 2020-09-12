@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import api from "../../../services";
+import { useHistory } from "react-router-dom";
 
 // import { Container } from './styles';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const history = useHistory();
 
   const changeUsername = (e: any) => {
     setUsername(e.target.value);
@@ -15,17 +17,22 @@ const Login: React.FC = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = async (e: any) => {
+  const setTokenToLocalStorega = (token: string | null) => {
+    if (token && token !== "") {
+      localStorage.setItem(
+        "auth",
+        JSON.stringify({ login: true, token: token })
+      );
+      history.push('/');
+    }
+  };
+
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     api
       .post("auth/", { username: username, password: password })
       .then((resp) => {
-        if (resp.data.token) {
-          localStorage.setItem(
-            "auth",
-            JSON.stringify({ login: true, token: resp.data.token })
-          );
-        }
+        setTokenToLocalStorega(resp.data.token);
       });
   };
 

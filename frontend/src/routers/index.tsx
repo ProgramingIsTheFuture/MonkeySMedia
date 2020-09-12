@@ -1,33 +1,39 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+  RouteProps,
+} from "react-router-dom";
 import Login from "../Components/Auth/Login";
-import App from "../App";
+import App from "../Components/Feed";
+import { ReactComponent } from "*.svg";
 
-// const PrivateRoute: React.SFC<RouteProps | null> = ({
-//   component: Component,
-//   ...rest
-// }: {
-//   component: React.ComponentType<RouteProps>;
-// }) => (
-//   <Route
-//     {...rest}
-//     render={(props) =>
-//       true ? (
-//         <Component {...props} />
-//       ) : (
-//         <Redirect to={{ pathname: "/Login", state: { from: props.location } }} />
-//       )
-//     }
-//   />
-// );
+const isAuth = () => {
+  const auth: any = localStorage.getItem("auth");
+  if (JSON.parse(auth).login) return true;
+  return false;
+};
+
+const PrivateRoute = ({ component, ...rest }: any) => {
+  const routeComponent = (props: any) =>
+    isAuth() ? (
+      React.createElement(component, props)
+    ) : (
+      <Redirect to={{ pathname: "/login" }} />
+    );
+  return <Route {...rest} render={routeComponent} />;
+};
 
 const Routers: React.FC = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/Login" component={Login} />
-        <Route exact path="/" component={App} />
-        {/* <PrivateRoute path="/" component={App} /> */}
+        <Route exact path="/login" component={Login} />
+        {/* <Route exact path="/" component={App} /> */}
+        <PrivateRoute exact path="/" component={App} />
+        <Route path="*" component={() => <h1>Page not found</h1>} />
       </Switch>
     </Router>
   );

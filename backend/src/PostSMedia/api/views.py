@@ -22,9 +22,6 @@ def list_posts_view(request):
 @authentication_classes([TokenAuthentication])
 @authentication_classes([SessionAuthentication, BasicAuthentication])
 def create_posts_view(request):
-    for property, value in vars(request).items():
-        print(property, ":", value)
-    print(request.auth, request.user)
     serializer = PostSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save(user=request.user)

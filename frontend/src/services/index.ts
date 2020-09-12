@@ -13,3 +13,13 @@ export default api;
 //   { headers: { Authorization: `Token ${token2.token}` } }
 // )
 // .then((resp) => console.log(resp));
+
+
+// const history = useHistory();//do react-router-dom
+// history.push({
+//   pathname: '/sua-url',
+//   search: history.location.search,
+//   state: {
+//     seustate: valor-do-state,
+//   },
+// });
