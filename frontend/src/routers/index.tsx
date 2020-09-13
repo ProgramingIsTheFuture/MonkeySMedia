@@ -12,7 +12,9 @@ import GlobalStyles from '../Global/GlobalStyles';
 
 const isAuth = () => {
 	const auth: any = localStorage.getItem('auth');
-	if (JSON.parse(auth).login) return true;
+	try {
+		if (JSON.parse(auth).login) return true;
+	} catch {}
 	return false;
 };
 

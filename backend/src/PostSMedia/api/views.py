@@ -7,11 +7,8 @@ from PostSMedia.models import Post
 from PostSMedia.serializers import PostSerializer
 
 
-
-
 @api_view(["GET"])
-@authentication_classes([TokenAuthentication])
-@authentication_classes([SessionAuthentication, BasicAuthentication])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def list_posts_view(request):
     qs = Post.objects.all()
     serializer = PostSerializer(qs, many=True)
@@ -19,8 +16,7 @@ def list_posts_view(request):
 
 
 @api_view(["POST"])
-@authentication_classes([TokenAuthentication])
-@authentication_classes([SessionAuthentication, BasicAuthentication])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def create_posts_view(request):
     serializer = PostSerializer(data=request.data)
     if serializer.is_valid():
@@ -29,3 +25,17 @@ def create_posts_view(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(["POST"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def like_posts_view(request):
+    id = request.data.get("id")
+    print(request.user)
+    obj = Post.objects.get(id=id)
+    if obj:
+        obj.likes.add(request.user)
+
+        return Response({"like": "added"} ,status=status.HTTP_201_CREATED)
+    
+    return Response({"Fatal": "Something went wrong"}, status=status.HTTP_400_BAD_REQUEST) 
+        
