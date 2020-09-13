@@ -18,13 +18,8 @@ const Login: React.FC = () => {
   };
 
   const setTokenToLocalStorega = (token: string | null) => {
-    if (token && token !== "") {
-      localStorage.setItem(
-        "auth",
-        JSON.stringify({ login: true, token: token })
-      );
-      history.push('/');
-    }
+    localStorage.setItem("auth", JSON.stringify({ login: true, token: token }));
+    history.push("/");
   };
 
   const handleSubmit = (e: any) => {

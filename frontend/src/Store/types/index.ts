@@ -1,5 +1,5 @@
 
-export interface Post {
+export interface PostType {
     id: number
     user: string
     title?: string

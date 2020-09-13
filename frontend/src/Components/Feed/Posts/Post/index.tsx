@@ -1,9 +1,27 @@
-import React from 'react';
+import React from "react";
+import { PostType } from "../../../../Store/types";
 
-import { Container } from './styles';
+import {
+  Container,
+  UserSimpleInfo,
+  CardTitle,
+  CardImage,
+  CardContent,
+} from "./styles";
 
-const Post: React.FC = () => {
-  return <Container />;
+export interface Props {
+  post: PostType;
 }
+
+const Post: React.FC<Props> = ({ post }) => {
+  return (
+    <Container key={post.id}>
+      <UserSimpleInfo>{post.user}</UserSimpleInfo>
+      <CardTitle>{post.title}</CardTitle>
+      <CardImage></CardImage>
+      <CardContent>{post.content}</CardContent>
+    </Container>
+  );
+};
 
 export default Post;

@@ -1,12 +1,12 @@
 import { createStore, Action, action } from "easy-peasy";
-import { Post } from "./types";
+import { PostType } from "./types";
 import {setPosts, addPost} from "./actions";
 
 interface StoreModel {
   Posts: {
-    Posts: Post[];
-    setPosts: Action<{}, Post[]>;
-    addPost: Action<{}, Post>;
+    Posts: PostType[];
+    setPosts: Action<{}, PostType[]>;
+    addPost: Action<{}, PostType>;
   };
 }
 
