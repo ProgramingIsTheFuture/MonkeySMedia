@@ -1,38 +1,18 @@
 import React from 'react';
-import {
-	BrowserRouter as Router,
-	Route,
-	Switch,
-	Redirect,
-	RouteProps,
-} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from '../Components/Auth/Login';
 import App from '../Components/Feed';
 import GlobalStyles from '../Global/GlobalStyles';
-
-const isAuth = () => {
-	const auth: any = localStorage.getItem('auth');
-	try {
-		if (JSON.parse(auth).login) return true;
-	} catch {}
-	return false;
-};
-
-const PrivateRoute = ({component, ...rest}: any) => {
-	const routeComponent = (props: any) =>
-		isAuth() ? (
-			React.createElement(component, props)
-		) : (
-			<Redirect to={{pathname: '/login'}} />
-		);
-	return <Route {...rest} render={routeComponent} />;
-};
+import Register from '../Components/Auth/Register';
+import {PrivateRoute} from './PrivateRoutes/Private';
+import {LoggedIn} from './PrivateRoutes/LoggedIn';
 
 const Routers: React.FC = () => {
 	return (
 		<Router>
 			<Switch>
-				<Route exact path="/login/" component={Login} />
+				<LoggedIn exact path="/login/" component={Login} />
+				<LoggedIn exact path="/register/" component={Register} />
 				<PrivateRoute exact path="/" component={App} />
 				<Route path="*" component={() => <h1>Page not found</h1>} />
 			</Switch>
