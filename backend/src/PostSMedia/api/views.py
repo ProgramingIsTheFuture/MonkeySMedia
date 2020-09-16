@@ -30,12 +30,23 @@ def create_posts_view(request):
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def like_posts_view(request):
     id = request.data.get("id")
-    print(request.user)
     obj = Post.objects.get(id=id)
     if obj:
         obj.likes.add(request.user)
+        print(obj.likes)
 
         return Response({"like": "added"} ,status=status.HTTP_201_CREATED)
     
     return Response({"Fatal": "Something went wrong"}, status=status.HTTP_400_BAD_REQUEST) 
         
+@api_view(["POST"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def unlike_posts_view(request):
+    id = request.data.get("id")
+    obj = Post.objects.get(id=id)
+    if obj:
+        obj.likes.remove(request.user)
+
+        return Response({"Unlike": "like remove"}, status=status.HTTP_201_CREATED)
+    return Response({"Fatal": "Something went wrong"}, status=status.HTTP_201_CREATED)
+
