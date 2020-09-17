@@ -4,7 +4,7 @@ from .models import Post
 
 class PostSerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
-    timestamp = serializers.DateTimeField(format="%H:%M:%S %d-%m-%Y", required=False)
+    timestamp = serializers.DateTimeField(format="%H:%M:%S - %d-%m-%Y", required=False)
     likes = serializers.SerializerMethodField(read_only=True)
 
     class Meta:

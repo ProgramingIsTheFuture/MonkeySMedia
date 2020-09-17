@@ -1,6 +1,6 @@
-import { createStore, Action, action } from "easy-peasy";
+import { createStore, Action } from "easy-peasy";
 import { PostType } from "./types";
-import {setPosts, addPost} from "./actions";
+import { setPosts, addPost } from "./actions";
 
 interface StoreModel {
   Posts: {
@@ -14,7 +14,7 @@ const storeModel: StoreModel = {
   Posts: {
     Posts: [],
     setPosts: setPosts,
-    addPost: addPost
+    addPost: addPost,
   },
 };
 
