@@ -45,6 +45,9 @@ const CreatePost: React.FC = () => {
           value={content}
           onChange={(e) => handleChange(e, false)}
         />
+
+        
+
         <input type={"submit"} value={"Post"} />
       </form>
     </Container>
