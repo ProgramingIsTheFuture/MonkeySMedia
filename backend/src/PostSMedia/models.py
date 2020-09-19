@@ -8,7 +8,7 @@ class LikesPost(models.Model):
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    title= models.CharField(max_length=300, blank=True, null=True)
+    title= models.CharField(max_length=300, blank=False, null=False)
     content = models.TextField(max_length=1050, blank=True, null=False)
     image = models.FileField(upload_to='img-%d-%m-%Y', blank=True, null=True)
     likes = models.ManyToManyField(User, related_name="Likes", blank=True, through=LikesPost)

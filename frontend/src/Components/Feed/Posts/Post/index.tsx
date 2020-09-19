@@ -24,8 +24,16 @@ const Post: React.FC<Props> = ({ post }) => {
         {post.timestamp}
       </UserSimpleInfo>
       <CardTitle>{post.title}</CardTitle>
-      <CardImage></CardImage>
       <CardContent>{post.content}</CardContent>
+      {post.image ? (
+        <CardImage>
+          <img
+            src={`http://localhost:8000/${post.image}`}
+            width={"600px"}
+            alt={`${post.user} image`}
+          />
+        </CardImage>
+      ) : null}
       <Likes id={post.id} likes={post.likes} />
     </Container>
   );
