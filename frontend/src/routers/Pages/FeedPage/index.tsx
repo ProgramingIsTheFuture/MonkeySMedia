@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "../GeralComponent/Navbar";
-import Posts from "./Posts";
+import Navbar from "../../../Components/GeralComponent/Navbar";
+import Posts from "../../../Components/Feed/Posts";
 
 import { Container } from "./styles";
-import CreatePost from "./CreatePost";
+import CreatePost from "../../../Components/Feed/CreatePost";
 
 const Feed = () => {
   return (

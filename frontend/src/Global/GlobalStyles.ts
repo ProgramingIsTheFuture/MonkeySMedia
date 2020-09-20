@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
   html {
@@ -27,4 +27,10 @@ export default createGlobalStyle`
 
   }
   
+  button, input[type="button"], input[type="submit"] {
+    :focus{
+      outline:0;
+    }
+  }
+
 `;

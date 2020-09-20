@@ -17,9 +17,9 @@ const CreatePost: React.FC = () => {
   };
 
   const handleImage = (e: any) => {
-    console.log(e.target)
+    console.log(e.target);
     // setImage(e.target.value)
-  }
+  };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -43,18 +43,22 @@ const CreatePost: React.FC = () => {
       <form onSubmit={handleSubmit}>
         <input
           type={"text"}
+          placeholder={"Post Title"}
           value={title}
           onChange={(e) => handleChange(e, true)}
         />
+        <br />
         <input
           type={"text"}
+          placeholder={"Post Content"}
           value={content}
           onChange={(e) => handleChange(e, false)}
         />
-
+        <br />
         <input type={"file"} value={image} onChange={handleImage} />
 
-        <input type={"submit"} value={"Post"} />
+        <br />
+        <button type={"submit"}>Post</button>
       </form>
     </Container>
   );
