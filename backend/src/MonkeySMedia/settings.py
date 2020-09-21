@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'PostSMedia',
     'Users',
+    'ProfileSMedia',
 
     'rest_framework',
     'rest_framework.authtoken',

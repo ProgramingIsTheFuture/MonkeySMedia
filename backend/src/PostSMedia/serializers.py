@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from .models import Post
+import inspect
 
 class PostSerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
@@ -16,3 +17,4 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_likes(self, obj):
         return obj.likes.count()
+
