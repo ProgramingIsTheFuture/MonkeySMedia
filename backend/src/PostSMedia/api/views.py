@@ -18,6 +18,7 @@ def list_posts_view(request):
 @api_view(["POST"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def create_posts_view(request):
+    print(request.data)
     serializer = PostSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save(user=request.user)

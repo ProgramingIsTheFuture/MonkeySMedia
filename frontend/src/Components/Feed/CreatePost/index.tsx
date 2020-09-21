@@ -16,9 +16,15 @@ const CreatePost: React.FC = () => {
     TexCont ? setTitle(e.target.value) : setContent(e.target.value);
   };
 
-  const handleImage = (e: any) => {
-    console.log(e.target);
-    // setImage(e.target.value)
+  const handleImage = (event: any) => {
+    console.log(event.target.files)
+    // if (event.target.files && event.target.files[0]) {
+    //   let reader = new FileReader();
+    //   reader.onload = (e: any) => {
+    //     setImage(e.target.result);
+    //   };
+    //   reader.readAsDataURL(event.target.files[0]);
+    // }
   };
 
   const handleSubmit = (e: any) => {
@@ -26,7 +32,7 @@ const CreatePost: React.FC = () => {
     api
       .post(
         "api/posts/create-posts/",
-        { title: title, content: content },
+        { title: title, content: content, image: image },
         { headers: { Authorization: `Token ${JSON.parse(token).token}` } }
       )
       .then((resp) => {
