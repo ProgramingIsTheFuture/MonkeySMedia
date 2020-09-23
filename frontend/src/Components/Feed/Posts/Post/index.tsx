@@ -30,7 +30,7 @@ const Post: React.FC<Props> = ({ post }) => {
           <img
             src={`http://localhost:8000/${post.image}`}
             width={"600px"}
-            alt={`${post.user} image`}
+            alt={`${post.user}`}
           />
         </CardImage>
       ) : null}

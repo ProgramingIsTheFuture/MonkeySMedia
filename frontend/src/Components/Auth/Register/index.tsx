@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import { Container } from "./styles";
 import api from "../../../services";
-import getCookie from "./csrfToken";
+import getCookie from "../../../services/csrfToken";
+import { useHistory } from "react-router-dom";
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState<string>("");
@@ -10,6 +11,8 @@ const Register: React.FC = () => {
   const [first_name, setFirst_name] = useState<string>("");
   const [last_name, setLast_name] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const history = useHistory();
+  
   const handlePassword = (e: any) => {
     setPassword(e.target.value);
   };
@@ -34,15 +37,19 @@ const Register: React.FC = () => {
     const csrftoken = getCookie("csrftoken");
 
     api
-      .post("api/users/create/", {
-        username: username,
-        first_name: first_name,
-        last_name: last_name,
-        email: email,
-        password: password,
-      }, {headers: {'X-CSRFToken': csrftoken}, withCredentials: true})
-        .then((resp) => console.log(resp))
-        .catch((err) => console.log(err));
+      .post(
+        "api/users/create/",
+        {
+          username: username,
+          first_name: first_name,
+          last_name: last_name,
+          email: email,
+          password: password,
+        },
+        { headers: { "X-CSRFToken": csrftoken }, withCredentials: true }
+      )
+      .then((resp) => history.push("/login/"))
+      .catch((err) => console.log(err));
   };
 
   return (

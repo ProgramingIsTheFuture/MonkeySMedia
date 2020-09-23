@@ -7,7 +7,7 @@ import { Container } from "./styles";
 const CreatePost: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [image, setImage] = useState<any>();
+  const [image] = useState<any>();
   const token: any = localStorage.getItem("auth");
   const addPost = useStoreActions((action: any) => action.Posts.addPost);
 
@@ -17,7 +17,7 @@ const CreatePost: React.FC = () => {
   };
 
   const handleImage = (event: any) => {
-    console.log(event.target.files)
+    console.log(event.target.files);
     // if (event.target.files && event.target.files[0]) {
     //   let reader = new FileReader();
     //   reader.onload = (e: any) => {
