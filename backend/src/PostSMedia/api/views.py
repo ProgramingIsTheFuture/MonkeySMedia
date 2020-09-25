@@ -1,5 +1,5 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.decorators import api_view, authentication_classes
 from rest_framework import status
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.authentication import  TokenAuthentication
@@ -42,3 +42,18 @@ def like_unlike_posts_view(request):
 
     
     return Response({"Fatal": "This Post does not exist"}, status=status.HTTP_400_BAD_REQUEST) 
+
+
+@api_view(["POST"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def delete_post_view(request):
+    id = request.data.get("id")
+    obj = Post.objects.get(id=id)
+    if obj:
+        if obj.user == request.user:
+            obj.delete()
+            return Response({"Delete": "Deleted"}, status=status.HTTP_204_NO_CONTENT)
+
+        return Response({"Fatal": "This post is not yours"}, status=status.HTTP_403_FORBIDDEN)
+    
+    return Response({"Fatal": "This Post Does not exist"}, status=status.HTTP_400_BAD_REQUEST)
