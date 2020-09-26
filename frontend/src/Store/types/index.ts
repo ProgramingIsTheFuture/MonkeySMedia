@@ -19,6 +19,7 @@ export interface StoreModel {
     Posts: PostType[];
     setPosts: Action<{}, PostType[]>;
     addPost: Action<{}, PostType>;
+    removePost: Action<{}, number>;
   };
   User: {
     username: string | null;

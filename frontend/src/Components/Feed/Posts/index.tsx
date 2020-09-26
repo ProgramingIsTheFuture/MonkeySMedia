@@ -31,7 +31,7 @@ const Posts: React.FC = () => {
   }, [token, setPosts, setUsername]);
   return (
     <Container>
-      {Posts.map((item: PostType) => (
+      {Posts?.map((item: PostType) => (
         <Post key={item.id} post={item} />
       ))}
     </Container>

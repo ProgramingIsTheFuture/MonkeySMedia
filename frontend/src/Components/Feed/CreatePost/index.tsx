@@ -7,7 +7,7 @@ import { Container } from "./styles";
 const CreatePost: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [image, setImage] = useState<any>('');
+  const [image, setImage] = useState<any>("");
   const token: any = localStorage.getItem("auth");
   const addPost = useStoreActions((action: any) => action.Posts.addPost);
 
@@ -23,9 +23,11 @@ const CreatePost: React.FC = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const newPost = new FormData();
-    newPost.append('title', title)
-    newPost.append('content', content)
-    newPost.append('image', image, image.name)
+    newPost.append("title", title);
+    newPost.append("content", content);
+    if (image) {
+      newPost.append("image", image, image.name);
+    }
 
     api
       .post("api/posts/create-posts/", newPost, {
@@ -33,8 +35,7 @@ const CreatePost: React.FC = () => {
       })
       .then((resp) => {
         if (resp.data) {
-          console.log(resp.data)
-          setImage('')
+          setImage("");
           addPost(resp.data);
           setTitle("");
           setContent("");

@@ -1,4 +1,4 @@
-import { useStoreState } from "easy-peasy";
+import { useStoreActions, useStoreState } from "easy-peasy";
 import React from "react";
 import api from "../../../../services";
 import { PostType } from "../../../../Store/types";
@@ -18,18 +18,22 @@ export interface Props {
 
 const Post: React.FC<Props> = ({ post }) => {
   const username = useStoreState((state: any) => state.User.username);
+  const removePost = useStoreActions((action: any) => action.Posts.removePost);
   const token: any = localStorage.getItem("auth");
 
-  const handleDeletePost = (id: number) => {
-    api
+  const handleDeletePost = async (id: number) => {
+    await api
       .post(
         "api/posts/delete-post/",
         { id: id },
         { headers: { Authorization: `Token ${JSON.parse(token).token}` } }
       )
-      .then(() => {})
+      .then(async () => {
+        await removePost(id);
+      })
       .catch();
   };
+
   return (
     <Container>
       <UserSimpleInfo>
