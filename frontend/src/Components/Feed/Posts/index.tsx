@@ -26,7 +26,7 @@ const Posts: React.FC = () => {
       })
       .then((resp: any) => {
         const user = resp.data.username;
-        setUsername(user);
+        setUsername(user ? user : null);
       });
   }, [token, setPosts, setUsername]);
   return (

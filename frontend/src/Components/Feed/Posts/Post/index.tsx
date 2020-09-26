@@ -48,7 +48,7 @@ const Post: React.FC<Props> = ({ post }) => {
       {post.image ? (
         <CardImage>
           <img
-            src={`http://localhost:8000/${post.image}`}
+            src={`http://localhost:8000${post.image}`}
             width={"600px"}
             alt={`${post.user}`}
           />

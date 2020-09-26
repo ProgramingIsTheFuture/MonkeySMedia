@@ -20,13 +20,11 @@ const Likes: React.FC<Props> = ({ likes, id }) => {
           { headers: { Authorization: `Token ${JSON.parse(token).token}` } }
         )
         .then((resp) => {
-			console.log(resp)
-			if(resp.data.like === "Removed"){
-				setLikes(like - 1);
-			}
-			else if(resp.data.like === "Added") {
-				setLikes(like + 1);
-			}
+          if (resp.data.like === "Removed") {
+            setLikes(like - 1);
+          } else if (resp.data.like === "Added") {
+            setLikes(like + 1);
+          }
         })
         .catch();
     }
