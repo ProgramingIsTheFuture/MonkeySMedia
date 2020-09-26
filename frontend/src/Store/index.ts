@@ -1,6 +1,6 @@
 import { createStore } from "easy-peasy";
 import { StoreModel } from "./types";
-import { setPosts, addPost, setUsername, removePost } from "./actions";
+import { setPosts, addPost, setUsername, removePost, getProfileInfo } from "./actions";
 
 const storeModel: StoreModel = {
   Posts: {
@@ -12,6 +12,15 @@ const storeModel: StoreModel = {
   User: {
     username: null,
     setUsername: setUsername,
+  },
+  Profile: {
+    ProfileInfo: {
+      description: '',
+      profile_image: '',
+      timestamp: '',
+      user: '',
+    },
+    getProfileInfo: getProfileInfo
   }
 };
 

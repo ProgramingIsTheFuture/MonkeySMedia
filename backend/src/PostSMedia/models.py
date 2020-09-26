@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from ProfileSMedia.models import ProfileUser
 
 def upload_path(instance, filename):
     return ''.join(['posts', str(instance.title), filename])

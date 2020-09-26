@@ -3,9 +3,14 @@ from django.db.models.signals import post_save
 
 from django.contrib.auth.models import User
 
+def upload_path(instance, filename):
+    return ''.join(['profile', str(instance.title), filename])
+
 class ProfileUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_image = models.FileField(upload_to='profile-%d-%m-%Y', default='default/MonkeySMediaSystem.png')
+    profile_image = models.FileField(upload_to=upload_path, default='default/MonkeySMediaSystem.png')
+    description = models.TextField(max_length=800, default='', blank=False, null=False)
+    timestamp = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.user.username

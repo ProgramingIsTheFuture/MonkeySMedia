@@ -14,6 +14,13 @@ interface User {
   username: string | null;
 }
 
+export interface ProfileInfo {
+  description: string;
+  profile_image: string;
+  timestamp: string;
+  user: string;
+}
+
 export interface StoreModel {
   Posts: {
     Posts: PostType[];
@@ -24,5 +31,9 @@ export interface StoreModel {
   User: {
     username: string | null;
     setUsername: Action<{}, User>;
+  };
+  Profile: {
+    ProfileInfo: ProfileInfo;
+    getProfileInfo: Action<{}, ProfileInfo>;
   };
 }

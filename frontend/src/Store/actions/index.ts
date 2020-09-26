@@ -18,3 +18,8 @@ export const removePost = action((state: any, payload: number) => {
 export const setUsername = action((state: any, payload) => {
   state.username = payload;
 });
+
+export const getProfileInfo = action((state: any, payload) => {
+  state.ProfileInfo = payload;
+});
+
