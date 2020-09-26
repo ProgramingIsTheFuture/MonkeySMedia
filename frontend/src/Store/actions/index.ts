@@ -10,7 +10,7 @@ export const addPost = action((state: any, payload) => {
 });
 
 export const removePost = action((state: any, payload: number) => {
-  return state.Posts.filter((item: PostType, index: number) =>
+  state.Posts.filter((item: PostType, index: number) =>
     item.id === payload ? state.Posts.splice(index, index+1) : null
   );
 });
