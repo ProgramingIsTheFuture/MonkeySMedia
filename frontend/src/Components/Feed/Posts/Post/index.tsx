@@ -23,6 +23,7 @@ const Post: React.FC<Props> = ({ post }) => {
   const token: any = localStorage.getItem("auth");
 
   const handleDeletePost = async (id: number) => {
+    // Deleting posts API 
     await api
       .post(
         "api/posts/delete-post/",

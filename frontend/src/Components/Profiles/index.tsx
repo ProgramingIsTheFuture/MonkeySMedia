@@ -21,6 +21,7 @@ const Profiles: React.FC<Props> = ({ username }) => {
   const [UserPosts, setUserPosts] = useState<PostType[]>([]);
 
   useEffect(() => {
+    // Getting the Profile info
     api
       .post(
         "api/profile/get-me/",
@@ -36,6 +37,7 @@ const Profiles: React.FC<Props> = ({ username }) => {
         history.push("/");
       });
 
+      // Getting the user posts
     api
       .post(
         "api/posts/get-user-posts/",

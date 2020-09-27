@@ -9,6 +9,7 @@ from PostSMedia.models import Post
 from PostSMedia.serializers import PostSerializer
 
 
+# List all posts
 @api_view(["GET"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def list_posts_view(request):
@@ -16,7 +17,7 @@ def list_posts_view(request):
     serializer = PostSerializer(qs, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
-
+# Create a new posts
 @api_view(["POST"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def create_posts_view(request):
@@ -28,6 +29,7 @@ def create_posts_view(request):
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+#like and unlike posts
 @api_view(["POST"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def like_unlike_posts_view(request):
@@ -46,6 +48,7 @@ def like_unlike_posts_view(request):
     return Response({"Fatal": "This Post does not exist"}, status=status.HTTP_400_BAD_REQUEST) 
 
 
+# Delete a posts
 @api_view(["POST"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def delete_post_view(request):
@@ -61,6 +64,7 @@ def delete_post_view(request):
     return Response({"Fatal": "This Post Does not exist"}, status=status.HTTP_400_BAD_REQUEST)
 
 
+# Get the user Posts used on profile
 @api_view(["GET", "POST"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def get_user_posts_view(request):

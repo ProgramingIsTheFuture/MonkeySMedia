@@ -8,9 +8,11 @@ from rest_framework.authentication import  TokenAuthentication
 from ProfileSMedia.models import ProfileUser
 from ProfileSMedia.serializers import ProfileUserSerializer
 
+
+# get Profile using the username
 @api_view(["GET", "POST"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
-def get_my_profile(request):
+def get_profile_by_username(request):
     username = request.data.get("username")
     user = get_object_or_404(User, username=username)
     obj = get_object_or_404(ProfileUser, user=user)

@@ -13,6 +13,7 @@ const Likes: React.FC<Props> = ({ likes, id }) => {
   const [like, setLikes] = useState<number>(likes);
   const handleClick = () => {
     if (token) {
+      // like and unlike request
       api
         .post(
           "api/posts/like-unlike-posts/",

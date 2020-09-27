@@ -10,11 +10,13 @@ from django.shortcuts import get_object_or_404
 
 from Users.serializers import UserCreationSerializer
 
+# Register / Login a user
 class UserViewSet(viewsets.ModelViewSet):
     authentication_classes = (SessionAuthentication,)
     queryset = User.objects.all()
     serializer_class = UserCreationSerializer
 
+# Get the current user (using the application)
 @api_view(["POST", "GET"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def get_username(request):

@@ -13,6 +13,7 @@ const Posts: React.FC = () => {
   const Posts = useStoreState((state) => state.Posts.Posts);
 
   useEffect(() => {
+    // getting all posts i can see 
     api
       .get("api/posts/list-posts/", {
         headers: { Authorization: `Token ${JSON.parse(token).token}` },
@@ -20,6 +21,8 @@ const Posts: React.FC = () => {
       .then((resp) => {
         setPosts(resp.data);
       });
+
+      // Getting "me" user infos 
     api
       .get("api/users/get-user/", {
         headers: { Authorization: `Token ${JSON.parse(token).token}` },
