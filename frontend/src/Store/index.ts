@@ -15,10 +15,10 @@ const storeModel: StoreModel = {
   },
   Profile: {
     ProfileInfo: {
+      user: '',
       description: '',
       profile_image: '',
       timestamp: '',
-      user: '',
     },
     getProfileInfo: getProfileInfo
   }

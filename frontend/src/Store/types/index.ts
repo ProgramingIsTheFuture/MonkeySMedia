@@ -15,10 +15,10 @@ interface User {
 }
 
 export interface ProfileInfo {
+  user: string;
   description: string;
   profile_image: string;
   timestamp: string;
-  user: string;
 }
 
 export interface StoreModel {
