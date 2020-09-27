@@ -1,6 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes
 from rest_framework import status
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.authentication import  TokenAuthentication
 from PostSMedia.models import Post
@@ -57,3 +59,13 @@ def delete_post_view(request):
         return Response({"Fatal": "This post is not yours"}, status=status.HTTP_403_FORBIDDEN)
     
     return Response({"Fatal": "This Post Does not exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["GET", "POST"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def get_user_posts_view(request):
+    username = request.data.get("username")
+    user = get_object_or_404(User, username=username)
+    qs = Post.objects.filter(user=user)
+    serializer = PostSerializer(qs, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)

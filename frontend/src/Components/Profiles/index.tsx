@@ -1,6 +1,10 @@
-import { useStoreActions, useStoreState } from "easy-peasy";
-import React, { useEffect } from "react";
+import { useStoreActions } from "easy-peasy";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import api from "../../services";
+import { PostType } from "../../Store/types";
+import Post from "../Feed/Posts/Post";
+import ProfileHeader from "./ProfileHeader";
 
 import { Container } from "./styles";
 
@@ -13,7 +17,8 @@ const Profiles: React.FC<Props> = ({ username }) => {
   const getProfileInfo = useStoreActions(
     (action: any) => action.Profile.getProfileInfo
   );
-  const ProfileInfo = useStoreState((state: any) => state.Profile.ProfileInfo);
+  const history = useHistory();
+  const [UserPosts, setUserPosts] = useState<PostType[]>([]);
 
   useEffect(() => {
     api
@@ -26,9 +31,27 @@ const Profiles: React.FC<Props> = ({ username }) => {
       )
       .then((resp) => {
         getProfileInfo(resp.data);
+      })
+      .catch(() => {
+        history.push("/");
       });
-  }, [username, getProfileInfo, token]);
-return <Container>{ProfileInfo.user} {ProfileInfo.profile_image}<img src={`http://localhost:8000${ProfileInfo.profile_image}`} /></Container>;
+
+    api
+      .post(
+        "api/posts/get-user-posts/",
+        { username: username },
+        { headers: { Authorization: `Token ${JSON.parse(token).token}` } }
+      )
+      .then((resp) => setUserPosts(resp.data));
+  }, [username, getProfileInfo, token, history]);
+  return (
+    <Container>
+      <ProfileHeader />
+      {UserPosts?.map((post) => (
+        <Post post={post} key={post.id} />
+      ))}
+    </Container>
+  );
 };
 
 export default Profiles;

@@ -19,9 +19,11 @@ from django.conf.urls.static import static
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
 
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.remove_this),
     path('api/posts/', include('PostSMedia.api.urls')),
     path('api/users/', include('Users.api.urls')),
     path('api/profile/', include('ProfileSMedia.api.urls')),

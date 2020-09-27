@@ -10,6 +10,11 @@ export const Container = styled.div`
 export const UserSimpleInfo = styled.div`
   margin-left: 15px;
   margin-top: 10px;
+
+  & a {
+    color: black;
+    text-decoration: none;
+  }
 `;
 
 export const CardTitle = styled.div`

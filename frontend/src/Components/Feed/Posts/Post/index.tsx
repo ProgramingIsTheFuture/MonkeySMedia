@@ -1,5 +1,6 @@
 import { useStoreActions, useStoreState } from "easy-peasy";
 import React from "react";
+import { Link } from "react-router-dom";
 import api from "../../../../services";
 import { PostType } from "../../../../Store/types";
 import Likes from "../Likes";
@@ -37,16 +38,18 @@ const Post: React.FC<Props> = ({ post }) => {
   return (
     <Container>
       <UserSimpleInfo>
-        <div>
+        <Link to={`/Profile/${post.user}`}>
           <span>{post.user}</span>
-          <div>{post.timestamp}</div>
-          <div>
-            {post.user === username ? (
-              <button onClick={() => handleDeletePost(post.id)}>Delete</button>
-            ) : null}
-          </div>
-        </div>
+        </Link>
       </UserSimpleInfo>
+      <div>
+        <div>{post.timestamp}</div>
+        <div>
+          {post.user === username ? (
+            <button onClick={() => handleDeletePost(post.id)}>Delete</button>
+          ) : null}
+        </div>
+      </div>
       <CardTitle>{post.title}</CardTitle>
       <CardContent>{post.content}</CardContent>
       {post.image ? (
