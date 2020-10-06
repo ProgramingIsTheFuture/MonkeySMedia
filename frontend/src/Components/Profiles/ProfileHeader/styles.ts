@@ -9,6 +9,16 @@ export const Container = styled.div`
   width: 100%;
 `;
 
+export const NavFixed = styled.nav`
+  position: fixed;
+
+  height: 60px;
+  width: 100%;
+
+  background-color: var(--card);
+  z-index: 999;
+`;
+
 export const BackIcon = styled(ArrowBack)`
   top: 0;
   left: 0;
@@ -24,7 +34,7 @@ export const Image = styled.div`
   height: 200px;
   width: 200px;
 
-  margin-top: 40px;
+  margin-top: 60px;
   margin-left: 50px;
   & img {
     height: 100%;
@@ -36,7 +46,7 @@ export const Image = styled.div`
 `;
 
 export const Username = styled.div`
-  margin-top: 105px;
+  margin-top: 110px;
   text-align: center;
   font-size: 3.2rem;
 `;
