@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.authentication import  TokenAuthentication
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics
 from ProfileSMedia.models import ProfileUser
 from ProfileSMedia.serializers import ProfileUserSerializer
 
@@ -18,3 +20,9 @@ def get_profile_by_username(request):
     obj = get_object_or_404(ProfileUser, user=user)
     serializer = ProfileUserSerializer(obj)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+class SearchList(generics.ListAPIView):
+    queryset = ProfileUser.objects.all()
+    serializer_class = ProfileUserSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['username', 'email']
