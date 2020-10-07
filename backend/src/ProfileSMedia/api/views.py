@@ -4,9 +4,10 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework.authentication import  TokenAuthentication
+from rest_framework.authentication import TokenAuthentication
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
+from rest_framework import filters
 from ProfileSMedia.models import ProfileUser
 from ProfileSMedia.serializers import ProfileUserSerializer
 
@@ -21,8 +22,10 @@ def get_profile_by_username(request):
     serializer = ProfileUserSerializer(obj)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+
+# search-profile?search= and then just type the username :)
 class SearchList(generics.ListAPIView):
     queryset = ProfileUser.objects.all()
     serializer_class = ProfileUserSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['username', 'email']
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    search_fields = ['user__username']
