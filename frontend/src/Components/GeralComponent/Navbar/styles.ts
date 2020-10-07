@@ -14,6 +14,8 @@ export const Container = styled.nav`
   justify-content: center;
 
   height: 50px;
+
+  font-size: 0.95rem;
 `;
 
 export const NavItems = styled.ul`
@@ -72,13 +74,16 @@ export const DropDown = styled.li`
   height: 100%;
 
   cursor: pointer;
+  position: relative;
 
-  ul {
+  div {
     display: none;
+    visibility: hidden;
   }
-  &:hover {
-    ul {
+  :hover {
+    div {
       display: block;
+      visibility: visible;
       width: 80px;
       height: 80px;
     }
@@ -97,15 +102,29 @@ export const DropDownItems = styled.ul`
   background-color: var(--nav-color);
   display: flex;
 
+  min-width: 50px;
+  min-height: 50px;
+
   justify-content: center;
   z-index: 999;
+
+  margin-top: -5px;
 
   li {
     color: var(--white);
     text-align: center;
+    
+    width: 6em;
+    padding: 0.5em;
 
+    text-align: center;
+    margin: .1em 0;
+    
+    z-index: 2;
 
     a {
+      padding: 0.5em;
+
       text-decoration: none;
       color: var(--white);
 

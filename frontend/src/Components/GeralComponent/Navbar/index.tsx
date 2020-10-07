@@ -71,17 +71,15 @@ const Navbar: React.FC = () => {
         </SearchLink>
         <DropDown>
           <DropDownIcon></DropDownIcon>
-          <DropDownItems>
-            <li>
-              <Link to="/login/" onClick={logOut}>
-                Logout
-              </Link>
-            </li>
-            <br />
-            <li>
-              <></>
-            </li>
-          </DropDownItems>
+          <div>
+            <DropDownItems>
+              <li>
+                <Link to="/login/" onClick={logOut}>
+                  Logout
+                </Link>
+              </li>
+            </DropDownItems>
+          </div>
         </DropDown>
       </NavItems>
     </Container>
