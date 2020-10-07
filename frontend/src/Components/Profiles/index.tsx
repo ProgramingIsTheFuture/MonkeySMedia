@@ -22,22 +22,24 @@ const Profiles: React.FC<Props> = ({ username }) => {
 
   useEffect(() => {
     // Getting the Profile info
-    api
-      .post(
-        "api/profile/get-me/",
-        { username: username },
-        {
-          headers: { Authorization: `Token ${JSON.parse(token).token}` },
-        }
-      )
-      .then((resp) => {
-        getProfileInfo(resp.data);
-      })
-      .catch(() => {
-        history.push("/");
-      });
+    if (username) {
+      api
+        .post(
+          "api/profile/get-me/",
+          { username: username },
+          {
+            headers: { Authorization: `Token ${JSON.parse(token).token}` },
+          }
+        )
+        .then((resp) => {
+          getProfileInfo(resp.data);
+        })
+        .catch(() => {
+          history.push("/");
+        });
+    }
 
-      // Getting the user posts
+    // Getting the user posts
     api
       .post(
         "api/posts/get-user-posts/",

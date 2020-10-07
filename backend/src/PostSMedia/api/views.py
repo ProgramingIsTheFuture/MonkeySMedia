@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.authentication import  TokenAuthentication
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics
+from rest_framework import filters
 from PostSMedia.models import Post
 from PostSMedia.serializers import PostSerializer
 
@@ -73,3 +76,11 @@ def get_user_posts_view(request):
     qs = Post.objects.filter(user=user)
     serializer = PostSerializer(qs, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+# search-user-post?search= and then just type the title or content or the username
+class SearchList(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    search_fields = ['title', 'content', 'user__username']
