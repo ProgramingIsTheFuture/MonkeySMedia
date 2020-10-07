@@ -3,7 +3,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import EditProfile from "../EditProfile";
 
-import { Container, NavFixed, BackIcon, Image, Username, Description } from "./styles";
+import {
+  Container,
+  NavFixed,
+  BackIcon,
+  Image,
+  Username,
+  Description,
+} from "./styles";
 
 const ProfileHeader: React.FC = () => {
   const ProfileInfo = useStoreState((state: any) => state.Profile.ProfileInfo);
