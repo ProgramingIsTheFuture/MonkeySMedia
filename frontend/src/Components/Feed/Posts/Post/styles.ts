@@ -5,6 +5,7 @@ export const Container = styled.div`
   margin: 15px;
 
   width: 735px;
+  min-height: 150px;
 `;
 
 export const UserSimpleInfo = styled.div`

@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const NavFixed = styled.nav`
   position: fixed;
 
-  height: 60px;
+  height: 80;
   width: 100%;
 
   background-color: var(--card);
