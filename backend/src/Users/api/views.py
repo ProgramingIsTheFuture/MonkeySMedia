@@ -2,22 +2,26 @@ from rest_framework import viewsets
 from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import authentication_classes
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework.authentication import  TokenAuthentication
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import AllowAny
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import authenticate, login
 
 from Users.serializers import UserCreationSerializer
 
 # Register / Login a user
+
+
 class UserViewSet(viewsets.ModelViewSet):
     authentication_classes = (SessionAuthentication,)
     queryset = User.objects.all()
     serializer_class = UserCreationSerializer
 
 # Get the current user (using the application)
+
+
 @api_view(["POST", "GET"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def get_username(request):
@@ -28,7 +32,9 @@ def get_username(request):
 
     return Response({"Fatal": "User does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
+
 @api_view(["POST", "GET"])
+@permission_classes([AllowAny])
 def login_view(request):
     username = request.data.get('username')
     password = request.data.get('password')

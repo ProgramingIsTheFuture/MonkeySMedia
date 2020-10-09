@@ -11,6 +11,7 @@ const Login: React.FC = () => {
   const setUsernameStore = useStoreActions(
     (action: any) => action.User.setUsername
   );
+
   const history = useHistory();
 
   const changeUsername = (e: any) => {
@@ -29,16 +30,15 @@ const Login: React.FC = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     api
+      .post("api/users/login/", { username: username, password: password })
+      .then()
+      .catch();
+
+    api
       .post("auth/", { username: username, password: password })
       .then((resp) => {
         setTokenToLocalStorega(resp.data.token);
         setUsernameStore({ username: username });
-      })
-      .catch();
-    api
-      .post("api/users/login/", { username: username, password: password })
-      .then((resp) => {
-        console.log(resp);
       })
       .catch();
   };
