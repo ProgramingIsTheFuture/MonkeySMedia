@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.authentication import  TokenAuthentication
 from django.shortcuts import get_object_or_404
+from django.contrib.auth import authenticate, login
 
 from Users.serializers import UserCreationSerializer
 
@@ -26,3 +27,15 @@ def get_username(request):
         return Response({"username": obj.username}, status=status.HTTP_200_OK)
 
     return Response({"Fatal": "User does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+@api_view(["POST", "GET"])
+def login_view(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    print(username, password)
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return Response({"You're in! Have Fun!"}, status=status.HTTP_200_OK)
+    else:
+        return Response({"Something went wrong"}, status=status.HTTP_401_UNAUTHORIZED)

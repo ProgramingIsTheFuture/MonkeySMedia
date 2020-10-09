@@ -8,7 +8,9 @@ import { useStoreActions } from "easy-peasy";
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const setUsernameStore = useStoreActions((action: any) => action.User.setUsername);
+  const setUsernameStore = useStoreActions(
+    (action: any) => action.User.setUsername
+  );
   const history = useHistory();
 
   const changeUsername = (e: any) => {
@@ -31,7 +33,14 @@ const Login: React.FC = () => {
       .then((resp) => {
         setTokenToLocalStorega(resp.data.token);
         setUsernameStore({ username: username });
-      });
+      })
+      .catch();
+    api
+      .post("api/users/login/", { username: username, password: password })
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch();
   };
 
   return (
