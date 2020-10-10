@@ -34,9 +34,9 @@ def create_posts_view(request):
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+
 # like and unlike posts
-
-
 @api_view(["POST"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def like_unlike_posts_view(request):
@@ -52,6 +52,22 @@ def like_unlike_posts_view(request):
         return Response({"like": "Added"}, status=status.HTTP_201_CREATED)
 
     return Response({"Fatal": "This Post does not exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+# did i liked it before?
+@api_view(["POST"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def check_like_posts_view(request):
+    id = request.data.get("id")
+    obj = Post.objects.get(id=id)
+    if obj:
+        for user_likes in obj.likes.all():
+            if request.user == user_likes:
+                return Response({"true"}, status=status.HTTP_200_OK)
+            
+        return Response({"false"}, status=status.HTTP_200_OK)
+
+    return Response({"Something went wrong!"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 # Delete a posts
