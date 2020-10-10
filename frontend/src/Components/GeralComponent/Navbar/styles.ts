@@ -47,6 +47,8 @@ export const ProfileImage = styled.li`
 export const HomeIcon = styled(Home)`
   width: 100%;
   height: 100%;
+
+  color: white;
 `;
 
 export const ChatIcon = styled(ChatDotsFill)`

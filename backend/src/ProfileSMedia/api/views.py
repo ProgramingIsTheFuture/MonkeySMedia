@@ -27,5 +27,7 @@ def get_profile_by_username(request):
 class SearchList(generics.ListAPIView):
     queryset = ProfileUser.objects.all()
     serializer_class = ProfileUserSerializer
+    authentication_classes = (
+        TokenAuthentication, SessionAuthentication, BasicAuthentication)
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ['user__username']

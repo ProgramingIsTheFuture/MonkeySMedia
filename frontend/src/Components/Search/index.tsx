@@ -11,16 +11,21 @@ const Search: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [postResponse, setPostResponse] = useState<any>([]);
   const [profileResponse, setProfileResponse] = useState<any>([]);
+  const token: any = localStorage.getItem("auth");
 
   const SearchOnChange = async (event: any) => {
     await setSearchValue(event.target.value);
     await api
-      .get(`api/posts/search-user-post?search=${searchValue}`)
+      .get(`api/posts/search-user-post?search=${searchValue}`, {
+        headers: { Authorization: `Token ${JSON.parse(token).token}` },
+      })
       .then(async (resp) => {
         await setPostResponse(resp.data);
       });
     await api
-      .get(`api/profile/search-profile?search=${searchValue}`)
+      .get(`api/profile/search-profile?search=${searchValue}`, {
+        headers: { Authorization: `Token ${JSON.parse(token).token}` },
+      })
       .then(async (resp) => {
         await setProfileResponse(resp.data);
       });

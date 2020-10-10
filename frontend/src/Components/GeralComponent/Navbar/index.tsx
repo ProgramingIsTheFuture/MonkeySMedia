@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
   const username = useStoreState((state: any) => state.User.username);
 
   useEffect(() => {
-    if (username) {
+    if (typeof username === "string" && username !== "") {
       api
         .post(
           "api/profile/get-me/",
@@ -58,7 +58,9 @@ const Navbar: React.FC = () => {
           </Link>
         </ProfileImage>
         <li>
-          <HomeIcon />
+          <Link to={"/"}>
+            <HomeIcon />
+          </Link>
         </li>
         <li>
           <ChatIcon />

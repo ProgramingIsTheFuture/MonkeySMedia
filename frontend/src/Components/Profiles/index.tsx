@@ -22,7 +22,7 @@ const Profiles: React.FC<Props> = ({ username }) => {
 
   useEffect(() => {
     // Getting the Profile info
-    if (typeof username === "string") {
+    if (typeof username === "string" && username !== "") {
       api
         .post(
           "api/profile/get-me/",

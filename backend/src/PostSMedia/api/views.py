@@ -4,7 +4,7 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework.authentication import  TokenAuthentication
+from rest_framework.authentication import TokenAuthentication
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework import filters
@@ -21,6 +21,8 @@ def list_posts_view(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 # Create a new posts
+
+
 @api_view(["POST"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def create_posts_view(request):
@@ -32,7 +34,9 @@ def create_posts_view(request):
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-#like and unlike posts
+# like and unlike posts
+
+
 @api_view(["POST"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def like_unlike_posts_view(request):
@@ -42,13 +46,12 @@ def like_unlike_posts_view(request):
         for user_likes in obj.likes.all():
             if request.user == user_likes:
                 obj.likes.remove(request.user)
-                return Response({"like": "Removed"} ,status=status.HTTP_201_CREATED)
+                return Response({"like": "Removed"}, status=status.HTTP_201_CREATED)
 
         obj.likes.add(request.user)
-        return Response({"like": "Added"} ,status=status.HTTP_201_CREATED)
+        return Response({"like": "Added"}, status=status.HTTP_201_CREATED)
 
-    
-    return Response({"Fatal": "This Post does not exist"}, status=status.HTTP_400_BAD_REQUEST) 
+    return Response({"Fatal": "This Post does not exist"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 # Delete a posts
@@ -63,7 +66,7 @@ def delete_post_view(request):
             return Response({"Delete": "Deleted"}, status=status.HTTP_204_NO_CONTENT)
 
         return Response({"Fatal": "This post is not yours"}, status=status.HTTP_403_FORBIDDEN)
-    
+
     return Response({"Fatal": "This Post Does not exist"}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -82,5 +85,7 @@ def get_user_posts_view(request):
 class SearchList(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    authentication_classes = (
+        TokenAuthentication, SessionAuthentication, BasicAuthentication)
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ['title', 'content', 'user__username']
