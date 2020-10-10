@@ -45,6 +45,7 @@ const Post: React.FC<Props> = ({ post }) => {
               src={`http://localhost:8000${post.profile_image}`}
               width={"30px"}
               height={"30px"}
+              alt={"Profile"}
             />
             <span>{post.user}</span>
           </div>

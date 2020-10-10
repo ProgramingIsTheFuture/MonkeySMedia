@@ -23,7 +23,7 @@ export const Container = styled.div`
             background: none;
 
             display: block;
-            margin: 20px auto;
+            margin: 12px auto;
 
             text-align: center;
             padding: 14px 20px;
@@ -47,7 +47,7 @@ export const Container = styled.div`
             background: none;
 
             display: block;
-            margin: 20px auto;
+            margin: 15px auto;
 
             text-align: center;
             padding: 14px 20px;
