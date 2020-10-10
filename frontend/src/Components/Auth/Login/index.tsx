@@ -3,7 +3,7 @@ import api from "../../../services";
 import { useHistory, Link } from "react-router-dom";
 import { useStoreActions } from "easy-peasy";
 
-// import { Container } from './styles';
+import { Container } from "./styles";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>("");
@@ -44,25 +44,34 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
+    <Container>
       <form onSubmit={handleSubmit}>
-        <input
-          type={"text"}
-          value={username}
-          name={"username"}
-          onChange={changeUsername}
-        />
-        <input
-          type={"password"}
-          value={password}
-          name={"password"}
-          onChange={changePassword}
-        />
-        <input type={"submit"} value={"LogIn"} />
+        <h1>Login</h1>
+        <div>
+          <label htmlFor={"username"}>Username</label>
+          <input
+            type={"text"}
+            value={username}
+            name={"username"}
+            onChange={changeUsername}
+          />
+        </div>
+        <div>
+          <label htmlFor={"password"}>Password</label>
+          <input
+            type={"password"}
+            value={password}
+            name={"password"}
+            onChange={changePassword}
+          />
+        </div>
+        <div>
+          <input type={"submit"} value={"LogIn"} />
+        </div>
+        You dont have one?
+        <Link to={"/register/"}> Register</Link>
       </form>
-      You dont have one?
-      <Link to={"/register/"}> Register</Link>
-    </div>
+    </Container>
   );
 };
 
