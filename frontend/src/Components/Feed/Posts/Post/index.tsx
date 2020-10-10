@@ -23,7 +23,7 @@ const Post: React.FC<Props> = ({ post }) => {
   const token: any = localStorage.getItem("auth");
 
   const handleDeletePost = async (id: number) => {
-    // Deleting posts API 
+    // Deleting posts API
     await api
       .post(
         "api/posts/delete-post/",
@@ -40,7 +40,14 @@ const Post: React.FC<Props> = ({ post }) => {
     <Container>
       <UserSimpleInfo>
         <Link to={`/Profile/${post.user}`}>
-          <span>{post.user}</span>
+          <div>
+            <img
+              src={`http://localhost:8000${post.profile_image}`}
+              width={"30px"}
+              height={"30px"}
+            />
+            <span>{post.user}</span>
+          </div>
         </Link>
       </UserSimpleInfo>
       <div>

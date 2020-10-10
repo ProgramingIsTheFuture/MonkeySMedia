@@ -15,6 +15,21 @@ export const UserSimpleInfo = styled.div`
   & a {
     color: black;
     text-decoration: none;
+
+    div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 7px;
+
+      img {
+        border: 1px solid rgba(0, 0, 0, 0.09);
+        border-radius: 100%;
+      }
+
+      span {
+        margin-left: 10px;
+      }
+    }
   }
 `;
 

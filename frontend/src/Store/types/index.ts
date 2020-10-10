@@ -6,6 +6,7 @@ export interface PostType {
   title?: string;
   content?: string;
   image?: string;
+  profile_image: string;
   likes: number;
   timestamp: string;
 }
