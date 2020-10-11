@@ -11,6 +11,7 @@ export const Container = styled.div`
 
     height: 50px;
     width: 80vw;
+
   }
 `;
 
@@ -23,4 +24,10 @@ export const BackArrow = styled.nav`
 
   position: fixed;
   background: var(--nav-color);
+`;
+
+export const SearchedItems = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 `;

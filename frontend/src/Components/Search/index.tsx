@@ -5,7 +5,7 @@ import { BackIcon } from "../Profiles/ProfileHeader/styles";
 import PostSearch from "./PostSearch";
 import ProfileSearch from "./ProfileSearch";
 
-import { Container, BackArrow } from "./styles";
+import { Container, BackArrow, SearchedItems } from "./styles";
 
 const Search: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
@@ -34,7 +34,7 @@ const Search: React.FC = () => {
   return (
     <Container>
       <BackArrow>
-        <Link to="/">
+        <Link to={"/"}>
           <BackIcon />
         </Link>
       </BackArrow>
@@ -42,14 +42,18 @@ const Search: React.FC = () => {
         <div>
           <input type={"text"} onChange={SearchOnChange} />
         </div>
-        {postResponse.map((item: any) => (
+        <SearchedItems>
           <div>
-            <PostSearch key={item.id} post={item} />
+            {postResponse.map((item: any) => (
+              <PostSearch key={item.id} post={item} />
+            ))}
           </div>
-        ))}
-        {profileResponse.map((item: any) => (
-          <ProfileSearch key={item.id} Profile={item}></ProfileSearch>
-        ))}
+          <div>
+            {profileResponse.map((item: any) => (
+              <ProfileSearch key={item.id} Profile={item} />
+            ))}
+          </div>
+        </SearchedItems>
       </div>
     </Container>
   );
