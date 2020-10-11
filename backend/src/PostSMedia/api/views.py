@@ -35,6 +35,14 @@ def create_posts_view(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+def check_in_likes(request, obj):
+    resp = False
+    for user_likes in obj.likes.all():
+        if request.user == user_likes:
+            resp = True
+            return resp
+    return resp
+
 
 # like and unlike posts
 @api_view(["POST"])
@@ -43,10 +51,12 @@ def like_unlike_posts_view(request):
     id = request.data.get("id")
     obj = Post.objects.get(id=id)
     if obj:
-        for user_likes in obj.likes.all():
-            if request.user == user_likes:
-                obj.likes.remove(request.user)
-                return Response({"like": "Removed"}, status=status.HTTP_201_CREATED)
+
+        check = check_in_likes(request, obj)
+
+        if check:
+            obj.likes.remove(request.user)
+            return Response({"like": "Removed"}, status=status.HTTP_201_CREATED)
 
         obj.likes.add(request.user)
         return Response({"like": "Added"}, status=status.HTTP_201_CREATED)
@@ -61,10 +71,11 @@ def check_like_posts_view(request):
     id = request.data.get("id")
     obj = Post.objects.get(id=id)
     if obj:
-        for user_likes in obj.likes.all():
-            if request.user == user_likes:
-                return Response({"true"}, status=status.HTTP_200_OK)
-            
+        check = check_in_likes(request, obj)
+        
+        if check:
+            return Response({"true"}, status=status.HTTP_200_OK)
+
         return Response({"false"}, status=status.HTTP_200_OK)
 
     return Response({"Something went wrong!"}, status=status.HTTP_400_BAD_REQUEST)
