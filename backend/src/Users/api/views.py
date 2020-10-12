@@ -7,7 +7,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import AllowAny
 from django.shortcuts import get_object_or_404
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 from Users.serializers import UserCreationSerializer
 
@@ -45,3 +45,10 @@ def login_view(request):
         return Response({"You're in! Have Fun!"}, status=status.HTTP_200_OK)
     else:
         return Response({"Something went wrong"}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+@api_view(["POST", "GET"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def logout_view(request):
+    logout(request)
+    return Response({"Loged out with success"}, status=status.HTTP_200_OK)

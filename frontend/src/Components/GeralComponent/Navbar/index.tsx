@@ -42,6 +42,12 @@ const Navbar: React.FC = () => {
   }, [username, getProfileInfo, token]);
 
   const logOut = () => {
+    api
+      .get("api/users/logout/", {
+        headers: { Authorization: `Token ${JSON.parse(token).token}` },
+      })
+      .then()
+      .catch();
     localStorage.removeItem("auth");
   };
 

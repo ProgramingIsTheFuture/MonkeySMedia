@@ -1,17 +1,14 @@
 import { useStoreActions, useStoreState } from "easy-peasy";
 import React from "react";
 import { Link } from "react-router-dom";
-import api from "../../../../services";
-import { PostType } from "../../../../Store/types";
-import Likes from "../Likes";
-
+import api from "../../../services";
+import { PostType } from "../../../Store/types";
+import Likes from "./Likes";
 import {
-  Container,
-  UserSimpleInfo,
-  CardTitle,
-  CardImage,
-  CardContent,
+  CardContent, CardImage, CardTitle, Container,
+  UserSimpleInfo
 } from "./styles";
+
 
 export interface Props {
   post: PostType;

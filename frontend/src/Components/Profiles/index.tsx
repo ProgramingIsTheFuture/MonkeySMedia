@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import api from "../../services";
 import { PostType } from "../../Store/types";
-import Post from "../Feed/Posts/Post";
+import Post from "../GeralComponent/Post";
 import ProfileHeader from "./ProfileHeader";
 
 import { Container } from "./styles";
