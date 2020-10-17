@@ -4,6 +4,11 @@ import { ArrowBack } from "styled-icons/boxicons-regular";
 export const Container = styled.div`
   position: relative;
   background: var(--card);
+  /* background: linear-gradient(
+    to bottom,
+    rgba(152, 101, 45, 1) 24%,
+    rgba(129, 71, 21, 1) 90%
+  ); */
   height: 50vh;
 
   width: 100%;

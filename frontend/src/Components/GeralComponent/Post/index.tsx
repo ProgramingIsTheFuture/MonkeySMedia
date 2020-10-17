@@ -39,7 +39,7 @@ const Post: React.FC<Props> = ({ post }) => {
         <Link to={`/Profile/${post.user}`}>
           <div>
             <img
-              src={`http://localhost:8000${post.profile_image}`}
+              src={`${process.env.REACT_APP_BACKEND_URL}${post.profile_image}`}
               width={"30px"}
               height={"30px"}
               alt={"Profile"}
@@ -61,7 +61,7 @@ const Post: React.FC<Props> = ({ post }) => {
       {post.image ? (
         <CardImage>
           <img
-            src={`http://localhost:8000${post.image}`}
+            src={`${process.env.REACT_APP_BACKEND_URL}${post.image}`}
             width={"600px"}
             alt={`${post.user}`}
           />

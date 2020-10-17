@@ -13,14 +13,13 @@ from Users.serializers import UserCreationSerializer
 
 # Register / Login a user
 
-
 class UserViewSet(viewsets.ModelViewSet):
-    authentication_classes = (SessionAuthentication,)
+    authentication_classes = (SessionAuthentication,BasicAuthentication)
     queryset = User.objects.all()
     serializer_class = UserCreationSerializer
 
-# Get the current user (using the application)
 
+# Get the current user (using the application)
 
 @api_view(["POST", "GET"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
@@ -38,7 +37,6 @@ def get_username(request):
 def login_view(request):
     username = request.data.get('username')
     password = request.data.get('password')
-    print(username, password)
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)

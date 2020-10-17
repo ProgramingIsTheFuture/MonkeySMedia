@@ -23,15 +23,17 @@ const ProfileHeader: React.FC = () => {
           <BackIcon />
         </Link>
       </NavFixed>
-      <Image>
-        <img
-          src={`http://localhost:8000${ProfileInfo.profile_image}`}
-          alt={`${ProfileInfo.user} Profile`}
-        />
-      </Image>
-      <Username>{ProfileInfo.user}</Username>
-      <Description>{ProfileInfo.description}</Description>
-      {currentUser === ProfileInfo.user ? <EditProfile /> : null}
+      <header>
+        <Image>
+          <img
+            src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.profile_image}`}
+            alt={`${ProfileInfo.user} Profile`}
+          />
+        </Image>
+        <Username>{ProfileInfo.user}</Username>
+        <Description>{ProfileInfo.description}</Description>
+        {currentUser === ProfileInfo.user ? <EditProfile /> : null}
+      </header>
     </Container>
   );
 };

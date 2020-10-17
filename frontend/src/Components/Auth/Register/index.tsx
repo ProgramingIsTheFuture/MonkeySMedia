@@ -6,6 +6,11 @@ import getCookie from "../../../services/csrfToken";
 import { Link, useHistory } from "react-router-dom";
 import { Message } from "./styles";
 
+const validateEmail = (email: string) => {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};
+
 const Register: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -37,8 +42,13 @@ const Register: React.FC = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const csrftoken = getCookie("csrftoken");
-    console.log("da?")
-    if (username && first_name && last_name && email && password) {
+    if (
+      username &&
+      first_name &&
+      last_name &&
+      validateEmail(email) &&
+      password
+    ) {
       api
         .post(
           "api/users/create/",
@@ -51,8 +61,10 @@ const Register: React.FC = () => {
           },
           { headers: { "X-CSRFToken": csrftoken }, withCredentials: true }
         )
-        .then((resp) => history.push("/login/"))
-        .catch((err) => console.log(err));
+        .then(() => {
+          history.push("/login/");
+        })
+        .catch();
     } else {
       setError(true);
     }

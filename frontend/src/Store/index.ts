@@ -16,8 +16,11 @@ const storeModel: StoreModel = {
   Profile: {
     ProfileInfo: {
       user: '',
-      description: '',
       profile_image: '',
+      background_profile_image: '',
+      description: '',
+      following: 0,
+      followers: 0,
       timestamp: '',
     },
     getProfileInfo: getProfileInfo

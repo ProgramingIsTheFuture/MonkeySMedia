@@ -103,6 +103,7 @@ export const DropDownItems = styled.ul`
 
   background-color: var(--nav-color);
   display: flex;
+  flex-direction: column;
 
   min-width: 50px;
   min-height: 50px;

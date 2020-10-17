@@ -31,3 +31,31 @@ class SearchList(generics.ListAPIView):
         TokenAuthentication, SessionAuthentication, BasicAuthentication)
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ['user__username']
+
+
+def check_in_follows(request, obj):
+    resp = False
+    for user_likes in obj.all():
+        if request.user == user_likes:
+            resp = True
+    return resp
+
+
+@api_view(["GET", "POST"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def post_Following_or_UnFollowing(request):
+    username = request.data.get("username")
+    userFollowed = get_object_or_404(User, username=username)
+    profFollowed = get_object_or_404(ProfileUser, id=userFollowed.id)
+    userFollowing = request.user
+    profFollowing = get_object_or_404(ProfileUser, id=userFollowing.id)
+    if userFollowed == userFollowing: return Response({"Error": "You can not follow your self!"}, status=status.HTTP_400_BAD_REQUEST)
+    if check_in_follows(request, profFollowed.followers):
+        profFollowed.followers.remove(userFollowing)
+        profFollowing.following.remove(userFollowed)
+        return Response({"Follow": "Stop Following"}, status=status.HTTP_200_OK)
+    
+    profFollowed.followers.add(userFollowing)
+    profFollowing.following.add(userFollowed)
+    return Response({"Follow": "Success"}, status=status.HTTP_200_OK)
+

@@ -40,7 +40,6 @@ def check_in_likes(request, obj):
     for user_likes in obj.likes.all():
         if request.user == user_likes:
             resp = True
-            return resp
     return resp
 
 

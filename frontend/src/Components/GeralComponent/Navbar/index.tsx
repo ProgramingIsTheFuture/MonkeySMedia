@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
         <ProfileImage>
           <Link to={`/Profile/${username}`}>
             <img
-              src={`http://localhost:8000${ProfileInfo.profile_image}`}
+              src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.profile_image}`}
               alt={"Profile"}
             />
           </Link>
@@ -85,6 +85,9 @@ const Navbar: React.FC = () => {
                 <Link to="/login/" onClick={logOut}>
                   Logout
                 </Link>
+              </li>
+              <li>
+                <Link to="/settings/">Settings</Link>
               </li>
             </DropDownItems>
           </div>

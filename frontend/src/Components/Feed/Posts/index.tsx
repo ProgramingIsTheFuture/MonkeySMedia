@@ -21,7 +21,9 @@ const Posts: React.FC = () => {
       .then((resp) => {
         setPosts(resp.data);
       });
+  }, [token, setPosts]);
 
+  useEffect(() => {
     // Getting "me" user infos
     api
       .get("api/users/get-user/", {
@@ -31,7 +33,7 @@ const Posts: React.FC = () => {
         const user = resp.data.username;
         setUsername(user ? user : null);
       });
-  }, [token, setPosts, setUsername]);
+  }, [token, setUsername]);
   return (
     <Container>
       {Posts?.map((item: PostType) => (

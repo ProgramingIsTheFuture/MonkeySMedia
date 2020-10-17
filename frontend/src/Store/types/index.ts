@@ -17,8 +17,11 @@ interface User {
 
 export interface ProfileInfo {
   user: string;
-  description: string;
   profile_image: string;
+  background_profile_image: string;
+  description: string;
+  following: number;
+  followers: number;
   timestamp: string;
 }
 
