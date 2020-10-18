@@ -1,3 +1,4 @@
+import random
 from django.db import models
 from django.db.models.signals import post_save
 
@@ -17,14 +18,16 @@ class FollowRelation(models.Model):
     profile = models.ForeignKey("ProfileUser", on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
 
+def randomImg():
+    return  random.randint(1, 2)
 
 class ProfileUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_image = models.FileField(
-        upload_to=upload_path, default='default/MonkeySMediaSystem.png')
+        upload_to=upload_path, default=f'default/face_img/{randomImg()}.svg')
 
     background_profile_image = models.FileField(
-        upload_to=upload_path_background, default='default/MonkeySMediaSystem.png')
+        upload_to=upload_path_background, default=f'default/background_img/background_img.png')
     
     description = models.TextField(
         max_length=150, default='', blank=False, null=False)

@@ -15,8 +15,10 @@ interface User {
   username: string | null;
 }
 
-export interface ProfileInfo {
+export interface ProfileInfoTypes {
   user: string;
+  first_name: string;
+  last_name: string;
   profile_image: string;
   background_profile_image: string;
   description: string;
@@ -37,7 +39,7 @@ export interface StoreModel {
     setUsername: Action<{}, User>;
   };
   Profile: {
-    ProfileInfo: ProfileInfo;
-    getProfileInfo: Action<{}, ProfileInfo>;
+    ProfileInfo: ProfileInfoTypes;
+    getProfileInfo: Action<{}, ProfileInfoTypes>;
   };
 }

@@ -39,9 +39,13 @@ const Search: React.FC = () => {
         </Link>
       </BackArrow>
       <div>
-        <div>
-          <input type={"text"} onChange={SearchOnChange} />
-        </div>
+        <form>
+          <img src="" alt=""/>
+          <div>
+            <input type={"text"} onChange={SearchOnChange} />
+          </div>
+          <img src="" alt=""/>
+        </form>
         <SearchedItems>
           <div>
             {postResponse.map((item: any) => (

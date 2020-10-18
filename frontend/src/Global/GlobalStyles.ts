@@ -24,6 +24,10 @@ export default createGlobalStyle`
     --nav-color: rgba(159, 83, 18, 66);
     --card: rgba(129, 71, 21, 80);
     --white: #FFF;
+    /* --card: rgba(255, 218, 97, 67);
+    --nav-color: rgba(159, 83, 18, 66);
+    --primary: rgba(129, 71, 21, 80);
+    --white: #FFF; */
 
   }
   

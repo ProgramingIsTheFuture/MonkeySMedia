@@ -2,6 +2,7 @@ import { useStoreActions, useStoreState } from "easy-peasy";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import api from "../../../services";
+import { ProfileInfoTypes } from "../../../Store/types";
 
 import {
   Container,
@@ -18,7 +19,7 @@ import {
 
 const Navbar: React.FC = () => {
   const token: any = localStorage.getItem("auth");
-  const ProfileInfo = useStoreState((state: any) => state.Profile.ProfileInfo);
+  const ProfileInfo: ProfileInfoTypes = useStoreState((state: any) => state.Profile.ProfileInfo);
   const getProfileInfo = useStoreActions(
     (action: any) => action.Profile.getProfileInfo
   );

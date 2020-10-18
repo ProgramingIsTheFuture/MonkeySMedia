@@ -30,6 +30,7 @@ export const Container = styled.div<Props>`
     }
 
     svg {
+      transition: 0.2s;
       :hover {
         ${(props) => (props.liked ? `fill: black;` : `fill: var(--primary);`)}
       }

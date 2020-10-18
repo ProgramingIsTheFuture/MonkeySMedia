@@ -16,6 +16,7 @@ from PostSMedia.serializers import PostSerializer
 @api_view(["GET"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def list_posts_view(request):
+    # .objects.order_by('-creation_time') Ordenate by the last created!
     qs = Post.objects.all()
     serializer = PostSerializer(qs, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)

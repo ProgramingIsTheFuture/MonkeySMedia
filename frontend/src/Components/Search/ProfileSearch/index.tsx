@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ProfileInfo } from "../../../Store/types";
+import { ProfileInfoTypes } from "../../../Store/types";
 
 import { Container } from "./styles";
 
 interface Props {
-  Profile: ProfileInfo;
+  Profile: ProfileInfoTypes;
 }
 
 const ProfileSearch: React.FC<Props> = ({ Profile }) => {
