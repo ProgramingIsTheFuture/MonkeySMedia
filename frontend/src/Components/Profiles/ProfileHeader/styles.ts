@@ -107,5 +107,5 @@ export const User = styled.div`
 
 export const Description = styled.div`
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 `;

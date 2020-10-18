@@ -5,6 +5,12 @@ export default createGlobalStyle`
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+
+    font-size: 85%;
+  }
+
+  body {
+    font-size: 1.6rem;
   }
 
   body, #root {

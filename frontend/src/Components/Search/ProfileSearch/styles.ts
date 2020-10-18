@@ -5,30 +5,59 @@ export const Container = styled.div`
   margin: 15px;
 
   width: 735px;
-  min-height: 150px;
+  height: 300px;
 
-  margin-left: 15px;
   color: black;
 
   div {
-    div {
-      display: flex;
-      align-items: center;
+    display: flex;
+    flex-wrap: wrap;
 
+    div {
       img {
+        width: 130px;
+        height: 130px;
+
+        margin-top: -65px;
+
         border: 1px solid rgba(0, 0, 0, 0.09);
         border-radius: 100%;
       }
-
-      span {
-        margin-left: 10px;
-      }
     }
 
     div {
-      p {
-        text-align: center;
-      }
+      display: flex;
+      flex-wrap: wrap;
+
+      flex-direction: column;
+      margin-left: 10px;
     }
   }
+`;
+
+export const BackgroundImg = styled.div`
+  width: 100%;
+  height: 150px;
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+`;
+
+export const FullName = styled.div`
+  margin-top: -20px;
+  font-size: 1.8rem;
+`;
+
+export const Username = styled.div`
+  margin-top: -35px;
+  font-size: 1.4rem;
+`;
+
+export const ProfileDescription = styled.div`
+  margin-top: -25px;
+  font-size: 1rem;
 `;
