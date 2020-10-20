@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import api from "../../../services";
 import { ProfileInfoTypes } from "../../../Store/types";
+import FollowingBTN from "../../GeralComponent/FollowingBTN";
 import EditProfile from "../EditProfile";
 
 import {
@@ -71,6 +72,7 @@ const ProfileHeader: React.FC = () => {
           </Username>
           <User>{ProfileInfo.user}</User>
           <Description>{ProfileInfo.description}</Description>
+          <FollowingBTN username={ProfileInfo.user}></FollowingBTN>
           {currentUser === ProfileInfo.user ? <EditProfile /> : null}
         </div>
       </Container>

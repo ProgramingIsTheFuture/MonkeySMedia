@@ -44,7 +44,7 @@ const ProfileSearch: React.FC<Props> = ({ Profile }) => {
 
                 <div>
                   {/* <button></button> */}
-                  {/* <FollowBtn></FollowBtn> */}
+                  {/* <FollowingBTN username={Profile.user}></FollowingBTN> */}
                 </div>
               </Username>
             </div>

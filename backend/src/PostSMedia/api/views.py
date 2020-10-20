@@ -9,15 +9,34 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework import filters
 from PostSMedia.models import Post
+from ProfileSMedia.models import ProfileUser
 from PostSMedia.serializers import PostSerializer
 
 
-# List all posts
+def check_in_likes(request, obj):
+    resp = False
+    for user_likes in obj.likes.all():
+        if request.user == user_likes:
+            resp = True
+    return resp
+
+
+def check_in_following(request, obj):
+    resp = []
+    for user_follow in obj.all():
+        resp.append(user_follow.id)
+    resp.append(request.user.id)
+    return resp
+
+
+# List all posts from me and people i follow!
 @api_view(["GET"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def list_posts_view(request):
-    # .objects.order_by('-creation_time') Ordenate by the last created!
-    qs = Post.objects.all()
+    user = request.user
+    prof = ProfileUser.objects.get(id=user.id)
+    users = check_in_following(request, prof.following)
+    qs = Post.objects.filter(user__id__in=users).order_by('-timestamp')
     serializer = PostSerializer(qs, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -34,14 +53,6 @@ def create_posts_view(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-def check_in_likes(request, obj):
-    resp = False
-    for user_likes in obj.likes.all():
-        if request.user == user_likes:
-            resp = True
-    return resp
 
 
 # like and unlike posts
