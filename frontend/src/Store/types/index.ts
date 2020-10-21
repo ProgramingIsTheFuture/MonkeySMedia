@@ -41,5 +41,6 @@ export interface StoreModel {
   Profile: {
     ProfileInfo: ProfileInfoTypes;
     getProfileInfo: Action<{}, ProfileInfoTypes>;
+    remOrAddFollow: Action<{}, number>;
   };
 }

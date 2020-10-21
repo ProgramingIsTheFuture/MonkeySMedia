@@ -17,6 +17,7 @@ import {
   Username,
   User,
   Description,
+  LeftButtons,
 } from "./styles";
 
 const ProfileHeader: React.FC = () => {
@@ -72,8 +73,11 @@ const ProfileHeader: React.FC = () => {
           </Username>
           <User>{ProfileInfo.user}</User>
           <Description>{ProfileInfo.description}</Description>
-          <FollowingBTN username={ProfileInfo.user}></FollowingBTN>
-          {currentUser === ProfileInfo.user ? <EditProfile /> : null}
+          <LeftButtons>
+            {currentUser !== ProfileInfo.user ? (
+              <FollowingBTN username={ProfileInfo.user} />
+            ) : <EditProfile />}
+          </LeftButtons>
         </div>
       </Container>
     </>

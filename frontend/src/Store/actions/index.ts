@@ -23,3 +23,6 @@ export const getProfileInfo = action((state: any, payload) => {
   state.ProfileInfo = payload;
 });
 
+export const remOrAddFollow = action((state: any, payload) => {
+  state.ProfileInfo.followers = payload;
+});

@@ -12,6 +12,14 @@ from ProfileSMedia.models import ProfileUser
 from ProfileSMedia.serializers import ProfileUserSerializer
 
 
+def check_in_list(request, obj):
+    resp = False
+    for user_in in obj.all():
+        if request.user == user_in:
+            resp = True
+    return resp
+
+
 # get Profile using the username
 @api_view(["GET", "POST"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
@@ -33,13 +41,6 @@ class SearchList(generics.ListAPIView):
     search_fields = ['user__username']
 
 
-def check_in_follows(request, obj):
-    resp = False
-    for user_likes in obj.all():
-        if request.user == user_likes:
-            resp = True
-    return resp
-
 
 @api_view(["GET", "POST"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
@@ -50,7 +51,7 @@ def post_Following_or_UnFollowing(request):
     userFollowing = request.user
     profFollowing = get_object_or_404(ProfileUser, id=userFollowing.id)
     if userFollowed == userFollowing: return Response({"Error": "You can not follow your self!"}, status=status.HTTP_400_BAD_REQUEST)
-    if check_in_follows(request, profFollowed.followers):
+    if check_in_list(request, profFollowed.followers):
         profFollowed.followers.remove(userFollowing)
         profFollowing.following.remove(userFollowed)
         return Response({"Follow": "Stop Following"}, status=status.HTTP_200_OK)
@@ -59,3 +60,20 @@ def post_Following_or_UnFollowing(request):
     profFollowing.following.add(userFollowed)
     return Response({"Follow": "Success"}, status=status.HTTP_200_OK)
 
+
+@api_view(["POST"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def check_follow_profile_view(request):
+    username = request.data.get("username")
+    username_prof = get_object_or_404(User, username=username)
+    obj = get_object_or_404(ProfileUser, user=username_prof)
+    me = get_object_or_404(ProfileUser, id=request.user.id)
+    if obj:
+        check = check_in_list(request, obj.followers)
+        
+        if check:
+            return Response({"true"}, status=status.HTTP_200_OK)
+
+        return Response({"false"}, status=status.HTTP_200_OK)
+
+    return Response({"Something went wrong!"}, status=status.HTTP_400_BAD_REQUEST)

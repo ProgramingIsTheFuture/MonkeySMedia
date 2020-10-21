@@ -109,3 +109,8 @@ export const Description = styled.div`
   text-align: center;
   font-size: 1.3rem;
 `;
+
+export const LeftButtons = styled.div`
+  right: 25px;
+  
+`;
