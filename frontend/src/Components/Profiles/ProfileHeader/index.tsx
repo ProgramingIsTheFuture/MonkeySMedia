@@ -3,16 +3,19 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import api from "../../../services";
 import { ProfileInfoTypes } from "../../../Store/types";
+import ChatBTN from "../../GeralComponent/ChatBTN";
 import FollowingBTN from "../../GeralComponent/FollowingBTN";
 import EditProfile from "../EditProfile";
 
 import {
-  Container,
   NavFixed,
+  Container,
+  Container2,
+  Container3,
   BackIcon,
   BackgroundImage,
-  SectionImgFollow,
-  Image,
+  ProfileImage,
+  InfoSection,
   FollowsSection,
   Username,
   User,
@@ -53,32 +56,39 @@ const ProfileHeader: React.FC = () => {
             alt="Background"
           />
         </BackgroundImage>
-        <SectionImgFollow>
-          <Image>
+        <Container2>
+          <ProfileImage>
             <img
               src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.profile_image}`}
               alt={`${ProfileInfo.user} Profile`}
             />
-          </Image>
-          <FollowsSection>
-            <p>
-              <span>Followers - {ProfileInfo.followers} </span>
-              <span> Following - {ProfileInfo.following}</span>
-            </p>
-          </FollowsSection>
-        </SectionImgFollow>
-        <div>
-          <Username>
-            {ProfileInfo.first_name} {ProfileInfo.last_name}
-          </Username>
-          <User>{ProfileInfo.user}</User>
-          <Description>{ProfileInfo.description}</Description>
-          <LeftButtons>
-            {currentUser !== ProfileInfo.user ? (
-              <FollowingBTN username={ProfileInfo.user} />
-            ) : <EditProfile />}
-          </LeftButtons>
-        </div>
+          </ProfileImage>
+          <Container3>
+            <InfoSection>
+              <Username>
+                {ProfileInfo.first_name} {ProfileInfo.last_name}
+              </Username>
+            </InfoSection>
+            <LeftButtons>
+              {currentUser !== ProfileInfo.user ? (
+                <FollowingBTN username={ProfileInfo.user} />
+              ) : (
+                <EditProfile />
+              )}
+              {currentUser !== ProfileInfo.user ? <ChatBTN /> : null}
+            </LeftButtons>
+          </Container3>
+          <div>
+            <User>{ProfileInfo.user}</User>
+            <Description>{ProfileInfo.description}</Description>
+          </div>
+        </Container2>
+        <FollowsSection>
+          <p>
+            <span>Followers - {ProfileInfo.followers} </span>
+            <span> Following - {ProfileInfo.following}</span>
+          </p>
+        </FollowsSection>
       </Container>
     </>
   );

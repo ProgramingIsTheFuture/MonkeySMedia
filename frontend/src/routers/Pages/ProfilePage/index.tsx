@@ -1,5 +1,6 @@
 import React from "react";
 import Profiles from "../../../Components/Profiles";
+import EditModal from "../../../Components/Profiles/EditModal";
 
 import { Container } from "./styles";
 
@@ -16,6 +17,7 @@ const ProfilePage: React.FC<Props> = ({ match }) => {
   return (
     <Container>
       <Profiles username={username} />
+      <EditModal />
     </Container>
   );
 };

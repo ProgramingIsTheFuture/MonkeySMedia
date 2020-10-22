@@ -11,7 +11,7 @@ export const addPost = action((state: any, payload) => {
 
 export const removePost = action((state: any, payload: number) => {
   state.Posts.filter((item: PostType, index: number) =>
-    item.id === payload ? state.Posts.splice(index, index+1) : null
+    item.id === payload ? state.Posts.splice(index, index + 1) : null
   );
 });
 
@@ -25,4 +25,12 @@ export const getProfileInfo = action((state: any, payload) => {
 
 export const remOrAddFollow = action((state: any, payload) => {
   state.ProfileInfo.followers = payload;
+});
+
+export const openModal = action((state: any) => {
+  state.modal = true;
+});
+
+export const closeModal = action((state: any) => {
+  state.modal = false;
 });

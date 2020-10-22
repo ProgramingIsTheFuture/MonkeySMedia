@@ -10,8 +10,8 @@ export const Container = styled.div`
   ); */
   margin-top: 50px;
 
-  height: 500px;
-  width: 100%;
+  min-height: 450px;
+  width: 100vw;
 
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -21,14 +21,43 @@ export const Container = styled.div`
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 `;
 
+export const Container2 = styled.div`
+  margin-left: 15px;
+  margin-top: -113px;
+
+  display: flex;
+  align-items: center;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  width: calc(100vw - 15px);
+`;
+
+export const Container3 = styled.div`
+  display: flex;
+  align-items: center;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  width: 82%;
+  justify-content: space-between;
+
+  div {
+    text-align: center;
+  }
+`;
+
 export const NavFixed = styled.nav`
   position: fixed;
 
   height: 50px;
-  width: 100%;
+  width: 100vw;
 
   background-color: var(--nav-color);
-  z-index: 999;
+  z-index: 0;
 `;
 
 export const BackIcon = styled(ArrowBack)`
@@ -43,36 +72,23 @@ export const BackIcon = styled(ArrowBack)`
 
 export const BackgroundImage = styled.div`
   width: 100vw;
-  height: 280px;
+  max-height: 280px;
 
-  & img {
+  img {
     width: 100%;
     height: 100%;
+    min-height: 150px;
 
     object-fit: cover;
     image-rendering: auto;
   }
 `;
 
-export const SectionImgFollow = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+export const ProfileImage = styled.div`
+  max-height: 225px;
+  max-width: 225px;
 
-  margin-left: 52px;
-
-  /* width: 300px;
-  height: 300px; */
-`;
-
-export const Image = styled.div`
-  position: relative;
-  height: 225px;
-  width: 225px;
-
-  margin-top: -115px;
-  & img {
-    position: absolute;
+  img {
     height: 100%;
     width: 100%;
 
@@ -81,11 +97,27 @@ export const Image = styled.div`
 
     border-radius: 100%;
     border: 1px solid black;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 `;
 
-export const FollowsSection = styled.div`
+export const InfoSection = styled.div`
+  display: flex;
+  justify-content: center;
+
+  flex-direction: row;
+  text-align: center;
   width: 100%;
+`;
+
+export const FollowsSection = styled.div`
+  min-width: 100px;
+  display: flex;
+
+  flex-direction: row;
+  justify-content: flex-start;
+
+  flex-wrap: wrap;
   p {
     span {
       margin: 10px;
@@ -94,8 +126,6 @@ export const FollowsSection = styled.div`
 `;
 
 export const Username = styled.div`
-  margin-top: -165px;
-
   text-align: center;
   font-size: 3.2rem;
 `;
@@ -108,9 +138,12 @@ export const User = styled.div`
 export const Description = styled.div`
   text-align: center;
   font-size: 1.3rem;
+  margin: 5px;
 `;
 
 export const LeftButtons = styled.div`
-  right: 25px;
-  
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
 `;

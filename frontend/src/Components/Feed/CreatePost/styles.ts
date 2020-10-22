@@ -6,11 +6,11 @@ export const Container = styled.div`
   text-align: center;
   flex-wrap: wrap;
 
-  & input {
+   input {
     width: max(35%, 35vw);
   }
 
-  & button {
+   button {
     background: var(--nav-color);
     color: var(--white);
 

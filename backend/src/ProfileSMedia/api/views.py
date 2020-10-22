@@ -77,3 +77,9 @@ def check_follow_profile_view(request):
         return Response({"false"}, status=status.HTTP_200_OK)
 
     return Response({"Something went wrong!"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["POST"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def edit_profile_view(request):
+    pass

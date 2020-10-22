@@ -19,9 +19,11 @@ export const Container = styled.nav`
 `;
 
 export const NavItems = styled.ul`
+  display: flex;
+  justify-content: space-between;
   list-style: none;
 
-  & li {
+  li {
     display: inline-block;
     color: var(--white);
 
@@ -37,7 +39,7 @@ export const ProfileImage = styled.li`
   width: 100%;
   height: 100%;
 
-  & img {
+  img {
     width: 100%;
     height: 100%;
     border-radius: 100%;
@@ -60,7 +62,7 @@ export const SearchLink = styled.li`
   width: 100%;
   height: 100%;
 
-  & a {
+  a {
     color: white;
     text-decoration: none;
   }
@@ -116,13 +118,13 @@ export const DropDownItems = styled.ul`
   li {
     color: var(--white);
     text-align: center;
-    
+
     width: 6em;
     padding: 0.5em;
 
     text-align: center;
-    margin: .1em 0;
-    
+    margin: 0.1em 0;
+
     z-index: 2;
 
     a {

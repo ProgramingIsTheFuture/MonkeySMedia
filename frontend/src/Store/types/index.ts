@@ -43,4 +43,9 @@ export interface StoreModel {
     getProfileInfo: Action<{}, ProfileInfoTypes>;
     remOrAddFollow: Action<{}, number>;
   };
+  Modal: {
+    modal: boolean;
+    openModal: Action<{}>;
+    closeModal: Action<{}>;
+  };
 }

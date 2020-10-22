@@ -5,6 +5,7 @@ export const Container = styled.div`
   margin: 15px;
 
   width: 735px;
+  min-width: 150px;
   min-height: 150px;
 `;
 
@@ -12,7 +13,7 @@ export const UserSimpleInfo = styled.div`
   margin-left: 15px;
   margin-top: 10px;
 
-  & a {
+  a {
     color: black;
     text-decoration: none;
 
@@ -48,9 +49,15 @@ export const CardContent = styled.div`
 export const CardImage = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+
   margin: 15px;
-  max-height: 725px;
-  &img {
+  max-height: 800px;
+
+  img {
+    object-fit: cover;
+
     max-width: 600px;
+    width: 100%;
   }
 `;

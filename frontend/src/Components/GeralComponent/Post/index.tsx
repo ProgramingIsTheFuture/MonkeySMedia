@@ -5,10 +5,12 @@ import api from "../../../services";
 import { PostType } from "../../../Store/types";
 import Likes from "./Likes";
 import {
-  CardContent, CardImage, CardTitle, Container,
-  UserSimpleInfo
+  CardContent,
+  CardImage,
+  CardTitle,
+  Container,
+  UserSimpleInfo,
 } from "./styles";
-
 
 export interface Props {
   post: PostType;
@@ -62,7 +64,6 @@ const Post: React.FC<Props> = ({ post }) => {
         <CardImage>
           <img
             src={`${process.env.REACT_APP_BACKEND_URL}${post.image}`}
-            width={"600px"}
             alt={`${post.user}`}
           />
         </CardImage>
