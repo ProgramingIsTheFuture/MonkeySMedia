@@ -19,7 +19,9 @@ import {
 
 const Navbar: React.FC = () => {
   const token: any = localStorage.getItem("auth");
-  const ProfileInfo: ProfileInfoTypes = useStoreState((state: any) => state.Profile.ProfileInfo);
+  const ProfileInfo: ProfileInfoTypes = useStoreState(
+    (state: any) => state.Profile.ProfileInfo
+  );
   const getProfileInfo = useStoreActions(
     (action: any) => action.Profile.getProfileInfo
   );
@@ -80,18 +82,16 @@ const Navbar: React.FC = () => {
         </SearchLink>
         <DropDown>
           <DropDownIcon></DropDownIcon>
-          <div>
-            <DropDownItems>
-              <li>
-                <Link to="/login/" onClick={logOut}>
-                  Logout
-                </Link>
-              </li>
-              <li>
-                <Link to="/settings/">Settings</Link>
-              </li>
-            </DropDownItems>
-          </div>
+          <DropDownItems>
+            <li>
+              <Link to="/login/" onClick={logOut}>
+                Logout
+              </Link>
+            </li>
+            <li>
+              <Link to="/settings/">Settings</Link>
+            </li>
+          </DropDownItems>
         </DropDown>
       </NavItems>
     </Container>

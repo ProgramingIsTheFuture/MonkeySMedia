@@ -3,11 +3,7 @@ import { ArrowBack } from "styled-icons/boxicons-regular";
 
 export const Container = styled.div`
   background: var(--card);
-  /* background: linear-gradient(
-    to bottom,
-    rgba(152, 101, 45, 1) 24%,
-    rgba(129, 71, 21, 1) 90%
-  ); */
+
   margin-top: 50px;
 
   min-height: 450px;
@@ -22,17 +18,13 @@ export const Container = styled.div`
 `;
 
 export const Container2 = styled.div`
-  margin-left: 15px;
-  margin-top: -113px;
-
   display: flex;
   align-items: center;
 
-  flex-direction: row;
   flex-wrap: wrap;
 
   justify-content: center;
-  width: calc(100vw - 15px);
+  width: 100vw;
 `;
 
 export const Container3 = styled.div`
@@ -42,12 +34,21 @@ export const Container3 = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
 
-  width: 82%;
-  justify-content: space-between;
+  width: 100%;
+  justify-content: center;
 
-  div {
-    text-align: center;
-  }
+  margin-top: -9%;
+`;
+
+export const Container4 = styled.div`
+  display: flex;
+  justify-content: center;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  text-align: center;
+  align-items: center;
 `;
 
 export const NavFixed = styled.nav`
@@ -85,8 +86,8 @@ export const BackgroundImage = styled.div`
 `;
 
 export const ProfileImage = styled.div`
-  max-height: 225px;
-  max-width: 225px;
+  height: 225px;
+  width: 225px;
 
   img {
     height: 100%;
@@ -97,17 +98,8 @@ export const ProfileImage = styled.div`
 
     border-radius: 100%;
     border: 1px solid black;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 5px 8px 0 var(--shadow), 0 6px 20px 0 var(--shadow);
   }
-`;
-
-export const InfoSection = styled.div`
-  display: flex;
-  justify-content: center;
-
-  flex-direction: row;
-  text-align: center;
-  width: 100%;
 `;
 
 export const FollowsSection = styled.div`
@@ -118,7 +110,9 @@ export const FollowsSection = styled.div`
   justify-content: flex-start;
 
   flex-wrap: wrap;
+  text-align: center;
   p {
+    width: 100%;
     span {
       margin: 10px;
     }
@@ -141,9 +135,12 @@ export const Description = styled.div`
   margin: 5px;
 `;
 
-export const LeftButtons = styled.div`
+export const RightButtons = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: row;
 
-  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+
+  justify-content: center;
 `;

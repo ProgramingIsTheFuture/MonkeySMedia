@@ -10,6 +10,7 @@ import {
   CardTitle,
   Container,
   UserSimpleInfo,
+  DateTime,
 } from "./styles";
 
 export interface Props {
@@ -42,32 +43,32 @@ const Post: React.FC<Props> = ({ post }) => {
           <div>
             <img
               src={`${process.env.REACT_APP_BACKEND_URL}${post.profile_image}`}
-              width={"30px"}
-              height={"30px"}
+              width={"45px"}
+              height={"45px"}
               alt={"Profile"}
             />
             <span>{post.user}</span>
           </div>
         </Link>
-      </UserSimpleInfo>
-      <div>
-        <div>{post.timestamp}</div>
         <div>
           {post.user === username ? (
             <button onClick={() => handleDeletePost(post.id)}>Delete</button>
           ) : null}
         </div>
+      </UserSimpleInfo>
+      <DateTime>{post.timestamp}</DateTime>
+      <div>
+        <CardTitle>{post.title}</CardTitle>
+        <CardContent>{post.content}</CardContent>
+        {post.image ? (
+          <CardImage>
+            <img
+              src={`${process.env.REACT_APP_BACKEND_URL}${post.image}`}
+              alt={`${post.user}`}
+            />
+          </CardImage>
+        ) : null}
       </div>
-      <CardTitle>{post.title}</CardTitle>
-      <CardContent>{post.content}</CardContent>
-      {post.image ? (
-        <CardImage>
-          <img
-            src={`${process.env.REACT_APP_BACKEND_URL}${post.image}`}
-            alt={`${post.user}`}
-          />
-        </CardImage>
-      ) : null}
       <Likes id={post.id} likes={post.likes} />
     </Container>
   );

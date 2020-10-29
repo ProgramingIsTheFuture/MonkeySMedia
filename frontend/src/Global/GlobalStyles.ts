@@ -30,6 +30,8 @@ export default createGlobalStyle`
     --nav-color: rgba(159, 83, 18, 66);
     --card: rgba(129, 71, 21, 80);
     --white: #FFF;
+
+    --shadow: rgba(0,0,0,0.7);
     /* --card: rgba(255, 218, 97, 67);
     --nav-color: rgba(159, 83, 18, 66);
     --primary: rgba(129, 71, 21, 80);
@@ -41,6 +43,10 @@ export default createGlobalStyle`
     :focus{
       outline:0;
     }
+  }
+
+  .ReactModal__Overlay {
+    background-color: var(--shadow)!important;
   }
 
 `;

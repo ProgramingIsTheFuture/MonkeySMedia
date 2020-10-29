@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { Close } from "styled-icons/evaicons-solid";
 
+export const Container = styled.div`
+
+
+`;
+
 export const Title = styled.div`
   display: flex;
   justify-content: space-between;

@@ -12,15 +12,15 @@ import {
   Container,
   Container2,
   Container3,
+  Container4,
   BackIcon,
   BackgroundImage,
   ProfileImage,
-  InfoSection,
   FollowsSection,
   Username,
   User,
   Description,
-  LeftButtons,
+  RightButtons,
 } from "./styles";
 
 const ProfileHeader: React.FC = () => {
@@ -57,38 +57,38 @@ const ProfileHeader: React.FC = () => {
           />
         </BackgroundImage>
         <Container2>
-          <ProfileImage>
-            <img
-              src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.profile_image}`}
-              alt={`${ProfileInfo.user} Profile`}
-            />
-          </ProfileImage>
           <Container3>
-            <InfoSection>
+            <ProfileImage>
+              <img
+                src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.profile_image}`}
+                alt={`${ProfileInfo.user} Profile`}
+              />
+            </ProfileImage>
+          </Container3>
+          <div>
+            <Container4>
               <Username>
                 {ProfileInfo.first_name} {ProfileInfo.last_name}
               </Username>
-            </InfoSection>
-            <LeftButtons>
-              {currentUser !== ProfileInfo.user ? (
-                <FollowingBTN username={ProfileInfo.user} />
-              ) : (
-                <EditProfile />
-              )}
-              {currentUser !== ProfileInfo.user ? <ChatBTN /> : null}
-            </LeftButtons>
-          </Container3>
-          <div>
+              <RightButtons>
+                {currentUser !== ProfileInfo.user ? (
+                  <FollowingBTN username={ProfileInfo.user} />
+                ) : (
+                  <EditProfile />
+                )}
+                {currentUser !== ProfileInfo.user ? <ChatBTN /> : null}
+              </RightButtons>
+            </Container4>
             <User>{ProfileInfo.user}</User>
             <Description>{ProfileInfo.description}</Description>
+            <FollowsSection>
+              <p>
+                <span>Followers - {ProfileInfo.followers} </span>
+                <span> Following - {ProfileInfo.following}</span>
+              </p>
+            </FollowsSection>
           </div>
         </Container2>
-        <FollowsSection>
-          <p>
-            <span>Followers - {ProfileInfo.followers} </span>
-            <span> Following - {ProfileInfo.following}</span>
-          </p>
-        </FollowsSection>
       </Container>
     </>
   );

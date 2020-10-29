@@ -13,6 +13,15 @@ export const UserSimpleInfo = styled.div`
   margin-left: 15px;
   margin-top: 10px;
 
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    margin-right: 15px;
+  }
+
   a {
     color: black;
     text-decoration: none;
@@ -23,7 +32,7 @@ export const UserSimpleInfo = styled.div`
       margin-bottom: 7px;
 
       img {
-        border: 1px solid rgba(0, 0, 0, 0.09);
+        border: 1px solid var(--shadow);
         border-radius: 100%;
       }
 
@@ -32,6 +41,9 @@ export const UserSimpleInfo = styled.div`
       }
     }
   }
+`;
+export const DateTime = styled.div`
+  margin-left: 15px;
 `;
 
 export const CardTitle = styled.div`
@@ -52,11 +64,11 @@ export const CardImage = styled.div`
   align-items: center;
 
   margin: 15px;
-  max-height: 800px;
 
   img {
     object-fit: cover;
 
+    max-height: 550px;
     max-width: 600px;
     width: 100%;
   }

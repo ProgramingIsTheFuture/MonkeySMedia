@@ -20,7 +20,7 @@ export const Container = styled.div`
 
         margin-top: -65px;
 
-        border: 1px solid rgba(0, 0, 0, 0.09);
+        border: 1px solid var(--shadow);
         border-radius: 100%;
       }
     }
