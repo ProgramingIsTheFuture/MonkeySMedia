@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="82b74911-c845-48fa-8b13-3366e1d482e1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/Components/Settings/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/Components/Settings/styles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/routers/Pages/Settings/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/routers/Pages/Settings/styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/PostSMedia/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/PostSMedia/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/ProfileSMedia/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/ProfileSMedia/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/ProfileSMedia/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/ProfileSMedia/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Feed/Posts/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Feed/Posts/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/GeralComponent/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/GeralComponent/Navbar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/GeralComponent/Post/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/GeralComponent/Post/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/GeralComponent/Post/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/GeralComponent/Post/styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Hooks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Hooks/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routers/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routers/index.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="/usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1je5UCRzfdguDbooyCrL2Me9CBf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.vendoring.notification.had.been.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/frontend/node_modules/typescript/lib" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="320" y="115" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604154688950">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="115" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1604154688950" />
+    <state width="243" height="539" key="HiddenNamespacesPopup" timestamp="1604154672135">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="243" height="539" key="HiddenNamespacesPopup/0.0.1440.900@0.0.1440.900" timestamp="1604154672135" />
+    <state x="221" y="89" key="SettingsEditor" timestamp="1604161641308">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1604161641308" />
+  </component>
+</project>

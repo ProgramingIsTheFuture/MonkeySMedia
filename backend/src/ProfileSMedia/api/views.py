@@ -82,4 +82,11 @@ def check_follow_profile_view(request):
 @api_view(["POST"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def edit_profile_view(request):
-    pass
+    prof = get_object_or_404(ProfileUser, id=request.user.id)
+    serializer = ProfileUserSerializer(prof, data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

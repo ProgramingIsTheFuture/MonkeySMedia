@@ -7,7 +7,7 @@ from .views import (
     check_like_posts_view,
     delete_post_view,
     get_user_posts_view,
-    SearchList
+    SearchList,
 )
 
 urlpatterns = [

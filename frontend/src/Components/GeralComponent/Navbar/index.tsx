@@ -26,6 +26,7 @@ const Navbar: React.FC = () => {
     (action: any) => action.Profile.getProfileInfo
   );
   const username = useStoreState((state: any) => state.User.username);
+  const setUsername = useStoreActions((action: any) => action.User.setUsername)
 
   useEffect(() => {
     if (typeof username === "string" && username !== "") {
@@ -43,6 +44,17 @@ const Navbar: React.FC = () => {
         .catch((err) => console.log(err));
     }
   }, [username, getProfileInfo, token]);
+
+  useEffect(() => {
+    api
+        .get('api/users/get-user/',
+        {
+          headers: { Authorization: `Token ${JSON.parse(token).token}` }
+        }
+      ).then((resp) => {
+        setUsername(resp.data.username);
+    });
+  })
 
   const logOut = () => {
     api

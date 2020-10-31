@@ -34,6 +34,7 @@ const Posts: React.FC = () => {
         setUsername(user ? user : null);
       });
   }, [token, setUsername]);
+
   return (
     <Container>
       {Posts?.map((item: PostType) => (

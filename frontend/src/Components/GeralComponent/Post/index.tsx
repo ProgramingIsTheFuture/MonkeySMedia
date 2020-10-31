@@ -5,6 +5,7 @@ import api from "../../../services";
 import { PostType } from "../../../Store/types";
 import Likes from "./Likes";
 import {
+  Card,
   CardContent,
   CardImage,
   CardTitle,
@@ -57,7 +58,7 @@ const Post: React.FC<Props> = ({ post }) => {
         </div>
       </UserSimpleInfo>
       <DateTime>{post.timestamp}</DateTime>
-      <div>
+      <Card>
         <CardTitle>{post.title}</CardTitle>
         <CardContent>{post.content}</CardContent>
         {post.image ? (
@@ -68,7 +69,7 @@ const Post: React.FC<Props> = ({ post }) => {
             />
           </CardImage>
         ) : null}
-      </div>
+      </Card>
       <Likes id={post.id} likes={post.likes} />
     </Container>
   );

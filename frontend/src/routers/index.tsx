@@ -9,6 +9,7 @@ import RegisterPage from './Pages/RegisterPage';
 import NotFoundPage from './Pages/NotFoundPage';
 import ProfilePage from './Pages/ProfilePage';
 import SearchPage from './Pages/SearchPage';
+import SettingsPage from "./Pages/Settings";
 
 const Routers: React.FC = () => {
 	return (
@@ -18,6 +19,7 @@ const Routers: React.FC = () => {
 				<LoggedIn exact path="/register/" component={RegisterPage} />
 				<PrivateRoute exact path="/" component={Feed} />
 				<PrivateRoute exact path="/search/" component={SearchPage} />
+				<PrivateRoute exact path="/settings/" component={SettingsPage} />
 				<PrivateRoute exact path="/Profile/:username" component={ProfilePage} />
 				<Route path="*" component={NotFoundPage} />
 			</Switch>
