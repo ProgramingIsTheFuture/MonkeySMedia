@@ -27,8 +27,8 @@ export const NavItems = styled.ul`
     display: inline-block;
     color: var(--white);
 
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 12px;
+    margin-left: 12px;
 
     width: 30px;
     height: 30px;

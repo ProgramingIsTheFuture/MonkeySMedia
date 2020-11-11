@@ -8,19 +8,12 @@ import FollowingBTN from "../../GeralComponent/FollowingBTN";
 import EditProfile from "../EditProfile";
 
 import {
-  NavFixed,
   Container,
-  Container2,
-  Container3,
-  Container4,
+  NavFixed,
   BackIcon,
   BackgroundImage,
-  ProfileImage,
-  FollowsSection,
-  Username,
-  User,
-  Description,
-  RightButtons,
+  PersonalInfos,
+  ProfileImage
 } from "./styles";
 
 const ProfileHeader: React.FC = () => {
@@ -43,13 +36,29 @@ const ProfileHeader: React.FC = () => {
   }, [token, setUsername]);
 
   return (
-    <>
+    <Container>
       <NavFixed>
         <Link to="/">
           <BackIcon />
         </Link>
       </NavFixed>
-      <Container>
+      <BackgroundImage>
+        <img
+          src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.background_profile_image}`}
+          alt="Background"
+        />
+      </BackgroundImage>
+      <PersonalInfos>
+        <ProfileImage>
+          <img
+            src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.profile_image}`}
+            alt={`${ProfileInfo.user} Profile`}
+          />
+        </ProfileImage>
+      </PersonalInfos>
+
+      <div>
+        {/* 
         <BackgroundImage>
           <img
             src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.background_profile_image}`}
@@ -89,8 +98,9 @@ const ProfileHeader: React.FC = () => {
             </FollowsSection>
           </div>
         </Container2>
-      </Container>
-    </>
+      */}
+      </div>
+    </Container>
   );
 };
 
