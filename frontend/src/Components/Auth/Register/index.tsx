@@ -109,7 +109,7 @@ const Register: React.FC = () => {
         <div>
           <label htmlFor={"email"}>email</label>
           <input
-            type={"text"}
+            type={"email"}
             name={"email"}
             value={email}
             onChange={handleEmail}

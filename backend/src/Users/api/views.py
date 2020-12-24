@@ -14,7 +14,7 @@ from Users.serializers import UserCreationSerializer
 # Register / Login a user
 
 class UserViewSet(viewsets.ModelViewSet):
-    authentication_classes = (SessionAuthentication,BasicAuthentication)
+    permission_classes = (AllowAny,)
     queryset = User.objects.all()
     serializer_class = UserCreationSerializer
 

@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
     if (typeof username === "string" && username !== "") {
       api
         .post(
-          "api/profile/get-me/",
+          "api/profile/get-profile/",
           { username: username },
           {
             headers: { Authorization: `Token ${JSON.parse(token).token}` },

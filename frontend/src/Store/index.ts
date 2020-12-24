@@ -24,6 +24,7 @@ const storeModel: StoreModel = {
   },
   Profile: {
     ProfileInfo: {
+      id: 0,
       user: "",
       first_name: "",
       last_name: "",

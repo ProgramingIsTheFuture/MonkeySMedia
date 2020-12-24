@@ -18,7 +18,7 @@ export const Container = styled.div`
             font-weight: bold;
         }
 
-        input[type='text'], input[type="password"] {
+        input[type='text'], input[type="password"], input[type="email"] {
             border: 2px solid var(--card);
             background: none;
 

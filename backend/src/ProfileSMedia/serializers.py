@@ -11,7 +11,7 @@ class ProfileUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProfileUser
-        fields = ('user', 'first_name', 'last_name', 'profile_image',
+        fields = ('id', 'user', 'first_name', 'last_name', 'profile_image',
                   'background_profile_image', 'description', 'following', 'followers', 'timestamp')
 
     def get_user(self, obj):

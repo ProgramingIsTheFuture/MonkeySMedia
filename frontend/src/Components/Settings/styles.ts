@@ -24,6 +24,7 @@ export const Container = styled.div`
         margin: 15px;
         list-style: none;
 
+        text-align: center;
         cursor: pointer;
       }
     }
@@ -31,6 +32,10 @@ export const Container = styled.div`
     .info-settings-display {
       margin: 15px;
       grid-area: info;
+
+      div {
+        text-align: center;
+      }
     }
   }
 `;

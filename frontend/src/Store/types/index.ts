@@ -16,6 +16,7 @@ interface User {
 }
 
 export interface ProfileInfoTypes {
+  id: number;
   user: string;
   first_name: string;
   last_name: string;

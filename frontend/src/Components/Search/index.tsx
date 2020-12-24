@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../services";
+import { PostType, ProfileInfoTypes } from "../../Store/types";
 import { BackIcon } from "../Profiles/ProfileHeader/styles";
 import PostSearch from "./PostSearch";
 import ProfileSearch from "./ProfileSearch";
@@ -48,12 +49,12 @@ const Search: React.FC = () => {
         </form>
         <SearchedItems>
           <div>
-            {postResponse.map((item: any) => (
+            {postResponse.map((item: PostType) => (
               <PostSearch key={item.id} post={item} />
             ))}
           </div>
           <div>
-            {profileResponse.map((item: any) => (
+            {profileResponse.map((item: ProfileInfoTypes) => (
               <ProfileSearch key={item.id} Profile={item} />
             ))}
           </div>
