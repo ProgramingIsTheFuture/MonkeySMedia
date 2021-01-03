@@ -11,6 +11,7 @@ from rest_framework import filters
 from PostSMedia.models import Post
 from ProfileSMedia.models import ProfileUser
 from PostSMedia.serializers import PostSerializer
+from rest_framework.pagination import PageNumberPagination
 
 
 def check_in_likes(request, obj):
@@ -33,12 +34,15 @@ def check_in_following(request, obj):
 @api_view(["GET"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def list_posts_view(request):
+    paginator = PageNumberPagination()
+    paginator.page_size = 15
     user = request.user
     prof = ProfileUser.objects.get(id=user.id)
     users = check_in_following(request, prof.following)
     qs = Post.objects.filter(user__id__in=users).order_by('-timestamp')
-    serializer = PostSerializer(qs, many=True)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+    result_page = paginator.paginate_queryset(qs, request)
+    serializer = PostSerializer(result_page, many=True)
+    return paginator.get_paginated_response(serializer.data)
 
 # Create a new posts
 
@@ -113,10 +117,13 @@ def delete_post_view(request):
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def get_user_posts_view(request):
     username = request.data.get("username")
+    paginator = PageNumberPagination()
+    paginator.page_size = 15
     user = get_object_or_404(User, username=username)
     qs = Post.objects.filter(user=user)
-    serializer = PostSerializer(qs, many=True)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+    result_page = paginator.paginate_queryset(qs, request)
+    serializer = PostSerializer(result_page, many=True)
+    return paginator.get_paginated_response(serializer.data)
 
 
 # search-user-post?search= and then just type the title or content or the username

@@ -9,6 +9,7 @@ interface Props {
 }
 
 const FollowingBTN: React.FC<Props> = ({ username }) => {
+  console.log(username);
   const token: any = localStorage.getItem("auth");
   const [follText, setFollText] = useState<string>("Follow");
   const followers = useStoreState(
@@ -34,12 +35,12 @@ const FollowingBTN: React.FC<Props> = ({ username }) => {
           remOrAddFollow(followers - 1);
           setFollText("Follow");
         }
-
       })
       .catch();
   };
 
   useEffect(() => {
+    console.log(username);
     api
       .post(
         "api/profile/check-follow-profile/",

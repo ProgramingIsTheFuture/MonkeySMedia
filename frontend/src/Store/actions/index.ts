@@ -2,7 +2,7 @@ import { action } from "easy-peasy";
 import { PostType } from "../types";
 
 export const setPosts = action((state: any, payload) => {
-  state.Posts = payload;
+  state.Posts = Array.from(new Set([...state.Posts, ...payload]));
 });
 
 export const addPost = action((state: any, payload) => {

@@ -33,7 +33,6 @@ const storeModel: StoreModel = {
       description: "",
       following: 0,
       followers: 0,
-      timestamp: "",
     },
     getProfileInfo: getProfileInfo,
     remOrAddFollow: remOrAddFollow,

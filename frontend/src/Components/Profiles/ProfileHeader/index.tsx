@@ -58,48 +58,20 @@ const ProfileHeader: React.FC = () => {
       </PersonalInfos>
 
       <div>
-        {/* 
-        <BackgroundImage>
-          <img
-            src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.background_profile_image}`}
-            alt="Background"
-          />
-        </BackgroundImage>
-        <Container2>
-          <Container3>
-            <ProfileImage>
-              <img
-                src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.profile_image}`}
-                alt={`${ProfileInfo.user} Profile`}
-              />
-            </ProfileImage>
-          </Container3>
-          <div>
-            <Container4>
-              <Username>
-                {ProfileInfo.first_name} {ProfileInfo.last_name}
-              </Username>
-              <RightButtons>
-                {currentUser !== ProfileInfo.user ? (
-                  <FollowingBTN username={ProfileInfo.user} />
-                ) : (
-                  <EditProfile />
-                )}
-                {currentUser !== ProfileInfo.user ? <ChatBTN /> : null}
-              </RightButtons>
-            </Container4>
-            <User>{ProfileInfo.user}</User>
-            <Description>{ProfileInfo.description}</Description>
-            <FollowsSection>
-              <p>
-                <span>Followers - {ProfileInfo.followers} </span>
-                <span> Following - {ProfileInfo.following}</span>
-              </p>
-            </FollowsSection>
-          </div>
-        </Container2>
-      */}
-      </div>
+	   {ProfileInfo.first_name} {ProfileInfo.last_name}
+		{currentUser !== ProfileInfo.user ? (
+		  <FollowingBTN username={ProfileInfo.user} />
+		) : (
+		  <EditProfile />
+		)}
+		{currentUser !== ProfileInfo.user ? <ChatBTN /> : null}
+		{ProfileInfo.user}
+		{ProfileInfo.description}
+		  <p>
+			<span>Followers - {ProfileInfo.followers} </span>
+			<span> Following - {ProfileInfo.following}</span>
+		  </p>
+	  </div>
     </Container>
   );
 };

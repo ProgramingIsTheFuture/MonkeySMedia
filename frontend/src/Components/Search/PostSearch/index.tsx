@@ -7,7 +7,7 @@ interface Props {
 }
 
 const PostSearch: React.FC<Props> = ({ post }) => {
-  return <Post post={post} />;
+  return <Post refe={null} post={post} />;
 };
 
 export default PostSearch;

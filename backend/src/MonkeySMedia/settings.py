@@ -38,10 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # My apps
     'PostSMedia',
     'Users',
     'ProfileSMedia',
+    'StorieSMedia',
 
+    # Third party apps
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
@@ -144,9 +147,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000'
-]
+CORS_ORIGIN_ALLOW_ALL = True
+
+#CORS_ALLOWED_ORIGINS = [
+#    'http://localhost:3000',
+#    'http://192.168.0.109:3000'
+#]
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -156,5 +162,5 @@ MEDIA_URL = '/media/'
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated']
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
 }

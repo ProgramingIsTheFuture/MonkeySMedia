@@ -16,9 +16,10 @@ import {
 
 export interface Props {
   post: PostType;
+  refe: any;
 }
 
-const Post: React.FC<Props> = ({ post }) => {
+const Post: React.FC<Props> = ({ post, refe }) => {
   const username = useStoreState((state: any) => state.User.username);
   const removePost = useStoreActions((action: any) => action.Posts.removePost);
   const token: any = localStorage.getItem("auth");
@@ -38,7 +39,7 @@ const Post: React.FC<Props> = ({ post }) => {
   };
 
   return (
-    <Container>
+    <Container ref={refe ? refe : null}>
       <UserSimpleInfo>
         <Link to={`/Profile/${post.user}`}>
           <div>

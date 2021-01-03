@@ -25,7 +25,6 @@ export interface ProfileInfoTypes {
   description: string;
   following: number;
   followers: number;
-  timestamp: string;
 }
 
 export interface StoreModel {
