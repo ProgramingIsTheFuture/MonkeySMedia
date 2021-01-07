@@ -1,5 +1,6 @@
 import { useStoreActions } from "easy-peasy";
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { useHistory } from "react-router-dom";
 import api from "../../services";
 import { PostType } from "../../Store/types";
@@ -83,15 +84,39 @@ const Profiles: React.FC<Props> = ({ username }) => {
           setHasMore(false);
         }
       });
-  }, [username, token, page]);
+  }, [username, token, page, UserPosts.length]);
   return (
     <Container>
       <ProfileHeader />
       {UserPosts?.map((item: PostType, index: number) => {
         if (UserPosts.length === index + 1) {
-          return <Post refe={LastPostElement} key={item.id} post={item} />;
+          return (
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ rotate: 0, scale: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+              }}
+            >
+              <Post refe={LastPostElement} key={item.id} post={item} />
+            </motion.div>
+          );
         }
-        return <Post refe={null} key={item.id} post={item} />;
+        return (
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ rotate: 0, scale: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+            }}
+          >
+            <Post refe={null} key={item.id} post={item} />
+          </motion.div>
+        );
       })}
     </Container>
   );

@@ -2,18 +2,16 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background: var(--card);
-  margin: 15px;
+  margin: 35px;
 
   width: 735px;
   min-width: 150px;
-  min-height: 150px;
+  min-height: 200px;
 
   border: 1px solid var(--shadow);
 `;
 
 export const UserSimpleInfo = styled.div`
-  margin-left: 15px;
-  margin-top: 10px;
 
   display: flex;
 
@@ -29,8 +27,10 @@ export const UserSimpleInfo = styled.div`
     text-decoration: none;
 
     div {
+	  margin-left: 15px;
       display: flex;
       align-items: center;
+	  text-align: left;
       margin-bottom: 7px;
 
       img {
@@ -38,14 +38,15 @@ export const UserSimpleInfo = styled.div`
         border-radius: 100%;
       }
 
-      span {
+      div {
+		display: block;
         margin-left: 10px;
+        p {
+          font-size: 0.75em;
+        }
       }
     }
   }
-`;
-export const DateTime = styled.div`
-  margin-left: 15px;
 `;
 
 export const Card = styled.div`
@@ -69,7 +70,6 @@ export const CardImage = styled.div`
   justify-content: center;
   align-items: center;
 
-
   width: 100%;
 
   img {
@@ -78,4 +78,9 @@ export const CardImage = styled.div`
     max-height: 550px;
     width: 100%;
   }
+`;
+
+export const DeleteBTN = styled.button`
+	border-radius: 90px;
+
 `;

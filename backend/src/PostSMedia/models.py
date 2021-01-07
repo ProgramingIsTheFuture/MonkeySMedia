@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 def upload_path(instance, filename):
-    return ''.join(['posts', str(instance.title), filename])
+    return ''.join(['posts/', str(instance.title), filename])
 
 
 class LikesPost(models.Model):

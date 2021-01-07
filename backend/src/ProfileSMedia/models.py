@@ -6,11 +6,11 @@ from django.contrib.auth.models import User
 
 
 def upload_path(instance, filename):
-    return ''.join(['profile_img', str(instance), filename])
+    return ''.join(['profile_img/', str(instance), filename])
 
 
 def upload_path_background(instance, filename):
-    return ''.join(['profile_background_image', str(instance), filename])
+    return ''.join(['profile_background_image/', str(instance), filename])
 
 
 class FollowRelation(models.Model):

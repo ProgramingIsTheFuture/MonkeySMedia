@@ -27,6 +27,7 @@ urlpatterns = [
     path('api/posts/', include('PostSMedia.api.urls')),
     path('api/users/', include('Users.api.urls')),
     path('api/profile/', include('ProfileSMedia.api.urls')),
+    path('api/stories/', include('StorieSMedia.api.urls')),
     path('auth/', obtain_auth_token),
 ]
 

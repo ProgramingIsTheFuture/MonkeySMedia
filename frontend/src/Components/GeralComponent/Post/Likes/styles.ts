@@ -5,11 +5,12 @@ interface Props {
 }
 
 export const Container = styled.div<Props>`
-  margin-left: 10px;
+  margin-left: 15px;
   cursor: pointer;
 
   width: 60px;
   height: 60px;
+
 
   div {
     display: flex;

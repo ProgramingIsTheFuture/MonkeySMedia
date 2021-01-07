@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import api from "../../services";
 import { PostType, ProfileInfoTypes } from "../../Store/types";
@@ -61,12 +62,32 @@ const Search: React.FC = () => {
         <SearchedItems>
           <div>
             {postResponse.map((item: PostType) => (
-              <PostSearch key={item.id} post={item} />
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ rotate: 0, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                }}
+              >
+                <PostSearch key={item.id} post={item} />
+              </motion.div>
             ))}
           </div>
           <div>
             {profileResponse.map((item: ProfileInfoTypes) => (
-              <ProfileSearch key={item.id} Profile={item} />
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ rotate: 0, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                }}
+              >
+                <ProfileSearch key={item.id} Profile={item} />
+              </motion.div>
             ))}
           </div>
         </SearchedItems>
