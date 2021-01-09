@@ -8,7 +8,7 @@ const Settings: React.FC = () => {
     <Container>
       <Tabs>
         {/* Div  */}
-        <TabList className={"menu-settings"} >
+        <TabList className={"menu-settings"}>
           {/* ul  */}
           <Tab>Theme</Tab>
           <Tab>Another</Tab>
@@ -17,7 +17,7 @@ const Settings: React.FC = () => {
         <div className={"info-settings-display"}>
           <TabPanel>Here you will choose your theme!</TabPanel>
           <TabPanel>Another Tab </TabPanel>
-          <TabPanel>Chage your Password madafoka!</TabPanel>
+          <TabPanel>Password and secure stuff</TabPanel>
         </div>
       </Tabs>
     </Container>

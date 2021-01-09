@@ -12,6 +12,9 @@ from PostSMedia.models import Post
 from ProfileSMedia.models import ProfileUser
 from PostSMedia.serializers import PostSerializer
 from rest_framework.pagination import PageNumberPagination
+from django.conf import settings 
+
+POST_PER_PAGE = settings.POST_PER_PAGE
 
 
 def check_in_likes(request, obj):
@@ -35,7 +38,7 @@ def check_in_following(request, obj):
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def list_posts_view(request):
     paginator = PageNumberPagination()
-    paginator.page_size = 15
+    paginator.page_size = POST_PER_PAGE
     user = request.user
     prof = ProfileUser.objects.get(id=user.id)
     users = check_in_following(request, prof.following)
@@ -118,7 +121,7 @@ def delete_post_view(request):
 def get_user_posts_view(request):
     username = request.data.get("username")
     paginator = PageNumberPagination()
-    paginator.page_size = 15
+    paginator.page_size = POST_PER_PAGE
     user = get_object_or_404(User, username=username)
     qs = Post.objects.filter(user=user)
     result_page = paginator.paginate_queryset(qs, request)

@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+POST_PER_PAGE = 15
+
 
 # Application definition
 

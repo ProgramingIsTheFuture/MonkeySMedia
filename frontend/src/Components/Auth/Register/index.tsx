@@ -5,6 +5,7 @@ import api from "../../../services";
 import getCookie from "../../../services/csrfToken";
 import { Link, useHistory } from "react-router-dom";
 import { Message } from "./styles";
+import register_monkey from "../../../Img/register_monkey.jpeg";
 
 const validateEmail = (email: string) => {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[/]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -73,6 +74,7 @@ const Register: React.FC = () => {
 
   return (
     <Container>
+      <img src={register_monkey} alt={"Register Monkey"} height={"80%"} />
       <form onSubmit={handleSubmit}>
         <h1>Register</h1>
         <Message error={error}>Some field is missing!</Message>

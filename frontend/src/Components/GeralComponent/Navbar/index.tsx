@@ -1,5 +1,6 @@
 import { useStoreActions, useStoreState } from "easy-peasy";
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import api from "../../../services";
 import { ProfileInfoTypes } from "../../../Store/types";
@@ -26,7 +27,7 @@ const Navbar: React.FC = () => {
     (action: any) => action.Profile.getProfileInfo
   );
   const username = useStoreState((state: any) => state.User.username);
-  const setUsername = useStoreActions((action: any) => action.User.setUsername)
+  const setUsername = useStoreActions((action: any) => action.User.setUsername);
 
   useEffect(() => {
     if (typeof username === "string" && username !== "") {
@@ -47,14 +48,13 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     api
-        .get('api/users/get-user/',
-        {
-          headers: { Authorization: `Token ${JSON.parse(token).token}` }
-        }
-      ).then((resp) => {
+      .get("api/users/get-user/", {
+        headers: { Authorization: `Token ${JSON.parse(token).token}` },
+      })
+      .then((resp) => {
         setUsername(resp.data.username);
-    });
-  })
+      });
+  });
 
   const logOut = () => {
     api
@@ -92,19 +92,24 @@ const Navbar: React.FC = () => {
             <SearchIcon />
           </Link>
         </SearchLink>
-        <DropDown>
-          <DropDownIcon></DropDownIcon>
-          <DropDownItems>
-            <li>
-              <Link to="/login/" onClick={logOut}>
-                Logout
-              </Link>
-            </li>
-            <li>
-              <Link to="/settings/">Settings</Link>
-            </li>
-          </DropDownItems>
-        </DropDown>
+        <motion.div
+          initial={{ scale: 1.1, rotate: 180 }}
+          whileHover={{ scale: 1.1, rotate: 360 }}
+        >
+          <DropDown>
+            <DropDownIcon></DropDownIcon>
+            <DropDownItems>
+              <li>
+                <Link to="/login/" onClick={logOut}>
+                  Logout
+                </Link>
+              </li>
+              <li>
+                <Link to="/settings/">Settings</Link>
+              </li>
+            </DropDownItems>
+          </DropDown>
+        </motion.div>
       </NavItems>
     </Container>
   );

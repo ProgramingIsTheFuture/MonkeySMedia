@@ -9,15 +9,12 @@ export const Container = styled.div`
     padding: 0;
     display: grid;
 
-    grid-template-areas:
-      "menu info info"
-      "menu info info";
+    grid-template-columns: 165px auto;
 
     .menu-settings {
       margin: 0;
       padding-inline-start: 0;
 
-      grid-area: menu;
       background-color: var(--card);
 
       li {
@@ -30,12 +27,6 @@ export const Container = styled.div`
     }
 
     .info-settings-display {
-      margin: 15px;
-      grid-area: info;
-
-      div {
-        text-align: center;
-      }
     }
   }
 `;

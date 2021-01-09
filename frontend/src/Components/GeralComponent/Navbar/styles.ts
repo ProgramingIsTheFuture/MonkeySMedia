@@ -88,6 +88,7 @@ export const DropDown = styled.li`
     ul {
       display: block;
       visibility: visible;
+
       width: 80px;
       height: 80px;
     }
@@ -97,24 +98,25 @@ export const DropDown = styled.li`
 export const DropDownIcon = styled(CaretDown)`
   width: 100%;
   height: 100%;
+
+  transform: rotate(180deg);
 `;
 
 export const DropDownItems = styled.ul`
   position: absolute;
-  box-shadow: 0px 8px 16px 0px var(--shadow);
+  display: block;
+
+  top: 27px;
+  left: 0;
 
   background-color: var(--nav-color);
+  box-shadow: 0px 8px 16px 0px var(--shadow);
 
-  display: flex;
-  flex-direction: column;
+  width: 50px;
+  transition: 0.5s;
 
-  min-width: 50px;
-  min-height: 50px;
-
-  justify-content: center;
-  z-index: 999;
-
-  margin-top: -5px;
+  list-style: none;
+  z-index: 4;
 
   li {
     color: var(--white);
@@ -126,7 +128,8 @@ export const DropDownItems = styled.ul`
     text-align: center;
     margin: 0.1em 0;
 
-    z-index: 2;
+    margin-left: -50px;
+    z-index: 5;
 
     a {
       padding: 0.5em;
