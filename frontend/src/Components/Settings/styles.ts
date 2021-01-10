@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
   width: 100vw;
+
+  .Tab {
+    display: grid;
+  }
   div {
-    height: 100vh;
     margin: 0;
     padding: 0;
-    display: grid;
 
     grid-template-columns: 165px auto;
 
@@ -16,6 +17,7 @@ export const Container = styled.div`
       padding-inline-start: 0;
 
       background-color: var(--card);
+      height: calc(100vh - 50px);
 
       li {
         margin: 15px;

@@ -6,7 +6,7 @@ import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 const Settings: React.FC = () => {
   return (
     <Container>
-      <Tabs>
+      <Tabs className={"Tab"}>
         {/* Div  */}
         <TabList className={"menu-settings"}>
           {/* ul  */}
