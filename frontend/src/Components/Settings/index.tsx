@@ -1,5 +1,6 @@
 import React from "react";
 
+import ThemeChooser from "./ThemeChooser";
 import { Container } from "./styles";
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 
@@ -15,7 +16,9 @@ const Settings: React.FC = () => {
           <Tab>Security</Tab>
         </TabList>
         <div className={"info-settings-display"}>
-          <TabPanel>Here you will choose your theme!</TabPanel>
+          <TabPanel>
+            <ThemeChooser />
+          </TabPanel>
           <TabPanel>Another Tab </TabPanel>
           <TabPanel>Password and secure stuff</TabPanel>
         </div>
