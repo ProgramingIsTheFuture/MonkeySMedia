@@ -32,6 +32,7 @@ export default createGlobalStyle`
     --white: #FFF;
 
     --shadow: rgba(0,0,0,0.7);
+	--trash-red: red;
     /* --card: rgba(255, 218, 97, 67);
     --nav-color: rgba(159, 83, 18, 66);
     --primary: rgba(129, 71, 21, 80);

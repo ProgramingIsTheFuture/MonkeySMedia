@@ -7,7 +7,7 @@ from ProfileSMedia.models import ProfileUser
 class PostSerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
     timestamp = serializers.DateTimeField(
-        format="%H:%M:%S - %d-%m-%Y", required=False)
+        format="%H - %d/%m/%Y", required=False)
     profile_image = serializers.SerializerMethodField()
     likes = serializers.SerializerMethodField(read_only=True)
 

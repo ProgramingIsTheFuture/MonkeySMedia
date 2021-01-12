@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.article`
   background: var(--card);
-  margin: 35px;
+  margin: 5%;
 
   width: 735px;
   min-width: 150px;
@@ -11,8 +11,7 @@ export const Container = styled.div`
   border: 1px solid var(--shadow);
 `;
 
-export const UserSimpleInfo = styled.div`
-
+export const UserSimpleInfo = styled.header`
   display: flex;
 
   align-items: center;
@@ -27,10 +26,10 @@ export const UserSimpleInfo = styled.div`
     text-decoration: none;
 
     div {
-	  margin-left: 15px;
+      margin-left: 15px;
       display: flex;
       align-items: center;
-	  text-align: left;
+      text-align: left;
       margin-bottom: 7px;
 
       img {
@@ -39,7 +38,7 @@ export const UserSimpleInfo = styled.div`
       }
 
       div {
-		display: block;
+        display: block;
         margin-left: 10px;
         p {
           font-size: 0.75em;
@@ -78,9 +77,4 @@ export const CardImage = styled.div`
     max-height: 550px;
     width: 100%;
   }
-`;
-
-export const DeleteBTN = styled.button`
-	border-radius: 90px;
-
 `;
