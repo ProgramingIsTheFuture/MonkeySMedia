@@ -121,6 +121,7 @@ const Posts: React.FC = () => {
 				})}
 			</div>
 			{loading ? <h2>Loading more posts</h2> : null}
+			{!loading ? <h2>End!</h2> : null}
 		</Container>
 	);
 };

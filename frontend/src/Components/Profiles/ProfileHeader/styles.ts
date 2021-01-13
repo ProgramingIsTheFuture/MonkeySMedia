@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ArrowBack } from "styled-icons/boxicons-regular";
+import {ArrowBack} from "styled-icons/boxicons-regular";
 
 export const Container = styled.div`
   width: 100%;
@@ -16,6 +16,15 @@ export const Container = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+
+	.flex-menu {
+		display:flex;
+		list-style: none;
+		margin-left: -40px;
+	}
+	.flex-menu li:not(:last-child) {
+		margin-right:40px;
+	}
 
 `;
 
@@ -42,6 +51,14 @@ export const BackgroundImage = styled.div`
 `;
 
 export const PersonalInfos = styled.div`
+	--bs-gutter-x:1.5rem;
+	--bs-gutter-y:0;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content: center;
+	margin-top:calc(var(--bs-gutter-y) * -1);
+	margin-right:calc(var(--bs-gutter-x)/ -2);
+	margin-left:calc(var(--bs-gutter-x)/ -2)
 `;
 
 export const ProfileImage = styled.div`
