@@ -4,7 +4,7 @@ export const Container = styled.article`
   background: var(--card);
   margin: 5%;
 
-  width: 735px;
+  width: min(75vw, 735px);
   min-width: 150px;
   min-height: 200px;
 

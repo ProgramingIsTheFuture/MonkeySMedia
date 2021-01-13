@@ -38,11 +38,11 @@ def login_view(request):
     username = request.data.get('username')
     password = request.data.get('password')
     user = authenticate(request, username=username, password=password)
+    print(user, username, password)
     if user is not None:
         login(request, user)
         return Response({"You're in! Have Fun!"}, status=status.HTTP_200_OK)
-    else:
-        return Response({"Something went wrong"}, status=status.HTTP_401_UNAUTHORIZED)
+    return Response({"Invalid Credentials"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["POST", "GET"])

@@ -1,17 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  	div {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 
-  input {
-    text-align: center;
-    margin-top: 80px;
+	  input {
+		text-align: center;
+		margin-top: 80px;
 
-    height: 50px;
-    width: 80vw;
-  }
+		height: 40px;
+		width: 80vw;
+	  }
+	}
 `;
 
 export const BackArrow = styled.nav`
@@ -19,7 +21,7 @@ export const BackArrow = styled.nav`
   top: 0;
 
   width: 100vw;
-  height: 80;
+  height: 50px;
 
   position: fixed;
   background: var(--nav-color);
