@@ -60,21 +60,20 @@ const Search: React.FC = () => {
           <img src="" alt="" />
         </form>
         <SearchedItems>
-          <div>
-            {postResponse.map((item: PostType) => (
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ rotate: 0, scale: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                }}
-              >
-                <PostSearch key={item.id} post={item} />
-              </motion.div>
-            ))}
-          </div>
+          {postResponse.map((item: PostType) => (
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ rotate: 0, scale: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+              }}
+              className={"posts"}
+            >
+              <PostSearch key={item.id} post={item} />
+            </motion.div>
+          ))}
           <div>
             {profileResponse.map((item: ProfileInfoTypes) => (
               <motion.div

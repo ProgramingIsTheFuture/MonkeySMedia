@@ -7,7 +7,12 @@ export default createGlobalStyle`
     box-sizing: border-box;
 
     font-size: 85%;
-  }
+
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    max-height: 100vh;
+   }
 
   body {
     font-size: 1.6rem;
@@ -49,5 +54,15 @@ export default createGlobalStyle`
   .ReactModal__Overlay {
     background-color: var(--shadow)!important;
   }
+
+	.posts {
+		width: 100vw;
+
+	}
+	@media screen and (min-width: 735px) {
+		.posts {
+			width: auto;
+		}
+	}
 
 `;

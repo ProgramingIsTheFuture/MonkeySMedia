@@ -39,20 +39,22 @@ const FollowingBTN: React.FC<Props> = ({ username }) => {
   };
 
   useEffect(() => {
-    api
-      .post(
-        "api/profile/check-follow-profile/",
-        { username: username },
-        { headers: { Authorization: `Token ${JSON.parse(token).token}` } }
-      )
-      .then((res: any) => {
-        if (res.data[0] === "true") {
-          setFollText("Following");
-        } else if (res.data[0] === "false") {
-          setFollText("Follow");
-        }
-      })
-      .catch();
+    if (username.length > 0) {
+      api
+        .post(
+          "api/profile/check-follow-profile/",
+          { username: username },
+          { headers: { Authorization: `Token ${JSON.parse(token).token}` } }
+        )
+        .then((res: any) => {
+          if (res.data[0] === "true") {
+            setFollText("Following");
+          } else if (res.data[0] === "false") {
+            setFollText("Follow");
+          }
+        })
+        .catch();
+    }
   }, [setFollText, token, username, remOrAddFollow, followers]);
 
   return <Container onClick={handleClick}>{follText}</Container>;

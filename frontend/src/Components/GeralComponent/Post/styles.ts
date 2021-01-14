@@ -4,11 +4,18 @@ export const Container = styled.article`
   background: var(--card);
   margin: 5%;
 
-  width: min(75vw, 735px);
+  width: 735px;
   min-width: 150px;
   min-height: 200px;
 
   border: 1px solid var(--shadow);
+
+  @media screen and (max-width: 735px) {
+    width: 100%;
+    margin: 0;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
 `;
 
 export const UserSimpleInfo = styled.header`
