@@ -1,4 +1,4 @@
-import { StatusBar } from "expo-status-bar";
+import "react-native-gesture-handler";
 import React from "react";
 import Routes from "./src/Routes";
 
