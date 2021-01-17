@@ -9,10 +9,20 @@ export const Container = styled.SafeAreaView`
   height: 100%;
 `;
 
+export const SearchMenu = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const SearchInput = styled.TextInput`
-  height: 30px;
+  height: 35px;
   margin: 5px;
+
   border: 1px solid black;
   border-radius: 15px;
-  text-align: center;
+
+  padding-left: 10px;
+  flex: 1;
 `;
