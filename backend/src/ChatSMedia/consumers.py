@@ -8,7 +8,7 @@ class ChatConsumer(JsonWebsocketConsumer):
         pass
 
     def receive_json(self, json_data):
-        print(self.scope)
+        print(self.scope["user"])
         message = json_data['message']
         print(message)
 

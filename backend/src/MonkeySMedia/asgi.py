@@ -13,15 +13,14 @@ from django.core.asgi import get_asgi_application
 
 from channels.routing import ProtocolTypeRouter, URLRouter
 
-from channels.auth import AuthMiddlewareStack
-
+from .jwt_auth_socket import TokenAuthMiddleware
 import ChatSMedia.routing
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MonkeySMedia.settings')
 
 application = ProtocolTypeRouter({
     "http": get_asgi_application(),
-    "websocket": AuthMiddlewareStack(
+    "websocket": TokenAuthMiddleware(
         URLRouter(
             ChatSMedia.routing.websocket_urlpatterns
         )
