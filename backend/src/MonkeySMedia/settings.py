@@ -45,12 +45,14 @@ INSTALLED_APPS = [
     'Users',
     'ProfileSMedia',
     'StorieSMedia',
+    'ChatSMedia',
 
     # Third party apps
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'django_filters'
+    'django_filters',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +85,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'MonkeySMedia.wsgi.application'
+ASGI_APPLICATION = 'MonkeySMedia.asgi.application'
 
 
 # Database

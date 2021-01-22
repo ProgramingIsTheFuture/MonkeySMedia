@@ -24,7 +24,7 @@ const Login: React.FC = () => {
 
   const setTokenToLocalStorega = (token: string | null) => {
     localStorage.setItem("auth", JSON.stringify({ login: true, token: token }));
-    history.push("/");
+    window.location.href = "/";
   };
 
   const handleSubmit = (e: any) => {
