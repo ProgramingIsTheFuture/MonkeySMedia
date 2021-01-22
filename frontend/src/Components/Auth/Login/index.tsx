@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import api from "../../../services";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useStoreActions } from "easy-peasy";
 
 import { Container } from "./styles";
@@ -11,8 +11,6 @@ const Login: React.FC = () => {
   const setUsernameStore = useStoreActions(
     (action: any) => action.User.setUsername
   );
-
-  const history = useHistory();
 
   const changeUsername = (e: any) => {
     setUsername(e.target.value);
