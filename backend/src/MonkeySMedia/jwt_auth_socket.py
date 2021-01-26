@@ -16,18 +16,12 @@ class TokenAuthMiddleware:
         self.user = None
  
     async def __call__(self, scope, receive=None, send=None):
-        print(receive, send)
-        # Close old database connections to prevent usage of timed out connections
         close_old_connections()
  
-        # Get the token
         token =parse_qs(scope["query_string"].decode("utf8"))["token"][0]
  
-        user_id = await sync_to_async(Token.objects.get, thread_sensitive=True)(key=token)
+        user_id = await sync_to_async(Token.objects.get, thread_sensitive=True)(key=token) or None
 
         self.user = await sync_to_async(get_user_model().objects.get, thread_sensitive=True)(id=user_id.user_id)
 
-        print(self.user)
-
-        # Return the inner application directly and let it run everything else
         return await self.inner(dict(scope, user=self.user), receive, send)

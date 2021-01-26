@@ -21,7 +21,7 @@ const Chat: React.FC = () => {
             />
           </SearchMenu>
           <View>
-            <Text>Chat Page</Text>
+            <Text></Text>
           </View>
         </View>
       </ScrollView>
