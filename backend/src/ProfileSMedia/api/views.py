@@ -10,6 +10,7 @@ from rest_framework import generics
 from rest_framework import filters
 from ProfileSMedia.models import ProfileUser
 from ProfileSMedia.serializers import ProfileUserSerializer
+from Users.serializers import UserCreationSerializer
 
 
 def check_in_list(request, obj):
@@ -84,9 +85,28 @@ def check_follow_profile_view(request):
 def edit_profile_view(request):
     prof = get_object_or_404(ProfileUser, id=request.user.id)
     serializer = ProfileUserSerializer(prof, data=request.data, partial=True)
+    serializer2 = UserCreationSerializer(request.user, data=request.data, partial=True)
 
     if serializer.is_valid(raise_exception=True):
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        if serializer2.is_valid(raise_exception=True):
+            serializer.save()
+            serializer2.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(["GET"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def list_all_following_people(request):
+    users = request.user.following.all()
+
+    serializer = ProfileUserSerializer(users, many=True)
+
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
+
+
+
+
