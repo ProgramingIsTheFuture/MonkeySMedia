@@ -27,10 +27,17 @@ export interface ProfileInfoTypes {
   followers: number;
 }
 
+export interface PayloadNextPage {
+	posts: [PostType];
+	page: number;
+}
+
 export interface StoreModel {
   Posts: {
     Posts: PostType[];
-    setPosts: Action<{}, PostType[]>;
+	page: number;
+	setPage: Action<{}, number>;
+    setPosts: Action<{}, PayloadNextPage>;
     addPost: Action<{}, PostType>;
     removePost: Action<{}, number>;
   };

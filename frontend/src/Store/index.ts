@@ -1,6 +1,7 @@
 import { createStore } from "easy-peasy";
 import { StoreModel } from "./types";
 import {
+  setPage,
   setPosts,
   addPost,
   setUsername,
@@ -14,6 +15,8 @@ import {
 const storeModel: StoreModel = {
   Posts: {
     Posts: [],
+	page: 1,
+	setPage: setPage,
     setPosts: setPosts,
     addPost: addPost,
     removePost: removePost,
