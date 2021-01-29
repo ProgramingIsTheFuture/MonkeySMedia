@@ -9,9 +9,7 @@ export default createGlobalStyle`
     font-size: 85%;
 
     width: 100%;
-    height: 100%;
     max-width: 100vw;
-    max-height: 100vh;
    }
 
   body {
@@ -27,7 +25,6 @@ export default createGlobalStyle`
     width: 100%;
     height: 100%;
     max-width: 100vw;
-    max-height: 100vh;
   }
 
   :root {
@@ -59,7 +56,7 @@ export default createGlobalStyle`
 		width: 100vw;
 
 	}
-	@media screen and (min-width: 735px) {
+	@media screen and (min-width: 736px) {
 		.posts {
 			width: auto;
 		}

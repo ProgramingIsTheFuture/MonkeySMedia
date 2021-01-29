@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.article`
   background: var(--card);
-  margin: 5%;
+  margin: 5% 0 5% 0;
 
   width: 735px;
   min-width: 150px;
@@ -15,6 +15,8 @@ export const Container = styled.article`
     margin: 0;
     margin-top: 5%;
     margin-bottom: 5%;
+	border-left: 0;
+    border-right: 0;
   }
 `;
 

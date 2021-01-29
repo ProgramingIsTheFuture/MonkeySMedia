@@ -1,9 +1,23 @@
 import { action } from "easy-peasy";
-import { PostType } from "../types";
+import { PostType, PayloadNextPage } from "../types";
 
-export const setPosts = action((state: any, payload) => {
-  state.Posts = Array.from(new Set([...state.Posts, ...payload]));
+
+export const setPosts = action((state: any, payload: PayloadNextPage) => {
+	console.log(payload.page, state.page)
+	if(payload.page < state.page) {
+		state.Posts = payload.posts;
+	}
+	else if (payload.page > state.page) {
+		state.Posts = Array.from(new Set([...state.Posts, ...payload.posts]));
+	}
+	else {
+		state.Posts = payload.posts
+	}
 });
+
+export const setPage = action((state: any, payload: number) => {
+	state.page = payload;
+})
 
 export const addPost = action((state: any, payload) => {
   state.Posts.unshift(payload);

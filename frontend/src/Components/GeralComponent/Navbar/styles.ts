@@ -14,8 +14,8 @@ export const Container = styled.nav`
   justify-content: center;
 
   height: 50px;
-
   font-size: 0.95rem;
+
 `;
 
 export const NavItems = styled.ul`
@@ -27,8 +27,8 @@ export const NavItems = styled.ul`
     display: inline-block;
     color: var(--white);
 
-    margin-right: 12px;
-    margin-left: 12px;
+    margin-right: 2vw;
+    margin-left: 2vw;
 
     width: 30px;
     height: 30px;
@@ -117,6 +117,8 @@ export const DropDownItems = styled.ul`
 
   list-style: none;
   z-index: 4;
+
+  cursor: auto;
 
   li {
     color: var(--white);

@@ -22,4 +22,5 @@ export const Container = styled.div`
     opacity: 0;
     transition: opacity 500ms ease-in;
   }
+  
 `;

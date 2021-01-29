@@ -37,51 +37,53 @@ const ProfileHeader: React.FC = () => {
 
   return (
     <Container>
-      <NavFixed>
-        <Link to="/">
-          <BackIcon />
-        </Link>
-      </NavFixed>
-      <BackgroundImage>
-        <img
-          src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.background_profile_image}`}
-          alt="Background"
-        />
-      </BackgroundImage>
-      <PersonalInfos>
-        <ProfileImage>
-          <img
-            src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.profile_image}`}
-            alt={`${ProfileInfo.user} Profile`}
-            width={"200px"}
-            height={"200px"}
-          />
-        </ProfileImage>
-        <div>
-          <h2>
-            {ProfileInfo.user}
-            {currentUser !== ProfileInfo.user ? (
-              <FollowingBTN username={ProfileInfo.user} />
-            ) : (
-              <EditProfile />
-            )}
-            {currentUser !== ProfileInfo.user ? <ChatBTN /> : null}
-          </h2>
-          <p>
-            {ProfileInfo.first_name} {ProfileInfo.last_name}
-          </p>
+		<header style={{border: "1px solid var(--shadow)"}}>
+		  <NavFixed>
+			<Link to="/">
+			  <BackIcon />
+			</Link>
+		  </NavFixed>
+		  <BackgroundImage>
+			<img
+			  src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.background_profile_image}`}
+			  alt="Background"
+			/>
+		  </BackgroundImage>
+		  <PersonalInfos>
+			<ProfileImage>
+			  <img
+				src={`${process.env.REACT_APP_BACKEND_URL}${ProfileInfo.profile_image}`}
+				alt={`${ProfileInfo.user} Profile`}
+				width={"200px"}
+				height={"200px"}
+			  />
+			</ProfileImage>
+			<div>
+			  <h2>
+				{ProfileInfo.user}
+				{currentUser !== ProfileInfo.user ? (
+				  <FollowingBTN username={ProfileInfo.user} />
+				) : (
+				  <EditProfile />
+				)}
+				{currentUser !== ProfileInfo.user ? <ChatBTN /> : null}
+			  </h2>
+			  <p>
+				{ProfileInfo.first_name} {ProfileInfo.last_name}
+			  </p>
 
-          <p>{ProfileInfo.description}</p>
-          <ul className="flex-menu">
-            <li>
-              <strong>{ProfileInfo.followers}</strong> followers
-            </li>
-            <li>
-              <strong>{ProfileInfo.following}</strong> following
-            </li>
-          </ul>
-        </div>
-      </PersonalInfos>
+			  <p>{ProfileInfo.description}</p>
+			  <ul className="flex-menu">
+				<li>
+				  <strong>{ProfileInfo.followers}</strong> followers
+				</li>
+				<li>
+				  <strong>{ProfileInfo.following}</strong> following
+				</li>
+			  </ul>
+			</div>
+		  </PersonalInfos>
+	  </header>
     </Container>
   );
 };
