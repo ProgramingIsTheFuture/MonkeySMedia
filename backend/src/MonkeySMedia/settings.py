@@ -15,9 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
+# Quick-start development settings - unsuitable for production See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '&r4)2nv%b78b*sn#j@e)!dt&+2)r@gu26(lbyl&rl5c&ut#@*c'
@@ -33,26 +31,26 @@ POST_PER_PAGE = 15
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 
     # My apps
-    'PostSMedia',
-    'Users',
-    'ProfileSMedia',
-    'StorieSMedia',
-    'ChatSMedia',
+    "PostSMedia",
+    "Users",
+    "ProfileSMedia",
+    "StorieSMedia",
+    "ChatSMedia",
 
     # Third party apps
-    'rest_framework',
-    'rest_framework.authtoken',
-    'corsheaders',
-    'django_filters',
-    'channels',
+    "rest_framework",
+    "rest_framework.authtoken",
+    "corsheaders",
+    "django_filters",
+    "channels",
 ]
 
 MIDDLEWARE = [
@@ -91,7 +89,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
+            "hosts": [("192.168.1.66", 6379)],
         },
     },
 }
@@ -100,25 +98,24 @@ CHANNEL_LAYERS = {
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    #'default': {
-
-    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-    #    'NAME': 'MonkeySMedia',
-
-    #    'USER': 'postgres',
-
-    #    'PASSWORD': '',
-
-    #    'HOST': 'localhost',
-
-    #    'PORT': '5432',
-    #}
-
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'MonkeySMedia',
+
+        'USER': 'postgres',
+
+        'PASSWORD': 'postgres',
+
+        'HOST': '192.168.1.66',
+
+        'PORT': '5432',
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
 }
 
 
