@@ -15,7 +15,6 @@ export const Container = styled.nav`
 
   height: 50px;
   font-size: 0.95rem;
-
 `;
 
 export const NavItems = styled.ul`
@@ -32,6 +31,10 @@ export const NavItems = styled.ul`
 
     width: 30px;
     height: 30px;
+
+    a {
+      color: var(--white);
+    }
   }
 `;
 

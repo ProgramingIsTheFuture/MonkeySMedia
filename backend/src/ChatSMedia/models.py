@@ -10,3 +10,5 @@ class Message(models.Model):
     def __str__(self) -> str:
         return f'From <Thread - {self.message}>'
 
+    class Meta:
+        ordering = ["-id"]

@@ -42,8 +42,8 @@ const Posts: React.FC = () => {
         headers: { Authorization: `Token ${JSON.parse(token).token}` },
       })
       .then((resp) => {
-		setPosts({posts: resp.data.results, page: page});
-		setPageAction(page)
+        setPosts({ posts: resp.data.results, page: page });
+        setPageAction(page);
 
         if (resp.data.next) {
           setHasMore(true);
@@ -57,7 +57,7 @@ const Posts: React.FC = () => {
           setHasMore(false);
         }
       });
-  }, [token, setPosts, page]);
+  }, [token, setPosts, page, setPageAction]);
 
   useEffect(() => {
     // Getting "me" user infos
@@ -89,7 +89,7 @@ const Posts: React.FC = () => {
 
   return (
     <Container>
-	  <div className={"posts"}>
+      <div className={"posts"}>
         {Posts?.map((item: PostType, index: number) => {
           if (Posts.length === index + 1) {
             return (
