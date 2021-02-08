@@ -11,4 +11,4 @@ class Message(models.Model):
         return f'From <Thread - {self.message}>'
 
     class Meta:
-        ordering = ["-id"]
+        ordering = ["id"]

@@ -2,6 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.div``;
 
+export const Header = styled.header`
+  display: flex;
+  background-color: var(--nav-color);
+
+  border-right: 1px solid var(--shadow);
+  height: 50px;
+`;
+
 export const FreindDiv = styled.div`
   height: 50px;
 

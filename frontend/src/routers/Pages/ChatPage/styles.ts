@@ -5,7 +5,7 @@ export const Container = styled.div`
   grid-template-columns: max(20%, 200px) auto;
 
   width: 100vw;
-  height: calc(100vh - 50px);
+  height: 100vh;
 `;
 
 type Props = {

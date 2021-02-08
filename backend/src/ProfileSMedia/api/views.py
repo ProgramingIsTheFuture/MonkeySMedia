@@ -98,9 +98,15 @@ def edit_profile_view(request):
 @api_view(["GET"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def list_all_following_people(request):
-    users = request.user.following.all()
 
-    serializer = ProfileUserSerializer(users, many=True)
+    following = get_object_or_404(ProfileUser, user_id=request.user.id)
+
+    profiles = []
+    for user in following.following.all():
+        profiles.append(get_object_or_404(ProfileUser, user_id=user.id))
+
+
+    serializer = ProfileUserSerializer(profiles, many=True)
 
     return Response(serializer.data, status=status.HTTP_200_OK)
 

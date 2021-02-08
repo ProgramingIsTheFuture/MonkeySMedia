@@ -89,7 +89,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("192.168.1.66", 6379)],
+            "hosts": [("host.docker.internal", 6379)],
         },
     },
 }
@@ -107,7 +107,7 @@ DATABASES = {
 
         'PASSWORD': 'postgres',
 
-        'HOST': '192.168.1.66',
+        'HOST': 'host.docker.internal',
 
         'PORT': '5432',
     }
