@@ -1,11 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: max(20%, 200px) auto;
+  > div:last-child {
+    display: grid;
+    grid-template-columns: max(20%, 200px) auto;
+    height: calc(100vh - 50px);
+  }
+`;
 
-  width: 100vw;
-  height: 100vh;
+export const Header = styled.header`
+  display: flex;
+  background-color: var(--nav-color);
+
+  border-right: 1px solid var(--shadow);
+  height: 50px;
+
+  width: auto;
+  z-index: -1;
 `;
 
 type Props = {

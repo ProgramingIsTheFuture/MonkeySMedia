@@ -30,7 +30,7 @@ const ChatItSelf: React.FC<Props> = ({ username }) => {
       )
       .then((resp) => resp.data);
 
-  const { data } = useSWR<MessagesDB[]>("api/chat/all-messages/", fetcher);
+  const { data } = useSWR("api/chat/all-messages/", fetcher);
   const me = useSWR<string>("api/users/get-user/", (url) =>
     api
       .get(url, {
@@ -51,11 +51,11 @@ const ChatItSelf: React.FC<Props> = ({ username }) => {
     );
   }, [token, username]);
 
+  useEffect(() => {}, [username]);
+
   useEffect(() => {
     if (socket) {
-      socket!.onopen = function (e: any) {
-        console.log(e);
-      };
+      socket!.onopen = function () {};
 
       socket!.onmessage = function () {
         mutate("api/chat/all-messages/");

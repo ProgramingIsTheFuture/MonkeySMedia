@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 import api from "../../../services";
 import { ProfileInfoTypes } from "../../../Store/types";
@@ -11,20 +11,30 @@ type Props = {
 
 const HeaderProfile: React.FC<Props> = ({ username }) => {
   const token: any = localStorage.getItem("auth");
-  const fetcher = (url: string) =>
-    api
-      .post(
-        url,
-        { username: username },
-        { headers: { Authorization: `Token ${JSON.parse(token).token}` } }
-      )
-      .then((resp) => resp.data);
-  const { data } = useSWR<ProfileInfoTypes>(
-    "api/profile/get-profile/",
-    fetcher
-  );
+
+  const [data, setData] = useState<ProfileInfoTypes | null>(null);
+
+  useEffect(() => {
+    setData(null);
+
+    (async () => {
+      let profile: ProfileInfoTypes | any = await api
+        .post(
+          "api/profile/get-profile/",
+          { username: username },
+          { headers: { Authorization: `Token ${JSON.parse(token).token}` } }
+        )
+        .then(async (resp: any) => await resp.data);
+      setData(profile);
+    })();
+  }, [token, username]);
+
   if (!data) {
-    return <h3>Loading ...</h3>;
+    return (
+      <Container>
+        <h3 style={{ verticalAlign: "center" }}>Loading ...</h3>
+      </Container>
+    );
   }
   return (
     <Container>

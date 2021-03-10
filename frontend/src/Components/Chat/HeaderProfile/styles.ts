@@ -2,12 +2,17 @@ import styled from "styled-components";
 
 export const Container = styled.header`
   height: 50px;
+  z-index: 1;
 
   background-color: var(--nav-color);
 
-	top: 0;
-    position: absolute;
-    width: 100%;
+  top: 0;
+  position:absolute;
+
+  h3 {
+	text-align: center;
+	color: var(--white);
+  }
 }
 
   a {

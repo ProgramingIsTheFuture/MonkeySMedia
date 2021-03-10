@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Container, FreindDiv, Header } from "./styles";
+import { Container, FreindDiv } from "./styles";
 import api from "../../../services";
 import { ProfileInfoTypes } from "../../../Store/types";
 import { Link } from "react-router-dom";
-import { NavFixed, BackIcon } from "../../Profiles/ProfileHeader/styles";
 
 const Freinds: React.FC = () => {
   const token: any = localStorage.getItem("auth");
@@ -22,24 +21,21 @@ const Freinds: React.FC = () => {
   if (!profiles) {
     return <h2>Loading!!!! </h2>;
   } else if (profiles!.length <= 0) {
-    return <h2>Without freinds here!</h2>;
+    return (
+      <Container>
+        <h2>Without freinds here!</h2>
+      </Container>
+    );
   }
 
   return (
     <Container>
-      <Header>
-        <NavFixed>
-          <Link to="/">
-            <BackIcon />
-          </Link>
-        </NavFixed>
-      </Header>
       <div>
         <input type={"text"} />
         {profiles!.map((item: ProfileInfoTypes) => {
           return (
             <FreindDiv key={item.id}>
-              <a href={`/chat/${item.user}`}>
+              <Link to={`/chat/${item.user}`}>
                 <div style={{ height: "50px" }}>
                   <img
                     src={`${process.env.REACT_APP_BACKEND_URL}${item.profile_image}`}
@@ -58,7 +54,7 @@ const Freinds: React.FC = () => {
                     </span>
                   </div>
                 </div>
-              </a>
+              </Link>
             </FreindDiv>
           );
         })}
