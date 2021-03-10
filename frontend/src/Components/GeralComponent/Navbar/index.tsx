@@ -84,7 +84,9 @@ const Navbar: React.FC = () => {
           </Link>
         </li>
         <li>
-          <ChatIcon />
+          <Link to={"/chat/"}>
+            <ChatIcon />
+          </Link>
         </li>
 
         <SearchLink>
@@ -92,24 +94,24 @@ const Navbar: React.FC = () => {
             <SearchIcon />
           </Link>
         </SearchLink>
-        
+
         <DropDown>
-		   <motion.div
-			  initial={{ scale: 1.1, rotate: 180 }}
-			  whileHover={{ scale: 1.1, rotate: 360 }}
-		  >
-			<DropDownIcon></DropDownIcon>
-				<DropDownItems>
-				  <li>
-					<Link to="/login/" onClick={logOut}>
-					  Logout
-					</Link>
-				  </li>
-				  <li>
-					<Link to="/settings/">Settings</Link>
-				  </li>
-				</DropDownItems>
-			</motion.div>
+          <motion.div
+            initial={{ scale: 1.1, rotate: 180 }}
+            whileHover={{ scale: 1.1, rotate: 360 }}
+          >
+            <DropDownIcon></DropDownIcon>
+            <DropDownItems>
+              <li>
+                <Link to="/settings/">Settings</Link>
+              </li>
+              <li>
+                <Link to="/login/" onClick={logOut}>
+                  Logout
+                </Link>
+              </li>
+            </DropDownItems>
+          </motion.div>
         </DropDown>
       </NavItems>
     </Container>
