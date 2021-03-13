@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  max-height: 100%;
+  max-height: 80%;
   overflow-y: auto;
   overflow-x: hidden;
 
@@ -47,10 +47,16 @@ export const BackgroundImage = styled.div`
     object-fit: cover;
     image-rendering: auto;
   }
+
+ 
+  @media screen and (max-width: 500px) {
+    img {
+	  object-fit: fill;
+	}
+  } 
 `;
 
 export const PersonalInfos = styled.div`
-  --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   display: flex;
   flex-wrap: wrap;

@@ -10,6 +10,7 @@ import { Container } from "./styles";
 const Posts: React.FC = () => {
   const token: any = localStorage.getItem("auth");
   const setPosts = useStoreActions((action: any) => action.Posts.setPosts);
+  const setPageAction = useStoreActions((action: any) => action.Posts.setPage);
   const setUsername = useStoreActions((action: any) => action.User.setUsername);
   const Posts = useStoreState((state) => state.Posts.Posts);
   const [page, setPage] = useState<number>(1);
@@ -41,7 +42,9 @@ const Posts: React.FC = () => {
         headers: { Authorization: `Token ${JSON.parse(token).token}` },
       })
       .then((resp) => {
-        setPosts(resp.data.results);
+        setPosts({ posts: resp.data.results, page: page });
+        setPageAction(page);
+
         if (resp.data.next) {
           setHasMore(true);
         } else {
@@ -54,7 +57,7 @@ const Posts: React.FC = () => {
           setHasMore(false);
         }
       });
-  }, [token, setPosts, page]);
+  }, [token, setPosts, page, setPageAction]);
 
   useEffect(() => {
     // Getting "me" user infos
@@ -86,7 +89,7 @@ const Posts: React.FC = () => {
 
   return (
     <Container>
-      <div>
+      <div className={"posts"}>
         {Posts?.map((item: PostType, index: number) => {
           if (Posts.length === index + 1) {
             return (
