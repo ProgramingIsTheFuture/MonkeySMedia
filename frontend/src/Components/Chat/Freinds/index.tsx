@@ -49,9 +49,9 @@ const Freinds: React.FC = () => {
                     <span>{item.user}</span>
                   </div>
                   <div>
-                    <span>
+                    <p>
                       {item.first_name} {item.last_name}
-                    </span>
+                    </p>
                   </div>
                 </div>
               </Link>

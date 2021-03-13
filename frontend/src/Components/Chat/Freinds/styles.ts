@@ -24,6 +24,18 @@ export const FreindDiv = styled.div`
       span {
         margin-left: 15px;
       }
+
+      p {
+        overflow: hidden;
+        width: 90%;
+        margin: 0;
+        margin-left: 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 9;
+        -webkit-box-orient: horizontal;
+        -moz-line-clamp: 9;
+        -moz-box-orient: horizontal;
+      }
     }
   }
 `;

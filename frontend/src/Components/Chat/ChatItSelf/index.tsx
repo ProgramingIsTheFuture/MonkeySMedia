@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Messages, Message } from "./styles";
 import api from "../../../services";
-import useSWR, { mutate } from "swr";
+import useSWR from "swr";
 import HeaderProfile from "../HeaderProfile";
 
 type Props = {
@@ -20,17 +20,23 @@ const ChatItSelf: React.FC<Props> = ({ username }) => {
   const token: any = localStorage.getItem("auth");
   const [message, setMessage] = useState<string>("");
   const [socket, setSocket] = useState<any>(null);
+  const [allMessages, setAllMessages] = useState<MessagesDB[]>([]);
 
-  const fetcher = (url: string) =>
-    api
-      .post(
-        url,
-        { username: username },
-        { headers: { Authorization: `Token ${JSON.parse(token).token}` } }
-      )
-      .then((resp) => resp.data);
+  const [reloadMsg, setReloadMsg] = useState<boolean>(true);
 
-  const { data } = useSWR("api/chat/all-messages/", fetcher);
+  useEffect(() => {
+    if (reloadMsg) {
+      api
+        .post(
+          "api/chat/all-messages/",
+          { username: username },
+          { headers: { Authorization: `Token ${JSON.parse(token).token}` } }
+        )
+        .then((resp) => setAllMessages(resp.data));
+      setReloadMsg(false);
+    }
+  }, [token, username, reloadMsg]);
+
   const me = useSWR<string>("api/users/get-user/", (url) =>
     api
       .get(url, {
@@ -51,14 +57,12 @@ const ChatItSelf: React.FC<Props> = ({ username }) => {
     );
   }, [token, username]);
 
-  useEffect(() => {}, [username]);
-
   useEffect(() => {
     if (socket) {
       socket!.onopen = function () {};
 
       socket!.onmessage = function () {
-        mutate("api/chat/all-messages/");
+        setReloadMsg(true);
       };
 
       socket!.onclose = function (event: any) {
@@ -74,20 +78,18 @@ const ChatItSelf: React.FC<Props> = ({ username }) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (message !== "") {
+      while (socket.CONNECTING) {}
       socket.send(message);
-      mutate(
-        "api/chat/all-messages/",
-        [
-          ...data!,
-          {
-            id: data![data!.length - 1].id + 1,
-            message: message,
-            user_receiver: username,
-            user_sender: me.data,
-          },
-        ],
-        true
-      );
+      setAllMessages([
+        ...allMessages,
+        {
+          id: Number(allMessages.length),
+          user_receiver: username,
+          user_sender: String(me.data),
+          message: message,
+          timestamp: "",
+        },
+      ]);
       setMessage("");
     }
   };
@@ -95,18 +97,6 @@ const ChatItSelf: React.FC<Props> = ({ username }) => {
   const messageChange = (e: any) => {
     setMessage(e.target.value);
   };
-
-  if (!data) {
-    return (
-      <Container>
-        <form onSubmit={handleSubmit}>
-          <input type={"text"} onChange={messageChange} value={message} />
-          <input type={"submit"} />
-        </form>
-        {username}
-      </Container>
-    );
-  }
 
   return (
     <Container>
@@ -116,7 +106,7 @@ const ChatItSelf: React.FC<Props> = ({ username }) => {
       </form>
       {username}
       <Messages>
-        {data!.map((item: MessagesDB) => {
+        {allMessages.map((item: MessagesDB) => {
           if (me.data === item.user_sender) {
             return (
               <Message right={true} key={item.id}>
