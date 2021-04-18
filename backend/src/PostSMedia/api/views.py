@@ -46,6 +46,7 @@ def list_posts_view(request):
     qs = Post.objects.filter(user__id__in=users).order_by('-timestamp')
     result_page = paginator.paginate_queryset(qs, request)
     serializer = PostSerializer(result_page, many=True)
+    time.sleep(2)
     return paginator.get_paginated_response(serializer.data)
 
 # Create a new posts
