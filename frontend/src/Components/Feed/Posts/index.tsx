@@ -91,6 +91,7 @@ const Posts: React.FC = () => {
     <Container>
       <div className={"posts"}>
         {Posts?.map((item: PostType, index: number) => {
+          item.image = `${process.env.REACT_APP_BACKEND_URL}${item.image}`;
           if (Posts.length === index + 1) {
             return (
               <motion.div
@@ -108,6 +109,7 @@ const Posts: React.FC = () => {
               </motion.div>
             );
           }
+
           return (
             <motion.div
               initial={{ scale: 0 }}

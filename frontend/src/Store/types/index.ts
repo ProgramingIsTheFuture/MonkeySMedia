@@ -28,15 +28,15 @@ export interface ProfileInfoTypes {
 }
 
 export interface PayloadNextPage {
-	posts: [PostType];
-	page: number;
+  posts: [PostType];
+  page: number;
 }
 
 export interface StoreModel {
   Posts: {
     Posts: PostType[];
-	page: number;
-	setPage: Action<{}, number>;
+    page: number;
+    setPage: Action<{}, number>;
     setPosts: Action<{}, PayloadNextPage>;
     addPost: Action<{}, PostType>;
     removePost: Action<{}, number>;

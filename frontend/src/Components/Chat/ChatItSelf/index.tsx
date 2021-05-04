@@ -48,7 +48,7 @@ const ChatItSelf: React.FC<Props> = ({ username }) => {
   useEffect(() => {
     setSocket(
       new WebSocket(
-        `${"ws://api.themonkeysmedia.com:8000"}/ws/chat/${username}/?token=${
+        `${process.env.REACT_APP_CHAT_URL}/ws/chat/${username}/?token=${
           JSON.parse(token).token
         }`
       )
