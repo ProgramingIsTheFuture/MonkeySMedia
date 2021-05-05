@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import EditProfile from "../EditProfile";
 import EditModal from "../EditModal";
+import ChatBTN from "../ChatBTN";
 
 import {
   Container,
@@ -18,6 +19,7 @@ const ProfileHeader: React.FC<Props> = ({ username }) => {
   const historyRouter = useHistory();
   const [baseUrl, setBaseUrl] = useState<string>("");
   const [profile, setProfile] = useState<any>(null);
+  const [me, setMe] = useState<string>("");
   const [isModal, setIsModal] = useState<boolean>(false);
 
   useEffect(() => {
@@ -27,6 +29,16 @@ const ProfileHeader: React.FC<Props> = ({ username }) => {
   }, []);
 
   useEffect(() => {
+    console.log(me, username, "AAAA");
+    System.import("@monkeysmedia/util-module").then((util) =>
+      util
+        .apiGet("api/users/get-user/")
+        .then((data) => setMe(data.data.username))
+    );
+  }, []);
+
+  useEffect(() => {
+    console.log(me, username);
     // Getting the Profile info
     if (typeof username === "string" && username !== "") {
       System.import("@monkeysmedia/util-module")
@@ -82,15 +94,11 @@ const ProfileHeader: React.FC<Props> = ({ username }) => {
           <div>
             <h2>
               {profile.user}
-              {username !== profile.user ? (
-                // <FollowingBTN username={profile.user} />
-                <h1>aaha</h1>
-              ) : (
+              {me !== profile.user ? // <FollowingBTN username={profile.user} />
+              null : (
                 <EditProfile callBack={callBack} />
               )}
-              {/*
-              {currentUser !== profile.user ? <ChatBTN /> : null}
-			  */}
+              {me !== profile.user ? <ChatBTN /> : null}
             </h2>
             <p>
               {profile.first_name} {profile.last_name}
