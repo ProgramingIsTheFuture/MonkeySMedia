@@ -23,6 +23,7 @@ export const Container = styled.div`
     list-style: none;
     margin-left: -40px;
   }
+
   .flex-menu li:not(:last-child) {
     margin-right: 40px;
   }

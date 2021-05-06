@@ -1,5 +1,6 @@
 import React from "react";
 import Parcel from "single-spa-react/parcel";
+import { mountRootParcel } from "single-spa";
 
 interface Props {
   post: {
@@ -18,6 +19,7 @@ const PostSearch: React.FC<Props> = ({ post }) => {
   return (
     <Parcel
       config={() => System.import("@monkeysmedia/post")}
+      mountParcel={mountRootParcel}
       ref={null}
       post={post}
     />

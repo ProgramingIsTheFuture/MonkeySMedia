@@ -59,6 +59,8 @@ export const UserSimpleInfo = styled.header`
 
 export const Card = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const CardTitle = styled.div`
