@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback, useRef } from "react";
 import Parcel from "single-spa-react/parcel";
 import { mountRootParcel } from "single-spa";
 import { motion } from "framer-motion";
-
 import ProfileHeader from "./ProfileHeader";
 
 import { Container } from "./styles";

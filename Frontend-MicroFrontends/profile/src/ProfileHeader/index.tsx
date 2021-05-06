@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import EditProfile from "../EditProfile";
 import EditModal from "../EditModal";
 import ChatBTN from "../ChatBTN";
+import FollowingBTN from "../FollowingBTN";
 
 import {
   Container,
@@ -21,6 +22,20 @@ const ProfileHeader: React.FC<Props> = ({ username }) => {
   const [profile, setProfile] = useState<any>(null);
   const [me, setMe] = useState<string>("");
   const [isModal, setIsModal] = useState<boolean>(false);
+  const [newFollowers, setNewFollowers] = useState<number>(0);
+
+  window.addEventListener("@monkeysmedia/profile-follow-unfollow", (e: any) => {
+    if (profile) {
+      setNewFollowers(e.detail.follow);
+    }
+  });
+
+  useEffect(() => {
+    if (profile && newFollowers != 0) {
+      profile.followers += newFollowers;
+      setProfile(profile);
+    }
+  }, [newFollowers, profile]);
 
   useEffect(() => {
     System.import("@monkeysmedia/util-module").then((util) =>
@@ -29,16 +44,14 @@ const ProfileHeader: React.FC<Props> = ({ username }) => {
   }, []);
 
   useEffect(() => {
-    console.log(me, username, "AAAA");
     System.import("@monkeysmedia/util-module").then((util) =>
       util
         .apiGet("api/users/get-user/")
-        .then((data) => setMe(data.data.username))
+        .then((data: any) => setMe(data.data.username))
     );
   }, []);
 
   useEffect(() => {
-    console.log(me, username);
     // Getting the Profile info
     if (typeof username === "string" && username !== "") {
       System.import("@monkeysmedia/util-module")
@@ -77,6 +90,7 @@ const ProfileHeader: React.FC<Props> = ({ username }) => {
             <img
               src={`${baseUrl}${profile.background_profile_image.substring(1)}`}
               alt="Background"
+              style={{ width: "100%" }}
             />
           ) : null}
         </BackgroundImage>
@@ -92,18 +106,25 @@ const ProfileHeader: React.FC<Props> = ({ username }) => {
             ) : null}
           </ProfileImage>
           <div>
-            <h2>
-              {profile.user}
-              {me !== profile.user ? // <FollowingBTN username={profile.user} />
-              null : (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                height: "60px",
+              }}
+            >
+              <h2>{profile.user}</h2>
+              {me !== profile.user ? (
+                <FollowingBTN username={profile.user} />
+              ) : (
                 <EditProfile callBack={callBack} />
               )}
               {me !== profile.user ? <ChatBTN /> : null}
-            </h2>
+            </div>
             <p>
               {profile.first_name} {profile.last_name}
             </p>
-
             <p>{profile.description}</p>
             <ul className="flex-menu">
               <li>

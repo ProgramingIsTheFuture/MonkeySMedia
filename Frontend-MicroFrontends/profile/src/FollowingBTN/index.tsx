@@ -1,6 +1,4 @@
-/*import { useStoreActions, useStoreState } from "easy-peasy";
 import React, { useEffect, useState } from "react";
-import api from "../../../services";
 
 import { Container } from "./styles";
 
@@ -9,42 +7,49 @@ interface Props {
 }
 
 const FollowingBTN: React.FC<Props> = ({ username }) => {
-  const token: any = localStorage.getItem("auth");
   const [follText, setFollText] = useState<string>("Follow");
-  const followers = useStoreState(
-    (state: any) => state.Profile.ProfileInfo.followers
-  );
-  const remOrAddFollow = useStoreActions(
-    (action: any) => action.Profile.remOrAddFollow
-  );
+  const [follow, setFollow] = useState<number>(0);
 
   const handleClick = (e: any) => {
     e.preventDefault();
-    api
-      .post(
-        "api/profile/follow-unfollow/",
-        { username: username },
-        { headers: { Authorization: `Token ${JSON.parse(token).token}` } }
+    System.import("@monkeysmedia/util-module")
+      .then((util) =>
+        util.apiPost("api/profile/follow-unfollow/", {
+          username: username,
+        })
       )
       .then((resp: any) => {
         if (resp.data.Follow === "Success") {
-          remOrAddFollow(followers + 1);
+          // +1 follower
+          setFollow(1);
+
           setFollText("Following");
         } else if (resp.data.Follow === "Stop Following") {
-          remOrAddFollow(followers - 1);
+          // -1 follower
+          setFollow(-1);
           setFollText("Follow");
         }
       })
       .catch();
+    if (follow != 0) {
+      window.dispatchEvent(
+        new CustomEvent("@monkeysmedia/profile-follow-unfollow", {
+          detail: {
+            follow: follow,
+          },
+        })
+      );
+    }
+    setFollow(0);
   };
 
   useEffect(() => {
     if (username.length > 0) {
-      api
-        .post(
-          "api/profile/check-follow-profile/",
-          { username: username },
-          { headers: { Authorization: `Token ${JSON.parse(token).token}` } }
+      System.import("@monkeysmedia/util-module")
+        .then((util) =>
+          util.apiPost("api/profile/check-follow-profile/", {
+            username: username,
+          })
         )
         .then((res: any) => {
           if (res.data[0] === "true") {
@@ -55,10 +60,9 @@ const FollowingBTN: React.FC<Props> = ({ username }) => {
         })
         .catch();
     }
-  }, [setFollText, token, username, remOrAddFollow, followers]);
+  }, [setFollText, username]);
 
   return <Container onClick={handleClick}>{follText}</Container>;
 };
 
 export default FollowingBTN;
-*/

@@ -26,6 +26,10 @@ export const Container = styled.div`
   .flex-menu li:not(:last-child) {
     margin-right: 40px;
   }
+
+  @media screen and (min-width: 1440px) {
+    font-size: 2rem;
+  }
 `;
 
 export const NavFixed = styled.nav``;
