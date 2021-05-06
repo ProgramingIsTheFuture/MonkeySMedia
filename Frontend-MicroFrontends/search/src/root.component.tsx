@@ -81,6 +81,7 @@ export default function Root(props) {
                 damping: 20,
               }}
               className={"posts"}
+              style={{ width: "100%" }}
               key={item.id}
             >
               <PostSearch post={item} />

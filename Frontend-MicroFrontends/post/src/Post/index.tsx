@@ -54,7 +54,14 @@ const Post: React.FC<any> = (props) => {
         <div>
           {props.post.user === username ? (
             <DeleteBTN postID={props.post.id} />
-          ) : null}
+          ) : (
+            <div
+              style={{
+                width: "25px",
+                height: "25px",
+              }}
+            ></div>
+          )}
         </div>
       </UserSimpleInfo>
       <Card>
