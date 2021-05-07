@@ -14,12 +14,24 @@ import {
   ProfileImage,
 } from "./styles";
 
+interface ProfileInfoTypes {
+  id: number;
+  user: string;
+  first_name: string;
+  last_name: string;
+  profile_image: string;
+  background_profile_image: string;
+  description: string;
+  following: number;
+  followers: number;
+}
+
 type Props = { username: string };
 
 const ProfileHeader: React.FC<Props> = ({ username }) => {
   const historyRouter = useHistory();
   const [baseUrl, setBaseUrl] = useState<string>("");
-  const [profile, setProfile] = useState<any>(null);
+  const [profile, setProfile] = useState<ProfileInfoTypes>(null);
   const [me, setMe] = useState<string>("");
   const [isModal, setIsModal] = useState<boolean>(false);
   const [newFollowers, setNewFollowers] = useState<number>(0);
@@ -120,7 +132,7 @@ const ProfileHeader: React.FC<Props> = ({ username }) => {
               ) : (
                 <EditProfile callBack={callBack} />
               )}
-              {me !== profile.user ? <ChatBTN /> : null}
+              {me !== profile.user ? <ChatBTN username={profile.user} /> : null}
             </div>
             <p>
               {profile.first_name} {profile.last_name}
@@ -137,7 +149,12 @@ const ProfileHeader: React.FC<Props> = ({ username }) => {
           </div>
         </PersonalInfos>
       </header>
-      <EditModal callBack={callBack} isModal={isModal} />
+      <EditModal
+        callBack={callBack}
+        setProfile={setProfile}
+        isModal={isModal}
+        profile={profile}
+      />
     </Container>
   );
 };
