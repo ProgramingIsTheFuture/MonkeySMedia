@@ -6,6 +6,7 @@ import Parcel from "single-spa-react/parcel";
 import { mountRootParcel } from "single-spa";
 
 import { Container } from "./styles";
+import Loader from "../Loader";
 
 type PostType = {
   id: number;
@@ -20,34 +21,6 @@ type PostType = {
 
 type PostsData = {
   results: PostType[];
-};
-
-const loadingContainerVariants = {
-  start: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-  end: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const loadingCircleVariants = {
-  start: {
-    y: "0%",
-  },
-  end: {
-    y: "100%",
-  },
-};
-
-const loadingCircleTransition = {
-  duration: 0.5,
-  yoyo: Infinity,
-  ease: "easeInOut",
 };
 
 const pageSize = 15;
@@ -73,18 +46,21 @@ const Feed: React.FC = () => {
   });
 
   const observer = useRef<IntersectionObserver | null>(null);
-  const LastPostElement = useCallback((node) => {
-    if (observer.current) {
-      observer.current.disconnect();
-    }
-    observer.current = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && next) {
-        setSize(size + 1);
-        return;
+  const LastPostElement = useCallback(
+    (node) => {
+      if (observer.current) {
+        observer.current.disconnect();
       }
-    });
-    if (node) observer.current.observe(node);
-  }, []);
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && next) {
+          setSize(size + 1);
+          return;
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [next, size, setSize]
+  );
 
   const isLoadingInitialData = !data && !error;
   const isLoadingMore =
@@ -95,56 +71,8 @@ const Feed: React.FC = () => {
   const isReachingEnd =
     isEmpty || (data && data[data.length - 1]?.length < pageSize) || !next;
 
-  if (isLoadingMore) {
-    return (
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <motion.div
-          style={{
-            width: "5rem",
-            height: "5rem",
-            display: "flex",
-            justifyContent: "space-around",
-          }}
-          variants={loadingContainerVariants}
-          initial="start"
-          animate="end"
-        >
-          <motion.span
-            style={{
-              display: "block",
-              width: "1rem",
-              height: "1rem",
-              backgroundColor: "black",
-              borderRadius: "0.25rem",
-            }}
-            variants={loadingCircleVariants}
-            transition={loadingCircleTransition}
-          />
-          <motion.span
-            style={{
-              display: "block",
-              width: "1rem",
-              height: "1rem",
-              backgroundColor: "black",
-              borderRadius: "0.25rem",
-            }}
-            variants={loadingCircleVariants}
-            transition={loadingCircleTransition}
-          />
-          <motion.span
-            style={{
-              display: "block",
-              width: "1rem",
-              height: "1rem",
-              backgroundColor: "black",
-              borderRadius: "0.25rem",
-            }}
-            variants={loadingCircleVariants}
-            transition={loadingCircleTransition}
-          />
-        </motion.div>
-      </div>
-    );
+  if (isLoadingInitialData) {
+    return <Loader />;
   }
 
   return (
@@ -156,29 +84,6 @@ const Feed: React.FC = () => {
           </p>
         ) : null}
         {posts?.map((item: PostType, index: number) => {
-          if (posts.length === index + 1) {
-            return (
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ rotate: 0, scale: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                }}
-                key={index}
-                className={"posts"}
-              >
-                <Parcel
-                  config={() => System.import("@monkeysmedia/post")}
-                  mountParcel={mountRootParcel}
-                  refe={LastPostElement}
-                  post={item}
-                />
-              </motion.div>
-            );
-          }
-
           return (
             <motion.div
               initial={{ scale: 0 }}
@@ -194,61 +99,13 @@ const Feed: React.FC = () => {
               <Parcel
                 config={() => System.import("@monkeysmedia/post")}
                 mountParcel={mountRootParcel}
-                refe={null}
+                refe={posts.length === index + 1 ? LastPostElement : null}
                 post={item}
               />
             </motion.div>
           );
         })}
-        {isLoadingMore ? (
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <motion.div
-              style={{
-                width: "5rem",
-                height: "5rem",
-                display: "flex",
-                justifyContent: "space-around",
-              }}
-              variants={loadingContainerVariants}
-              initial="start"
-              animate="end"
-            >
-              <motion.span
-                style={{
-                  display: "block",
-                  width: "1rem",
-                  height: "1rem",
-                  backgroundColor: "black",
-                  borderRadius: "0.25rem",
-                }}
-                variants={loadingCircleVariants}
-                transition={loadingCircleTransition}
-              />
-              <motion.span
-                style={{
-                  display: "block",
-                  width: "1rem",
-                  height: "1rem",
-                  backgroundColor: "black",
-                  borderRadius: "0.25rem",
-                }}
-                variants={loadingCircleVariants}
-                transition={loadingCircleTransition}
-              />
-              <motion.span
-                style={{
-                  display: "block",
-                  width: "1rem",
-                  height: "1rem",
-                  backgroundColor: "black",
-                  borderRadius: "0.25rem",
-                }}
-                variants={loadingCircleVariants}
-                transition={loadingCircleTransition}
-              />
-            </motion.div>
-          </div>
-        ) : null}
+        {isLoadingMore ? <Loader /> : null}
         {isReachingEnd && !isEmpty ? (
           <p style={{ textAlign: "center" }}>
             Atualize a pagina para aparecerem os posts mais atualizados
