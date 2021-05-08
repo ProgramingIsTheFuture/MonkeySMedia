@@ -16,4 +16,17 @@ export const CloseLeft = styled(Close)`
   cursor: pointer;
 `;
 
-export const Form = styled.form``;
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  input,
+  textarea {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  textarea {
+    height: 80px;
+  }
+`;

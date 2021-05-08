@@ -66,25 +66,31 @@ const EditModal: React.FC<Props> = ({
         </Title>
 
         <Form onSubmit={handleSubmit}>
+          <label htmlFor={"background_img"}>Imagem de fundo</label>
           <input type={"file"} name={"background_img"} />
+          <label htmlFor={"profile_img"}>Imagem de Perfil</label>
           <input type={"file"} name={"profile_img"} />
+          <label htmlFor={"username"}>Username</label>
           <input
             type={"text"}
             name={"username"}
             onChange={(e) => setUsername(e.target.value)}
             value={username}
           />
+          <label htmlFor={"username"}>Username</label>
           <textarea
             name={"description"}
             onChange={(e) => setDescription(e.target.value)}
             value={description}
           />
+          <label htmlFor={"first_name"}>Primeiro Nome</label>
           <input
             type={"text"}
             name={"first_name"}
             onChange={(e) => setFName(e.target.value)}
             value={fname}
           />
+          <label htmlFor={"last_name"}>Ultímo Nome</label>
           <input
             type={"text"}
             name={"last_name"}
