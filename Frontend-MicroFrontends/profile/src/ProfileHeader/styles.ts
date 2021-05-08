@@ -21,7 +21,7 @@ export const Container = styled.div`
   .flex-menu {
     display: flex;
     list-style: none;
-    margin-left: -40px;
+    padding-inline-start: 0;
   }
 
   .flex-menu li:not(:last-child) {
@@ -78,7 +78,6 @@ export const PersonalInfos = styled.div`
 `;
 
 export const ProfileImage = styled.div`
-  margin-right: 25px;
   align-self: center;
   img {
     max-height: 100%;

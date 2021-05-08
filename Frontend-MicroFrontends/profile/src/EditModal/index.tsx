@@ -31,6 +31,7 @@ const EditModal: React.FC<Props> = ({
   const [fname, setFName] = useState<string>(profile.first_name);
   const [lname, setLName] = useState<string>(profile.last_name);
   const [username, setUsername] = useState<string>(profile.user);
+  const [description, setDescription] = useState<string>(profile.description);
 
   const handleQuit = (e: any) => {
     e.preventDefault();
@@ -45,14 +46,12 @@ const EditModal: React.FC<Props> = ({
         util.apiPost("api/profile/edit-my-profile/", {
           first_name: fname,
           last_name: lname,
+          description: description,
           username: username,
         })
       )
       .then((resp) => {
         setProfile(resp.data);
-        setUsername("");
-        setFName("");
-        setLName("");
         callBack(false);
       })
       .catch();
@@ -74,6 +73,11 @@ const EditModal: React.FC<Props> = ({
             name={"username"}
             onChange={(e) => setUsername(e.target.value)}
             value={username}
+          />
+          <textarea
+            name={"description"}
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
           />
           <input
             type={"text"}

@@ -117,7 +117,7 @@ const ProfileHeader: React.FC<Props> = ({ username }) => {
               />
             ) : null}
           </ProfileImage>
-          <div>
+          <div style={{ marginLeft: "25px" }}>
             <div
               style={{
                 display: "flex",
@@ -137,7 +137,9 @@ const ProfileHeader: React.FC<Props> = ({ username }) => {
             <p>
               {profile.first_name} {profile.last_name}
             </p>
-            <p>{profile.description}</p>
+            <div>
+              <p style={{ fontSize: "1.5rem" }}>{profile.description}</p>
+            </div>
             <ul className="flex-menu">
               <li>
                 <strong>{profile.followers}</strong> followers
