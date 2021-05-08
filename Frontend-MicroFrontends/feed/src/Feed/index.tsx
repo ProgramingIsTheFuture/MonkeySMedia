@@ -25,14 +25,25 @@ type PostsData = {
 
 const pageSize = 15;
 
-const Feed: React.FC = () => {
+type Props = {
+  usernameProfile?: string | null;
+};
+
+const Feed: React.FC<Props> = ({ usernameProfile }) => {
   let next: string | null;
 
   const { data, error, mutate, size, setSize } = useSWRInfinite(
-    (index) => `api/posts/list-posts/?page=${index + 1}`,
+    (index) =>
+      !usernameProfile
+        ? `api/posts/list-posts/?page=${index + 1}`
+        : `api/posts/get-user-posts/?page=${index + 1}`,
     (url: string) =>
       System.import("@monkeysmedia/util-module")
-        .then((util) => util.apiGet(url))
+        .then((util) =>
+          !usernameProfile
+            ? util.apiGet(url)
+            : util.apiPost(url, { username: usernameProfile })
+        )
         .then((resp) => {
           next = resp.data.next;
           return resp.data.results;

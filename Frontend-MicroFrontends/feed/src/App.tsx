@@ -6,7 +6,7 @@ import { Container } from "./styles";
 const App = (props) => {
   return (
     <Container>
-      <Feed />
+      <Feed usernameProfile={props.username ? props.username : null} />
     </Container>
   );
 };
