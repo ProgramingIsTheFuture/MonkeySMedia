@@ -50,12 +50,6 @@ const Feed: React.FC<Props> = ({ usernameProfile }) => {
         })
   );
 
-  window.addEventListener("@monkeysmedia/CreatePost/created", (e: any) => {
-    if (data) {
-      mutate([e.detail, ...data[0]], true);
-    }
-  });
-
   const observer = useRef<IntersectionObserver | null>(null);
   const LastPostElement = useCallback(
     (node) => {
@@ -77,10 +71,24 @@ const Feed: React.FC<Props> = ({ usernameProfile }) => {
   const isLoadingMore =
     isLoadingInitialData ||
     (size > 0 && data && typeof data[size - 1] === "undefined");
-  const posts = data ? [].concat(...data) : [];
+  let posts = data ? [].concat(...data) : [];
   const isEmpty = data?.[0]?.length === 0;
   const isReachingEnd =
     isEmpty || (data && data[data.length - 1]?.length < pageSize) || !next;
+
+  window.addEventListener(
+    "@monkeysmedia/CreatePost/created",
+    async (e: any) => {
+      if (data) {
+        try {
+          let newPosts = await mutate([e.detail, ...posts], true);
+          posts = [].concat(...newPosts);
+        } catch (error) {
+          console.error("Error creating new post or receiving the new one");
+        }
+      }
+    }
+  );
 
   if (isLoadingInitialData) {
     return <Loader />;
@@ -94,7 +102,7 @@ const Feed: React.FC<Props> = ({ usernameProfile }) => {
             Experimenta seguir os teus amigos para veres as publicações deles!
           </p>
         ) : null}
-        {posts?.map((item: PostType, index: number) => {
+        {posts.map((item: PostType, index: number) => {
           return (
             <motion.div
               initial={{ scale: 0 }}
@@ -105,7 +113,7 @@ const Feed: React.FC<Props> = ({ usernameProfile }) => {
                 damping: 20,
               }}
               key={index}
-              className={"posts"}
+              className={"post"}
             >
               <Parcel
                 config={() => System.import("@monkeysmedia/post")}
@@ -117,7 +125,7 @@ const Feed: React.FC<Props> = ({ usernameProfile }) => {
           );
         })}
         {isLoadingMore ? <Loader /> : null}
-        {isReachingEnd && !isEmpty ? (
+        {isReachingEnd && !isEmpty && !isLoadingMore ? (
           <p style={{ textAlign: "center" }}>
             Atualize a pagina para aparecerem os posts mais atualizados
           </p>
