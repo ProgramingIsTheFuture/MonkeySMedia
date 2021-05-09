@@ -80,7 +80,7 @@ def check_follow_profile_view(request):
     return Response({"Something went wrong!"}, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(["PATCH"])
+@api_view(["POST"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def edit_profile_view(request):
     prof = get_object_or_404(ProfileUser, id=request.user.id)
