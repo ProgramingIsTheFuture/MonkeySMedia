@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useCallback, useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useCallback, useRef } from "react";
 import { useSWRInfinite } from "swr";
-
-import Parcel from "single-spa-react/parcel";
-import { mountRootParcel } from "single-spa";
 
 import { Container } from "./styles";
 import Loader from "../Loader";
+import Post from "../Post";
+import PostContainer from "../PostContainer";
 
 type PostType = {
   id: number;
@@ -17,10 +15,6 @@ type PostType = {
   profile_image: string;
   likes: number;
   timestamp: string;
-};
-
-type PostsData = {
-  results: PostType[];
 };
 
 const pageSize = 15;
@@ -71,24 +65,20 @@ const Feed: React.FC<Props> = ({ usernameProfile }) => {
   const isLoadingMore =
     isLoadingInitialData ||
     (size > 0 && data && typeof data[size - 1] === "undefined");
-  let posts = data ? [].concat(...data) : [];
+  let posts = React.useMemo(() => (data ? [].concat(...data) : []), [data]);
   const isEmpty = data?.[0]?.length === 0;
   const isReachingEnd =
     isEmpty || (data && data[data.length - 1]?.length < pageSize) || !next;
 
-  window.addEventListener(
-    "@monkeysmedia/CreatePost/created",
-    async (e: any) => {
-      if (data) {
-        try {
-          let newPosts = await mutate([e.detail, ...posts], true);
-          posts = [].concat(...newPosts);
-        } catch (error) {
-          console.error("Error creating new post or receiving the new one");
-        }
+  window.addEventListener("@monkeysmedia/CreatePost/created", async () => {
+    if (data) {
+      try {
+        await mutate();
+      } catch (error) {
+        console.error("Error creating new post or receiving the new one");
       }
     }
-  );
+  });
 
   if (isLoadingInitialData) {
     return <Loader />;
@@ -104,24 +94,12 @@ const Feed: React.FC<Props> = ({ usernameProfile }) => {
         ) : null}
         {posts.map((item: PostType, index: number) => {
           return (
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ rotate: 0, scale: 1 }}
-              transition={{
-                type: "spring",
-                stiffness: 260,
-                damping: 20,
-              }}
-              key={index}
-              className={"post"}
-            >
-              <Parcel
-                config={() => System.import("@monkeysmedia/post")}
-                mountParcel={mountRootParcel}
-                refe={posts.length === index + 1 ? LastPostElement : null}
-                post={item}
-              />
-            </motion.div>
+            <PostContainer
+              item={item}
+              index={index}
+              postsLen={posts.length}
+              LastPostElement={LastPostElement}
+            />
           );
         })}
         {isLoadingMore ? <Loader /> : null}
