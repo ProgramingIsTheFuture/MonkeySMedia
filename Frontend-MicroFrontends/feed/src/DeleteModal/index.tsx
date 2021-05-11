@@ -13,6 +13,7 @@ const DeleteModal = ({ visible, id, setVisible }) => {
     window.dispatchEvent(
       new CustomEvent("@monkeysmedia/Posts/delete", { detail: { id: id } })
     );
+    setVisible(false);
   };
 
   if (!visible) {

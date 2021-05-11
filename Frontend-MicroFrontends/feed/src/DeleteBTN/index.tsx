@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DeleteModal from "../DeleteModal";
 
 import { Container, BTN } from "./styles";
@@ -9,17 +9,20 @@ export interface Props {
 
 const DeleteBTN: React.FC<Props> = ({ postID }) => {
   const [modal, setModal] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
 
-  const handler = (e: any) => {
-    System.import("@monkeysmedia/util-module")
-      .then((util) =>
-        util.apiPost("api/posts/delete-post/", { id: e.detail.id })
-      )
-      .then(() => {})
-      .catch();
-  };
+  window.addEventListener("@monkeysmedia/Posts/delete", () => {
+    setIsDelete(true);
+  });
 
-  window.addEventListener("@monkeysmedia/Posts/delete", handler, false);
+  useEffect(() => {
+    if (isDelete) {
+      System.import("@monkeysmedia/util-module")
+        .then((util) => util.apiPost("api/posts/delete-post/", { id: postID }))
+        .catch(() => {});
+      setIsDelete(false);
+    }
+  }, [isDelete, setIsDelete, postID]);
 
   const handleDeletePost = () => {
     // Deleting posts API
@@ -34,4 +37,4 @@ const DeleteBTN: React.FC<Props> = ({ postID }) => {
   );
 };
 
-export default DeleteBTN;
+export default React.memo(DeleteBTN);
