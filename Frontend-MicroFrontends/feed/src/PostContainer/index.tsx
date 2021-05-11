@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import Post from "../Post";
 
 const PostContainer = ({ item, index, postsLen, LastPostElement }) => {
-  console.log(item);
   return (
     <motion.div
       initial={{ scale: 0 }}

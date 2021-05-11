@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useSWRInfinite } from "swr";
 
 import { Container } from "./styles";
@@ -70,7 +70,17 @@ const Feed: React.FC<Props> = ({ usernameProfile }) => {
   const isReachingEnd =
     isEmpty || (data && data[data.length - 1]?.length < pageSize) || !next;
 
-  window.addEventListener("@monkeysmedia/CreatePost/created", async () => {
+  window.addEventListener("@monkeysmedia/Posts/create", async () => {
+    if (data) {
+      try {
+        await mutate();
+      } catch (error) {
+        console.error("Error creating new post or receiving the new one");
+      }
+    }
+  });
+
+  window.addEventListener("@monkeysmedia/Posts/delete", async () => {
     if (data) {
       try {
         await mutate();
@@ -94,12 +104,14 @@ const Feed: React.FC<Props> = ({ usernameProfile }) => {
         ) : null}
         {posts.map((item: PostType, index: number) => {
           return (
-            <PostContainer
-              item={item}
-              index={index}
-              postsLen={posts.length}
-              LastPostElement={LastPostElement}
-            />
+            <React.Fragment key={index}>
+              <PostContainer
+                item={item}
+                index={index}
+                postsLen={posts.length}
+                LastPostElement={LastPostElement}
+              />
+            </React.Fragment>
           );
         })}
         {isLoadingMore ? <Loader /> : null}

@@ -31,7 +31,7 @@ const CreatePost: React.FC = () => {
         .then((resp) => {
           if (resp.data) {
             window.dispatchEvent(
-              new CustomEvent("@monkeysmedia/CreatePost/created", {
+              new CustomEvent("@monkeysmedia/Posts/create", {
                 detail: resp.data,
               })
             );
