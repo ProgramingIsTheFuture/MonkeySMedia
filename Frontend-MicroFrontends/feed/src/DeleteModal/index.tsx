@@ -1,5 +1,5 @@
-import React from "react";
-import { Container } from "./styles";
+import React, { useEffect } from "react";
+import { Container, Wrapper, Items, BTNGroup } from "./styles";
 
 interface Props {
   visible: boolean;
@@ -20,13 +20,30 @@ const DeleteModal = ({ visible, id, setVisible }) => {
     return <></>;
   }
 
+  useEffect(() => {
+    if (visible) {
+      document.querySelector("body").style.overflow += "hidden";
+    }
+  }, [visible]);
+
   return (
     <Container>
-      <div>
-        Confirm the delete btn
-        <button onClick={handleDelete}>Delete</button>
-        <button onClick={() => setVisible(false)}>Cancel</button>
-      </div>
+      <Wrapper>
+        <Items>
+          <p>Confirma para apagar a tua publicação</p>
+          <BTNGroup>
+            <button onClick={handleDelete}>Confirmar</button>
+            <button
+              onClick={() => {
+                document.querySelector("body").style.overflow = "initial";
+                setVisible(false);
+              }}
+            >
+              Cancelar
+            </button>
+          </BTNGroup>
+        </Items>
+      </Wrapper>
     </Container>
   );
 };

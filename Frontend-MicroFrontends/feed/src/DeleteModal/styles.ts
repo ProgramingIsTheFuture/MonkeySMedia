@@ -11,8 +11,32 @@ export const Container = styled.section`
 
   width: 100%;
   height: 100%;
+`;
+export const Wrapper = styled.div`
+  height: 100%;
+  width: 100%;
 
-  div {
-    background-color: white;
+  background-color: inherit;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Items = styled.div`
+  background-color: white;
+  width: 50%;
+  height: 25%;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+`;
+
+export const BTNGroup = styled.div`
+  &:first-child {
+    background-color: green;
   }
 `;
