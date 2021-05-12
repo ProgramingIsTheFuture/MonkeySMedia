@@ -7,7 +7,7 @@ export const Container = styled.section`
   left: 0;
 
   z-index: 999999;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.75);
 
   width: 100%;
   height: 100%;
@@ -36,7 +36,15 @@ export const Items = styled.div`
 `;
 
 export const BTNGroup = styled.div`
-  &:first-child {
-    background-color: green;
+  button {
+    margin: 2.5px;
+
+    :first-child {
+      background-color: green;
+    }
+
+    :last-child {
+      background-color: red;
+    }
   }
 `;

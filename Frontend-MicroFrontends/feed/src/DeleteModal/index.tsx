@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Wrapper, Items, BTNGroup } from "./styles";
 
 interface Props {
@@ -8,23 +8,28 @@ interface Props {
 }
 
 const DeleteModal = ({ visible, id, setVisible }) => {
+  const [positions, setPositions] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
   const handleDelete = () => {
-    console.log("deleting", id);
     window.dispatchEvent(
       new CustomEvent("@monkeysmedia/Posts/delete", { detail: { id: id } })
     );
     setVisible(false);
   };
 
+  useEffect(() => {
+    if (visible) {
+      setPositions({ x: window.scrollX, y: window.scrollY });
+      document.querySelector("body").style.overflow = "hidden";
+      window.scrollTo(0, 0);
+    }
+  }, [visible, setPositions]);
+
   if (!visible) {
     return <></>;
   }
-
-  useEffect(() => {
-    if (visible) {
-      document.querySelector("body").style.overflow += "hidden";
-    }
-  }, [visible]);
 
   return (
     <Container>
@@ -35,8 +40,8 @@ const DeleteModal = ({ visible, id, setVisible }) => {
             <button onClick={handleDelete}>Confirmar</button>
             <button
               onClick={() => {
-                document.querySelector("body").style.overflow = "initial";
                 setVisible(false);
+                window.scrollTo(positions.x, positions.y);
               }}
             >
               Cancelar

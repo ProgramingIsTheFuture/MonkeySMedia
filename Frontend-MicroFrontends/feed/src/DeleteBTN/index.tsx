@@ -24,6 +24,12 @@ const DeleteBTN: React.FC<Props> = ({ postID }) => {
     }
   }, [isDelete, setIsDelete, postID]);
 
+  useEffect(() => {
+    if (!modal) {
+      document.querySelector("body").style.overflow = "initial";
+    }
+  }, [modal]);
+
   const handleDeletePost = () => {
     // Deleting posts API
     setModal(true);
