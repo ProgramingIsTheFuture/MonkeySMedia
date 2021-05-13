@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Messages, Message } from "./styles";
+import { Container, Messages, MessageContainer, Message } from "./styles";
 import useSWR from "swr";
 import HeaderProfile from "./HeaderProfile";
 
@@ -101,40 +101,43 @@ export default function Root(props) {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit}>
-        <input type={"text"} onChange={messageChange} value={message} />
-        <input type={"submit"} />
-      </form>
-      {sendToUser}
+      <HeaderProfile username={sendToUser} />
       <Messages>
-        {allMessages.map((item: MessagesDB) => {
-          if (me.data === item.user_sender) {
+        <MessageContainer>
+          {allMessages.map((item: MessagesDB) => {
+            if (me.data === item.user_sender) {
+              return (
+                <Message right={true} key={item.id}>
+                  <div>
+                    <div>{item.timestamp}</div>
+                  </div>
+                  <div>
+                    <div>{item.user_sender}</div>
+                    <div>{item.message}</div>
+                  </div>
+                </Message>
+              );
+            }
             return (
-              <Message right={true} key={item.id}>
-                <div>
-                  <div>{item.timestamp}</div>
-                </div>
+              <Message right={false} key={item.id}>
                 <div>
                   <div>{item.user_sender}</div>
                   <div>{item.message}</div>
                 </div>
+                <div>
+                  <div>{item.timestamp}</div>
+                </div>
               </Message>
             );
-          }
-          return (
-            <Message right={false} key={item.id}>
-              <div>
-                <div>{item.user_sender}</div>
-                <div>{item.message}</div>
-              </div>
-              <div>
-                <div>{item.timestamp}</div>
-              </div>
-            </Message>
-          );
-        })}
+          })}
+        </MessageContainer>
       </Messages>
-      <HeaderProfile username={sendToUser} />
+      <footer>
+        <form onSubmit={handleSubmit}>
+          <input type={"text"} onChange={messageChange} value={message} />
+          <input type={"submit"} />
+        </form>
+      </footer>
     </Container>
   );
 }

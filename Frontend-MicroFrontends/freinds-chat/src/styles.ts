@@ -26,18 +26,36 @@ export const FreindDiv = styled.div`
       span {
         margin-left: 15px;
       }
+    }
+  }
+`;
 
-      p {
-        overflow: hidden;
-        width: 90%;
-        margin: 0;
-        margin-left: 15px;
-        display: -webkit-box;
-        -webkit-line-clamp: 9;
-        -webkit-box-orient: horizontal;
-        -moz-line-clamp: 9;
-        -moz-box-orient: horizontal;
-      }
+export const FLName = styled.div`
+  width: 90%;
+  margin: 0 !important;
+
+  overflow: hidden;
+  flex-grow: 1;
+
+  text-overflow: ellipsis;
+  display: -webkit-box;
+
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: horizontal;
+
+  -moz-line-clamp: 9;
+  -moz-box-orient: horizontal;
+
+  span {
+    display: flex;
+    align-items: flex-start;
+    white-space: nowrap;
+    position: relative;
+    flex-grow: 1;
+
+    span {
+      margin: 0 !important;
+      text-overflow: ellipsis;
     }
   }
 `;

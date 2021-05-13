@@ -61,7 +61,7 @@
 
             <template id="single-spa-layout" style="display: none;">
               <single-spa-router base="/">
-                <main>
+                <main style="height: 100%; height: 100%;">
 				  <application name="@monkeysmedia/globalStyles"></application>
                   <route default>
                     <application name="@monkeysmedia/not-found"></application>
@@ -91,13 +91,11 @@
 				  </style>
 					  <div class="chat" style="display: grid;
 						grid-template-columns: min(max(40%, 250px), 350px) auto;
-						height: calc(100vh - 50px);">
+						height: 100%;">
 						  <application name="@monkeysmedia/freinds-chat"></application>
-						  <div>
-							  <route path=":username/">
-								<application name="@monkeysmedia/chat"></application>
-							  </route>
-						  </div>
+						  <route path=":username/">
+							<application name="@monkeysmedia/chat"></application>
+						  </route>
 					  </div>
                   </route>
                 </main>

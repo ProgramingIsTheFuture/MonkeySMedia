@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, FreindDiv } from "./styles";
+import { Container, FreindDiv, FLName } from "./styles";
 
 export interface ProfileInfoTypes {
   id: number;
@@ -25,7 +25,7 @@ const Freinds: React.FC = () => {
       });
   }, []);
 
-  const changeChat = (e, user: string) => {
+  const changeChat = (e: any, user: string) => {
     e.preventDefault();
     System.import("@monkeysmedia/util-module").then((util) =>
       util.RedirectTo(`/chat/${user}`)
@@ -58,36 +58,40 @@ const Freinds: React.FC = () => {
     <Container>
       <div>
         <input type={"text"} />
-        {profiles!.map((item: ProfileInfoTypes) => {
-          return (
-            <FreindDiv key={item.id}>
-              <a
-                href={`/chat/${item.user}`}
-                onClick={(e) => changeChat(e, item.user)}
-              >
-                <div style={{ height: "50px" }}>
-                  <img
-                    src={`${baseUrl}${item.profile_image.substring(1)}`}
-                    alt={"Profile"}
-                    width={"50px"}
-                    height={"50px"}
-                    style={{ borderRadius: "25px" }}
-                  />
-                </div>
-                <div>
-                  <div>
-                    <span>{item.user}</span>
+        <div>
+          {profiles!.map((item: ProfileInfoTypes) => {
+            return (
+              <FreindDiv key={item.id}>
+                <a
+                  href={`/chat/${item.user}`}
+                  onClick={(e) => changeChat(e, item.user)}
+                >
+                  <div style={{ height: "50px" }}>
+                    <img
+                      src={`${baseUrl}${item.profile_image.substring(1)}`}
+                      alt={"Profile"}
+                      width={"50px"}
+                      height={"50px"}
+                      style={{ borderRadius: "25px" }}
+                    />
                   </div>
                   <div>
-                    <p>
-                      {item.first_name} {item.last_name}
-                    </p>
+                    <div>
+                      <span>{item.user}</span>
+                    </div>
+                    <FLName id="names">
+                      <span>
+                        <span dir="ltr">
+                          {item.first_name} {item.last_name}
+                        </span>
+                      </span>
+                    </FLName>
                   </div>
-                </div>
-              </a>
-            </FreindDiv>
-          );
-        })}
+                </a>
+              </FreindDiv>
+            );
+          })}
+        </div>
       </div>
     </Container>
   );

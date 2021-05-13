@@ -5,9 +5,9 @@ export const Container = styled.header`
   z-index: 1;
 
   background-color: var(--nav-color);
+  order: 0;
 
   top: 0;
-  position:absolute;
 
   h3 {
 	text-align: center;

@@ -7,6 +7,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
 
     font-size: 85%;
+    height: 100%;
 
     width: 100%;
     max-width: 100vw;
@@ -41,6 +42,7 @@ export default createGlobalStyle`
     --white: #FFF; */
 
   }
+
 
   button, input[type="button"], input[type="submit"] {
     :focus{
