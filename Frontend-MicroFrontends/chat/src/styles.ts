@@ -21,6 +21,7 @@ export const Container = styled.div`
 export const Messages = styled.div`
   position: relative;
   z-index: 1;
+
   flex: 1 1 0;
   order: 2;
 
@@ -51,6 +52,21 @@ export const Message = styled.div<Props>`
   justify-content: ${(props: Props) =>
     props.right ? "flex-end" : "flex-start"};
 
-  align-items: center;
-  margin: 7px;
+  padding: 6px 7px 8px 9px;
+
+  div {
+    margin: 0;
+    background-color: ${(props: Props) =>
+      !props.right ? "var(--card)" : "var(--nav-color)"};
+
+    color: var(--white);
+  }
+`;
+
+export const TimeStamp = styled.div`
+  float: right;
+
+  span {
+    font-size: 1rem;
+  }
 `;

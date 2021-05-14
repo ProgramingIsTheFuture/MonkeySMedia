@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Container, Messages, MessageContainer, Message } from "./styles";
+import {
+  Container,
+  Messages,
+  MessageContainer,
+  Message,
+  TimeStamp,
+} from "./styles";
 import useSWR from "swr";
 import HeaderProfile from "./HeaderProfile";
 
@@ -47,6 +53,14 @@ export default function Root(props) {
         .catch();
     }
   }, [sendToUser]);
+
+  useEffect(() => {
+    if (allMessages.length >= 0) {
+      document.getElementById("_scrolling").scrollTop = document.getElementById(
+        "_scrolling"
+      ).scrollHeight;
+    }
+  }, [allMessages]);
 
   useEffect(() => {
     if (sendToUser !== "") {
@@ -103,29 +117,24 @@ export default function Root(props) {
     <Container>
       <HeaderProfile username={sendToUser} />
       <Messages>
-        <MessageContainer>
+        <MessageContainer id="_scrolling">
           {allMessages.map((item: MessagesDB) => {
-            if (me.data === item.user_sender) {
-              return (
-                <Message right={true} key={item.id}>
-                  <div>
-                    <div>{item.timestamp}</div>
-                  </div>
-                  <div>
-                    <div>{item.user_sender}</div>
-                    <div>{item.message}</div>
-                  </div>
-                </Message>
-              );
-            }
             return (
-              <Message right={false} key={item.id}>
-                <div>
-                  <div>{item.user_sender}</div>
-                  <div>{item.message}</div>
-                </div>
-                <div>
-                  <div>{item.timestamp}</div>
+              <Message
+                right={me.data === item.user_sender ? true : false}
+                key={item.id}
+              >
+                <div style={{ maxWidth: "650px", minWidth: "115px" }}>
+                  <div>
+                    <div style={{ padding: "5px 5px 0 5px" }}>
+                      <span>{item.message}</span>
+                    </div>
+                  </div>
+                  <TimeStamp>
+                    <div>
+                      <span>{item.timestamp}</span>
+                    </div>
+                  </TimeStamp>
                 </div>
               </Message>
             );
