@@ -27,6 +27,7 @@ export default function Root(props) {
 
   window.addEventListener("@monkeysmedia/chat/changeChat", (e: any) => {
     setSendToUser(e.detail.user);
+    setReloadMsg(true);
   });
 
   const me = useSWR<string>("api/users/get-user/", (url) =>
@@ -60,7 +61,7 @@ export default function Root(props) {
         "_scrolling"
       ).scrollHeight;
     }
-  }, [allMessages]);
+  }, [allMessages, sendToUser]);
 
   useEffect(() => {
     if (sendToUser !== "") {
@@ -81,11 +82,11 @@ export default function Root(props) {
       };
 
       socket!.onclose = function (event: any) {
-        console.log(event);
+        console.info(event);
       };
 
       socket!.onerror = function (error: any) {
-        console.log(error);
+        console.error(error);
       };
     }
   }, [socket]);
