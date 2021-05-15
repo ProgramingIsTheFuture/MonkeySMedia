@@ -8,6 +8,9 @@ from rest_framework.authentication import TokenAuthentication
 from ChatSMedia.models import Message
 from ChatSMedia.serializers import MessageSerializer
 
+from ProfileSMedia.models import ProfileUser
+from ProfileSMedia.serializers import ProfileUserSerializer
+
 
 # get messages between "me" and the other user
 @api_view(["POST"])
@@ -27,3 +30,33 @@ def get_all_messages(request):
 
     return Response(serializer.data, status=status.HTTP_200_OK)
     
+@api_view(["GET"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def get_all_users_messages(request):
+    msgUsers = []
+    for i in Message.objects.all():
+        if i.sender == request.user:
+            if ProfileUser.objects.get(pk=i.receiver.id) in msgUsers:
+                continue
+            msgUsers.append(ProfileUser.objects.get(pk=i.receiver.id))
+        elif i.receiver == request.user:
+            if ProfileUser.objects.get(pk=i.sender.id) in msgUsers:
+                continue
+            msgUsers.append(ProfileUser.objects.get(pk=i.sender.id))
+
+    following = get_object_or_404(ProfileUser, user_id=request.user.id)
+
+    profiles = []
+    for user in following.following.all():
+        profiles.append(get_object_or_404(ProfileUser, user_id=user.id))
+
+    finalRes = []
+    finalRes.extend(msgUsers[:])
+    finalRes.extend(profiles[:])
+
+    serializer = ProfileUserSerializer(set(finalRes), many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+    
+
