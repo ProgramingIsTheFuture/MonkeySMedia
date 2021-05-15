@@ -19,7 +19,7 @@ const Freinds: React.FC = () => {
 
   useEffect(() => {
     System.import("@monkeysmedia/util-module")
-      .then((util) => util.apiGet(`api/profile/list-all-users-following/`))
+      .then((util) => util.apiGet(`api/chat/list-users/`))
       .then((resp) => {
         setProfiles(resp.data);
       });
