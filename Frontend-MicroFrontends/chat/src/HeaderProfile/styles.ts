@@ -15,7 +15,7 @@ export const Container = styled.header`
   }
 }
 
-  a {
+  div {
     display: flex;
     height: 100%;
 

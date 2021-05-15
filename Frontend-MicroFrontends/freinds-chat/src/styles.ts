@@ -10,11 +10,12 @@ export const FreindDiv = styled.div`
 
   margin: 5px 5px 0 5px;
 
-  a {
+  div {
     display: flex;
     flex-direction: row;
 
     background-color: var(--card);
+    cursor: pointer;
 
     color: var(--white);
     width: 100%;

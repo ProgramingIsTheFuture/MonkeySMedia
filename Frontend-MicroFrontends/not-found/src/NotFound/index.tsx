@@ -8,8 +8,26 @@ const NotFound: React.FC = (props) => {
       <div>404</div>
       <div>This Page Does Not Exist</div>
       <div>
-        Try <a href="/login/">loggin in</a> or{" "}
-        <a href="/register/">register your account</a>
+        Try
+        <div
+          onClick={() =>
+            System.import("@monkeysmedia/util-module").then((util) =>
+              util.RedirectTo("/register/")
+            )
+          }
+        >
+          loggin in
+        </div>
+        or
+        <div
+          onClick={() =>
+            System.import("@monkeysmedia/util-module").then((util) =>
+              util.RedirectTo("/register/")
+            )
+          }
+        >
+          register your account
+        </div>
       </div>
     </Container>
   );

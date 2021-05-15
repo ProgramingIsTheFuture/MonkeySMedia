@@ -32,8 +32,9 @@ export const NavItems = styled.ul`
     width: 30px;
     height: 30px;
 
-    a {
+    div {
       color: var(--white);
+      cursor: pointer;
     }
   }
 `;
@@ -65,7 +66,7 @@ export const SearchLink = styled.li`
   width: 100%;
   height: 100%;
 
-  a {
+  div {
     color: white;
     text-decoration: none;
   }
@@ -136,11 +137,12 @@ export const DropDownItems = styled.ul`
     margin-left: -50px;
     z-index: 5;
 
-    a {
+    div {
       padding: 0.5em;
 
       text-decoration: none;
       color: var(--white);
+      cursor: pointer;
 
       :hover {
         transition: 0.5s;

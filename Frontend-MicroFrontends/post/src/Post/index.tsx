@@ -35,7 +35,13 @@ const Post: React.FC<any> = (props) => {
   return (
     <Container ref={props.refe ? props.refe : null}>
       <UserSimpleInfo>
-        <a href={`/profile/${props.post.user}`}>
+        <div
+          onClick={() =>
+            System.import("@monkeysmedia/util-module").then((util) =>
+              util.RedirectTo(`/profile/${props.post.user}`)
+            )
+          }
+        >
           <div>
             {baseUrl.length > 0 ? (
               <img
@@ -50,7 +56,7 @@ const Post: React.FC<any> = (props) => {
               <p>{props.post.timestamp}</p>
             </div>
           </div>
-        </a>
+        </div>
         <div>
           {props.post.user === username ? (
             <DeleteBTN postID={props.post.id} />

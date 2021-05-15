@@ -71,7 +71,16 @@ const Login: React.FC = () => {
           <input type={"submit"} value={"LogIn"} />
         </div>
         You dont have one?
-        <a href={"/register/"}> Register</a>
+        <div
+          onClick={() =>
+            System.import("@monkeysmedia/util-module").then((util) =>
+              util.RedirectTo("/register/")
+            )
+          }
+          style={{ cursor: "pointer" }}
+        >
+          Register
+        </div>
       </form>
     </Container>
   );

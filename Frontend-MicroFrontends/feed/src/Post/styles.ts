@@ -30,9 +30,11 @@ export const UserSimpleInfo = styled.header`
     margin-right: 15px;
   }
 
-  a {
+  div {
     color: black;
     text-decoration: none;
+
+    cursor: pointer;
 
     div {
       margin-left: 15px;

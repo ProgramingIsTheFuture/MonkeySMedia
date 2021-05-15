@@ -16,15 +16,14 @@ import {
 } from "./styles";
 
 const Navbar: React.FC = () => {
-  const token: any = localStorage.getItem("auth");
-  console.log(token);
   const [username, setUsername] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [baseUrl, setBaseUrl] = useState("");
 
   useEffect(() => {
-    let util: any = System.import("@monkeysmedia/util-module");
-    util.then((uti) => setBaseUrl(uti.baseUrl));
+    System.import("@monkeysmedia/util-module").then((util) =>
+      setBaseUrl(util.baseUrl)
+    );
   }, []);
 
   useEffect(() => {
@@ -34,12 +33,11 @@ const Navbar: React.FC = () => {
           api.apiPost("api/profile/get-profile/", { username: username })
         )
         .then((resp) => {
-          console.log(resp);
           setProfileImage(resp.data.profile_image.substring(1));
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.error(err));
     }
-  }, [username, token]);
+  }, [username]);
 
   useEffect(() => {
     System.import("@monkeysmedia/util-module")
@@ -62,24 +60,48 @@ const Navbar: React.FC = () => {
       <NavItems>
         <li>Lgo</li>
         <ProfileImage>
-          <a href={`/profile/${username}`}>
+          <div
+            onClick={() =>
+              System.import("@monkeysmedia/util-module").then((util) =>
+                util.RedirectTo(`/profile/${username}`)
+              )
+            }
+          >
             <img src={`${baseUrl}${profileImage}`} alt={"Profile"} />
-          </a>
+          </div>
         </ProfileImage>
         <li>
-          <a href={"/"}>
+          <div
+            onClick={() =>
+              System.import("@monkeysmedia/util-module").then((util) =>
+                util.RedirectTo("/")
+              )
+            }
+          >
             <HomeIcon />
-          </a>
+          </div>
         </li>
         <li>
-          <a href={"/chat/"}>
+          <div
+            onClick={() =>
+              System.import("@monkeysmedia/util-module").then((util) =>
+                util.RedirectTo("/chat/")
+              )
+            }
+          >
             <ChatIcon />
-          </a>
+          </div>
         </li>
         <SearchLink>
-          <a href="/search/">
+          <div
+            onClick={() =>
+              System.import("@monkeysmedia/util-module").then((util) =>
+                util.RedirectTo("/search/")
+              )
+            }
+          >
             <SearchIcon />
-          </a>
+          </div>
         </SearchLink>
 
         <DropDown>
@@ -90,12 +112,27 @@ const Navbar: React.FC = () => {
             <DropDownIcon></DropDownIcon>
             <DropDownItems>
               <li>
-                <a href="/settings/">Settings</a>
+                <div
+                  onClick={() =>
+                    System.import("@monkeysmedia/util-module").then((util) =>
+                      util.RedirectTo("/settings/")
+                    )
+                  }
+                >
+                  Settings
+                </div>
               </li>
               <li>
-                <a href="/login/" onClick={logOut}>
+                <div
+                  onClick={() => {
+                    logOut();
+                    System.import("@monkeysmedia/util-module").then((util) =>
+                      util.RedirectTo("/login/")
+                    );
+                  }}
+                >
                   Logout
-                </a>
+                </div>
               </li>
             </DropDownItems>
           </motion.div>

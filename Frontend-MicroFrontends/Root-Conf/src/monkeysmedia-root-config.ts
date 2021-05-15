@@ -22,7 +22,8 @@ const applications = constructApplications({
         name != "@monkeysmedia/login" &&
         name != "@monkeysmedia/register" &&
         name != "@monkeysmedia/not-found" &&
-        name != "@monkeysmedia/globalStyles"
+        name != "@monkeysmedia/globalStyles" &&
+        name != "@monkeysmedia/notifications"
       ) {
         window.location.pathname = "/login/";
       }

@@ -62,9 +62,13 @@ const Freinds: React.FC = () => {
           {profiles!.map((item: ProfileInfoTypes) => {
             return (
               <FreindDiv key={item.id}>
-                <a
-                  href={`/chat/${item.user}`}
-                  onClick={(e) => changeChat(e, item.user)}
+                <div
+                  onClick={(e) => {
+                    changeChat(e, item.user);
+                    System.import("@monkeysmedia/util-module").then((util) =>
+                      util.RedirectTo(`/chat/${item.user}`)
+                    );
+                  }}
                 >
                   <div style={{ height: "50px" }}>
                     <img
@@ -87,7 +91,7 @@ const Freinds: React.FC = () => {
                       </span>
                     </FLName>
                   </div>
-                </a>
+                </div>
               </FreindDiv>
             );
           })}

@@ -49,7 +49,13 @@ const HeaderProfile: React.FC<props> = ({ username }) => {
   }
   return (
     <Container>
-      <a href={`/profile/${data.user}`}>
+      <div
+        onClick={() =>
+          System.import().then((util) =>
+            util.RedirectTo(`/profile/${data.user}`)
+          )
+        }
+      >
         <div>
           {baseUrl ? (
             <img
@@ -68,7 +74,7 @@ const HeaderProfile: React.FC<props> = ({ username }) => {
             {data.first_name} {data.last_name}
           </div>
         </div>
-      </a>
+      </div>
     </Container>
   );
 };

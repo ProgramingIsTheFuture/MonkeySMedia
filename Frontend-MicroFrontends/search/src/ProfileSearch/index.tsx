@@ -24,7 +24,14 @@ interface Props {
 
 const ProfileSearch: React.FC<Props> = ({ Profile }) => {
   return (
-    <a href={`/Profile/${Profile.user}`} style={{ textDecoration: "none" }}>
+    <div
+      onClick={() =>
+        System.import("@monkeysmedia/util-module").then((util) =>
+          util.RedirectTo(`/Profile/${Profile.user}`)
+        )
+      }
+      style={{ textDecoration: "none", cursor: "pointer" }}
+    >
       <Container>
         <BackgroundImg>
           <img src={`${Profile.background_profile_image}`} alt={"background"} />
@@ -64,7 +71,7 @@ const ProfileSearch: React.FC<Props> = ({ Profile }) => {
           </div>
         </div>
       </Container>
-    </a>
+    </div>
   );
 };
 
