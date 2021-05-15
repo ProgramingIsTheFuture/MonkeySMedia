@@ -44,7 +44,8 @@
         "@monkeysmedia/freinds-chat": "//localhost:3010/monkeysmedia-freinds-chat.js",
         "@monkeysmedia/chat": "//localhost:3011/monkeysmedia-chat.js",
         "@monkeysmedia/search": "//localhost:3012/monkeysmedia-search.js",
-		"@monkeysmedia/settings": "//localhost:3013/monkeysmedia-settings.js"
+		"@monkeysmedia/settings": "//localhost:3013/monkeysmedia-settings.js",
+		"@monkeysmedia/notifications": "//localhost:3014/monkeysmedia-notifications.js"
       }
      }
   </script>
@@ -63,6 +64,7 @@
               <single-spa-router base="/">
                 <main style="height: 100%; height: 100%;">
 				  <application name="@monkeysmedia/globalStyles"></application>
+				  <application name="@monkeysmedia/notifications"></application>
                   <route default>
                     <application name="@monkeysmedia/not-found"></application>
                   </route>
