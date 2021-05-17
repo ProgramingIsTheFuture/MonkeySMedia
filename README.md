@@ -38,4 +38,9 @@
 		<li><h3>check-follow-profile/</h3> <span>Checks if the user is already been followed</span></li>
 		<li><h3>edit-my-profile/</h3> <span>Edit your own profile</span></li>
 	</ul>
+	<ul>
+		<h2>chat/</h2>
+		<li><h3>all-messages//</h3> <span>get all the messages</span></li>
+		<li><h3>list-users/</h3> <span>List the users that i'm following or that sent me a message</span></li>
+	</ul>
 </ul>
