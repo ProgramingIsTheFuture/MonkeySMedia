@@ -1,4 +1,5 @@
 # MonkeySMedia
+
 ### My Personal SocialMedia
 
 ###### In this social network we will be able to make post so that our friends can see.
@@ -6,7 +7,6 @@
 ###### We can Post images, text. we can like posts and comment it. Follow our freinds, and be followed by them.
 
 ###### Each user will have their own profiles and will be able to change it how ever he want.
-
 
 <ul>
 	<h1>Endpoints</h1>
@@ -37,5 +37,10 @@
 		<li><h3>follow-unfollow/</h3> <span>To follow or unfollow a user</span></li>
 		<li><h3>check-follow-profile/</h3> <span>Checks if the user is already been followed</span></li>
 		<li><h3>edit-my-profile/</h3> <span>Edit your own profile</span></li>
+	</ul>
+	<ul>
+		<h2>chat/</h2>
+		<li><h3>all-messages//</h3> <span>get all the messages</span></li>
+		<li><h3>list-users/</h3> <span>List the users that i'm following or that sent me a message</span></li>
 	</ul>
 </ul>
