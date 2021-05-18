@@ -15,14 +15,14 @@ class Message(models.Model):
 
 
 class Notification(models.Model):
-    user = models.ForeignKey('auth.User', related_name="receiver", on_delete=models.CASCADE)
-    sender_username = models.TextField(blank=False, null=False)
-    message = models.TextField(blank=False, null=False)
-    is_read = models.BooleanField(default=False)
+    user = models.ForeignKey('auth.User', related_name="receiver_notification", on_delete=models.CASCADE)
+    sender = models.ForeignKey('auth.User', related_name="sender_notification", on_delete=models.CASCADE)
+    message = models.TextField(blank=False, null=False, max_length=512)
+    is_read = models.BooleanField(null=False, default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
-        return f'Sender {self.sender_username}'
+        return f'Sender {self.sender.username}'
 
     class Meta:
         ordering = ["-id"]

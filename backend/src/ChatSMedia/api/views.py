@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.authentication import TokenAuthentication
-from ChatSMedia.models import Message
-from ChatSMedia.serializers import MessageSerializer
+from ChatSMedia.models import Message, Notification
+from ChatSMedia.serializers import MessageSerializer, NotificationSerializer
 
 from ProfileSMedia.models import ProfileUser
 from ProfileSMedia.serializers import ProfileUserSerializer
@@ -58,5 +58,11 @@ def get_all_users_messages(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-    
 
+@api_view(["GET"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def get_all_noti(request):
+    noti = Notification.objects.all().filter(user=request.user)
+    serializer = NotificationSerializer(noti, many=True)
+
+    return Response(serializer.data, status=status.HTTP_200_OK)
