@@ -58,11 +58,23 @@ def get_all_users_messages(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-
 @api_view(["GET"])
 @authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
 def get_all_noti(request):
     noti = Notification.objects.all().filter(user=request.user)
     serializer = NotificationSerializer(noti, many=True)
 
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(["GET"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def get_mark_as_read(request):
+    noti = Notification.objects.all().filter(user=request.user)
+
+    for notification in noti:
+        notification.is_read = True
+        notification.save()
+
+    serializer = NotificationSerializer(noti, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
