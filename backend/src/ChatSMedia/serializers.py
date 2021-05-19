@@ -1,6 +1,10 @@
 from rest_framework import serializers
 from .models import Message
 
+from ProfileSMedia.models import ProfileUser
+from ProfileSMedia.serializers import ProfileUserSerializer
+
+
 class MessageSerializer(serializers.ModelSerializer):
     user_receiver = serializers.SerializerMethodField()
     user_sender = serializers.SerializerMethodField()
@@ -32,4 +36,6 @@ class NotificationSerializer(serializers.ModelSerializer):
         return obj.user.username
 
     def get_sender(self, obj):
-        return obj.user.username
+        prof = ProfileUser.objects.get(id=obj.sender.id)
+        serializer = ProfileUserSerializer(prof)
+        return serializer.data
