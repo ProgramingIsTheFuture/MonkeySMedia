@@ -37,12 +37,15 @@ export default function Root(props) {
       socket!.onopen = function () {};
 
       socket!.onmessage = function (event: any) {
-        console.log(event);
         CheckPermission(() =>
           ShowNotification(
             JSON.parse(event.data).profile.user,
             JSON.parse(event.data).message
           )
+        );
+
+        window.dispatchEvent(
+          new CustomEvent("@monkeysmedia/notification/new", {})
         );
       };
 
