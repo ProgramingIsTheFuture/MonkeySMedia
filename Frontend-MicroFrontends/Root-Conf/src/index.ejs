@@ -45,7 +45,8 @@
         "@monkeysmedia/chat": "//localhost:3011/monkeysmedia-chat.js",
         "@monkeysmedia/search": "//localhost:3012/monkeysmedia-search.js",
 		"@monkeysmedia/settings": "//localhost:3013/monkeysmedia-settings.js",
-		"@monkeysmedia/notifications": "//localhost:3014/monkeysmedia-notifications.js"
+		"@monkeysmedia/notifications": "//localhost:3014/monkeysmedia-notifications.js",
+		"@monkeysmedia/notifications-page": "//localhost:3015/monkeysmedia-notifications-page.js"
       }
      }
   </script>
@@ -88,6 +89,9 @@
                   </route>
                   <route path="/profile/:username/" exact>
                       <application name="@monkeysmedia/profile"></application>
+                  </route>
+                  <route path="/notifications/" exact>
+                      <application name="@monkeysmedia/notifications-page"></application>
                   </route>
                   <route path="/chat/">
 				  </style>
