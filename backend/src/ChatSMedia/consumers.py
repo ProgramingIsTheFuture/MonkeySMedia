@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from .models import Message
+from .models import Message, Notification
 from ProfileSMedia.serializers import ProfileUserSerializer
 from ProfileSMedia.models import ProfileUser
 
@@ -34,17 +34,22 @@ class ChatNotificationConsumer(WebsocketConsumer):
 
 @receiver(post_save, sender=Message)
 def notification(sender, instance, created, **kwargs):
+    Notification(user=instance.receiver.id,
+            sender=instance.sender.id,
+            message=f"Nova Mensage de {instance.sender.username}").save()
+
+
+@receiver(post_save, sender=Notification)
+def notification(sender, instance, created, **kwargs):
     channel_layer = get_channel_layer()
     data = {}
     data['message'] = instance.message
     data['profile'] = ProfileUserSerializer(ProfileUser.objects.get(pk=instance.sender.id)).data
 
-    async_to_sync(channel_layer.group_send)(User.objects.get(pk=instance.receiver_id).username, {
+    async_to_sync(channel_layer.group_send)(User.objects.get(pk=instance.user.id).username, {
         "type": "chat_message",
         "data": json.dumps(data),
     })
-
-
 
 class ChatConsumer(AsyncConsumer):
 

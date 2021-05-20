@@ -15,6 +15,8 @@ from rest_framework.pagination import PageNumberPagination
 from django.conf import settings 
 import time
 
+from ChatSMedia.models import Notification
+
 POST_PER_PAGE = settings.POST_PER_PAGE
 
 
@@ -78,6 +80,7 @@ def like_unlike_posts_view(request):
             return Response({"like": "Removed"}, status=status.HTTP_201_CREATED)
 
         obj.likes.add(request.user)
+        Notification(user=obj.user, sender=request.user, message=f"{request.user.username} Gostou de uma publicação tua!").save()
         return Response({"like": "Added"}, status=status.HTTP_201_CREATED)
 
     return Response({"Fatal": "This Post does not exist"}, status=status.HTTP_400_BAD_REQUEST)

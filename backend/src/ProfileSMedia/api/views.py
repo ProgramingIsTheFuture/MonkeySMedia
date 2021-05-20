@@ -12,6 +12,7 @@ from ProfileSMedia.models import ProfileUser
 from ProfileSMedia.serializers import ProfileUserSerializer
 from Users.serializers import UserCreationSerializer
 
+from ChatSMedia.models import Notification
 
 def check_in_list(request, obj):
     resp = False
@@ -59,6 +60,8 @@ def post_Following_or_UnFollowing(request):
     
     profFollowed.followers.add(userFollowing)
     profFollowing.following.add(userFollowed)
+    noti = Notification(user=userFollowed, sender=request.user, message=f"Começaste a ser seguido por {request.user.username}").save()
+    print(noti)
     return Response({"Follow": "Success"}, status=status.HTTP_200_OK)
 
 
