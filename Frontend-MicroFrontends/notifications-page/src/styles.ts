@@ -40,6 +40,8 @@ export const Profile = styled.div`
   align-items: center;
 
   margin-right: 15px;
+  cursor: pointer;
+
   div {
     height: 70px;
 

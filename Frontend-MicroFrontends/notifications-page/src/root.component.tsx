@@ -70,7 +70,13 @@ export default function Root(props) {
           {notifications.map((item, index) => (
             <div key={index} style={{ width: "75%" }}>
               <Notification>
-                <Profile>
+                <Profile
+                  onClick={() =>
+                    System.import("@monkeysmedia/util-module").then((util) =>
+                      util.RedirectTo(`/profile/${item.sender.user}`)
+                    )
+                  }
+                >
                   <div>
                     <img
                       src={`${baseUrl}${item.sender.profile_image.substring(
