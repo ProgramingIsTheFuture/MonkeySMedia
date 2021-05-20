@@ -39,6 +39,7 @@ export default function Root(props) {
       socket!.onmessage = function (event: any) {
         CheckPermission(() => ShowNotification(JSON.parse(event.data).message));
 
+        console.log(event.data);
         window.dispatchEvent(
           new CustomEvent("@monkeysmedia/notification/new", {})
         );

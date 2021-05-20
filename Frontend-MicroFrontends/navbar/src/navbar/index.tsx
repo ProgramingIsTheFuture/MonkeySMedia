@@ -21,6 +21,7 @@ const Navbar: React.FC = () => {
   const [username, setUsername] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [baseUrl, setBaseUrl] = useState<string>("");
+  const [reload, setReload] = useState<boolean>(false);
   const [notifications, setNotifications] = useState<number>(0);
 
   useEffect(() => {
@@ -30,20 +31,27 @@ const Navbar: React.FC = () => {
   }, []);
 
   window.addEventListener("@monkeysmedia/notification/new", () => {
-    setNotifications(notifications + 1);
+    setReload(true);
+  });
+
+  window.addEventListener("@monkeysmedia/notification/read", () => {
+    setReload(true);
   });
 
   useEffect(() => {
-    System.import("@monkeysmedia/util-module").then((util) =>
-      util
-        .apiGet("api/chat/list-notifications")
-        .then((r: any) =>
-          setNotifications(
-            r.data.filter((i: any) => i.is_read === false).length
+    if (reload) {
+      System.import("@monkeysmedia/util-module").then((util) =>
+        util
+          .apiGet("api/chat/list-notifications")
+          .then((r: any) =>
+            setNotifications(
+              r.data.filter((i: any) => i.is_read === false).length
+            )
           )
-        )
-    );
-  }, []);
+      );
+      setReload(false);
+    }
+  }, [reload, setReload, setNotifications]);
 
   useEffect(() => {
     if (typeof username === "string" && username !== "") {

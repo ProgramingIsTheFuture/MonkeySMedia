@@ -25,12 +25,16 @@ export default function Root(props) {
   const [baseUrl, setBaseUrl] = useState<string>("");
   const [reload, setReload] = useState<boolean>(true);
 
-  const markAsRead = () =>
+  const markAsRead = () => {
     System.import("@monkeysmedia/util-module").then((util) =>
       util
         .apiGet("api/chat/mark-as-read/")
         .then((r: any) => setNotifications(r.data))
     );
+    window.dispatchEvent(
+      new CustomEvent("@monkeysmedia/notification/read", {})
+    );
+  };
 
   window.addEventListener("@monkeysmedia/notification/new", () => {
     setReload(true);
@@ -43,9 +47,9 @@ export default function Root(props) {
           .apiGet("api/chat/list-notifications/")
           .then((r: any) => setNotifications(r.data))
       );
+      setReload(false);
     }
-    setReload(false);
-  }, [reload]);
+  }, [reload, setReload, setNotifications]);
 
   useEffect(() => {
     System.import("@monkeysmedia/util-module").then((util) =>
