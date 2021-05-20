@@ -8,6 +8,7 @@ import {
   ProfileImage,
   HomeIcon,
   ChatIcon,
+  NotificationIcon,
   SearchLink,
   SearchIcon,
   DropDown,
@@ -18,13 +19,18 @@ import {
 const Navbar: React.FC = () => {
   const [username, setUsername] = useState("");
   const [profileImage, setProfileImage] = useState("");
-  const [baseUrl, setBaseUrl] = useState("");
+  const [baseUrl, setBaseUrl] = useState<string>("");
+  const [notifications, setNotifications] = useState<number>(0);
 
   useEffect(() => {
     System.import("@monkeysmedia/util-module").then((util) =>
       setBaseUrl(util.baseUrl)
     );
   }, []);
+
+  window.addEventListener("@monkeysmedia/notification/new", () => {
+    setNotifications(notifications + 1);
+  });
 
   useEffect(() => {
     if (typeof username === "string" && username !== "") {
@@ -58,7 +64,18 @@ const Navbar: React.FC = () => {
   return (
     <Container>
       <NavItems>
-        <li>Lgo</li>
+        <li>
+          <div
+            onClick={() =>
+              System.import("@monkeysmedia/util-module").then((util) =>
+                util.RedirectTo("/")
+              )
+            }
+          >
+            <HomeIcon />
+          </div>
+        </li>
+
         <ProfileImage>
           <div
             onClick={() =>
@@ -74,17 +91,6 @@ const Navbar: React.FC = () => {
           <div
             onClick={() =>
               System.import("@monkeysmedia/util-module").then((util) =>
-                util.RedirectTo("/")
-              )
-            }
-          >
-            <HomeIcon />
-          </div>
-        </li>
-        <li>
-          <div
-            onClick={() =>
-              System.import("@monkeysmedia/util-module").then((util) =>
                 util.RedirectTo("/chat/")
               )
             }
@@ -92,6 +98,18 @@ const Navbar: React.FC = () => {
             <ChatIcon />
           </div>
         </li>
+        <li>
+          <div
+            onClick={() =>
+              System.import("@monkeysmedia/util-module").then((util) =>
+                util.RedirectTo("/notifications/")
+              )
+            }
+          >
+            <NotificationIcon />
+          </div>
+        </li>
+
         <SearchLink>
           <div
             onClick={() =>
@@ -103,7 +121,6 @@ const Navbar: React.FC = () => {
             <SearchIcon />
           </div>
         </SearchLink>
-
         <DropDown>
           <motion.div
             initial={{ scale: 1.1, rotate: 180 }}

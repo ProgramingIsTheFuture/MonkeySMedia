@@ -3,6 +3,7 @@ import { Home } from "@styled-icons/heroicons-outline";
 import { Search } from "@styled-icons/boxicons-regular";
 import { ChatDotsFill } from "@styled-icons/bootstrap";
 import { CaretDown } from "styled-icons/boxicons-regular";
+import { NotificationsActive } from "styled-icons/material-twotone";
 
 export const Container = styled.nav`
   background: var(--nav-color);
@@ -58,6 +59,11 @@ export const HomeIcon = styled(Home)`
 `;
 
 export const ChatIcon = styled(ChatDotsFill)`
+  width: 100%;
+  height: 100%;
+`;
+
+export const NotificationIcon = styled(NotificationsActive)`
   width: 100%;
   height: 100%;
 `;
