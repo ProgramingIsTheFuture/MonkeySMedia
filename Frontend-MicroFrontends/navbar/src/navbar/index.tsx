@@ -8,6 +8,7 @@ import {
   ProfileImage,
   HomeIcon,
   ChatIcon,
+  NotificationCounter,
   NotificationIcon,
   SearchLink,
   SearchIcon,
@@ -31,6 +32,18 @@ const Navbar: React.FC = () => {
   window.addEventListener("@monkeysmedia/notification/new", () => {
     setNotifications(notifications + 1);
   });
+
+  useEffect(() => {
+    System.import("@monkeysmedia/util-module").then((util) =>
+      util
+        .apiGet("api/chat/list-notifications")
+        .then((r: any) =>
+          setNotifications(
+            r.data.filter((i: any) => i.is_read === false).length
+          )
+        )
+    );
+  }, []);
 
   useEffect(() => {
     if (typeof username === "string" && username !== "") {
@@ -105,7 +118,11 @@ const Navbar: React.FC = () => {
                 util.RedirectTo("/notifications/")
               )
             }
+            style={{ position: "relative" }}
           >
+            <NotificationCounter notifications={notifications}>
+              <span>{notifications === 0 ? null : notifications}</span>
+            </NotificationCounter>
             <NotificationIcon />
           </div>
         </li>

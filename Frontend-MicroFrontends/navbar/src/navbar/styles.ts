@@ -63,6 +63,27 @@ export const ChatIcon = styled(ChatDotsFill)`
   height: 100%;
 `;
 
+interface Props {
+  notifications: number;
+}
+export const NotificationCounter = styled.div<Props>`
+  ${(props) => (props.notifications === 0 ? "display : none;" : null)}
+  position: absolute;
+
+  right: 0;
+  top: 0;
+
+  width: 15px;
+  height: 15px;
+
+  background-color: white;
+  border-radius: 25px;
+
+  span {
+    color: red !important;
+  }
+`;
+
 export const NotificationIcon = styled(NotificationsActive)`
   width: 100%;
   height: 100%;
