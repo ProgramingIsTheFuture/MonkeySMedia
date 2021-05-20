@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const ShowNotification = (username: string, message: string) => {
-  return new Notification("Nova Mensagem", {
-    body: `${username} diz ${message}`,
+const ShowNotification = (message: string) => {
+  return new Notification("Nova Notificação", {
+    body: message,
   });
 };
 
@@ -37,12 +37,7 @@ export default function Root(props) {
       socket!.onopen = function () {};
 
       socket!.onmessage = function (event: any) {
-        CheckPermission(() =>
-          ShowNotification(
-            JSON.parse(event.data).profile.user,
-            JSON.parse(event.data).message
-          )
-        );
+        CheckPermission(() => ShowNotification(JSON.parse(event.data).message));
 
         window.dispatchEvent(
           new CustomEvent("@monkeysmedia/notification/new", {})
