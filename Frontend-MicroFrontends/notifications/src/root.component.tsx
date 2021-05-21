@@ -20,6 +20,7 @@ const CheckPermission = (noti: () => void) => {
 
 export default function Root(props) {
   const [socket, setSocket] = useState<WebSocket | null>(null);
+
   useEffect(() => {
     CheckPermission(() => {});
   }, []);
@@ -39,7 +40,6 @@ export default function Root(props) {
       socket!.onmessage = function (event: any) {
         CheckPermission(() => ShowNotification(JSON.parse(event.data).message));
 
-        console.log(event.data);
         window.dispatchEvent(
           new CustomEvent("@monkeysmedia/notification/new", {})
         );
@@ -54,5 +54,6 @@ export default function Root(props) {
       };
     }
   }, [socket]);
+
   return <></>;
 }
