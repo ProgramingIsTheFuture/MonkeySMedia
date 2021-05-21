@@ -9,7 +9,10 @@ const ShowNotification = (message: string) => {
 const CheckPermission = (noti: () => void) => {
   if (Notification.permission === "granted") {
     noti();
-  } else if (Notification.permission === "default") {
+  } else if (
+    Notification.permission === "default" ||
+    Notification.permission === "denied"
+  ) {
     Notification.requestPermission().then((p) => {
       if (p === "granted") {
         noti();
