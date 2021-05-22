@@ -18,6 +18,7 @@ export function getCookie(name: string) {
 }
 
 export const baseUrl = "http://localhost:8000/";
+export const socketUrl = "ws://localhost:8000/";
 
 const api = axios.create({ baseURL: baseUrl });
 

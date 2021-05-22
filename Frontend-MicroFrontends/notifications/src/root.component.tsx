@@ -9,7 +9,10 @@ const ShowNotification = (message: string) => {
 const CheckPermission = (noti: () => void) => {
   if (Notification.permission === "granted") {
     noti();
-  } else if (Notification.permission === "default") {
+  } else if (
+    Notification.permission === "default" ||
+    Notification.permission === "denied"
+  ) {
     Notification.requestPermission().then((p) => {
       if (p === "granted") {
         noti();
@@ -20,6 +23,7 @@ const CheckPermission = (noti: () => void) => {
 
 export default function Root(props) {
   const [socket, setSocket] = useState<WebSocket | null>(null);
+
   useEffect(() => {
     CheckPermission(() => {});
   }, []);
@@ -27,9 +31,12 @@ export default function Root(props) {
   useEffect(() => {
     let token = localStorage.getItem("auth");
     token = JSON.parse(token).token;
-    setSocket(
-      new WebSocket(`ws://localhost:8000/ws/notification/?token=${token}`)
+    let socketUrl: string;
+    System.import("@monkeysmedia/util-module").then(
+      (util) => (socketUrl = util.socketUrl)
     );
+
+    setSocket(new WebSocket(`${socketUrl}ws/notification/?token=${token}`));
   }, []);
 
   useEffect(() => {
@@ -39,7 +46,6 @@ export default function Root(props) {
       socket!.onmessage = function (event: any) {
         CheckPermission(() => ShowNotification(JSON.parse(event.data).message));
 
-        console.log(event.data);
         window.dispatchEvent(
           new CustomEvent("@monkeysmedia/notification/new", {})
         );
@@ -54,5 +60,6 @@ export default function Root(props) {
       };
     }
   }, [socket]);
+
   return <></>;
 }

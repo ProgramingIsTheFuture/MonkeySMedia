@@ -51,7 +51,7 @@ const HeaderProfile: React.FC<props> = ({ username }) => {
     <Container>
       <div
         onClick={() =>
-          System.import().then((util) =>
+          System.import("@monkeysmedia/util-module").then((util) =>
             util.RedirectTo(`/profile/${data.user}`)
           )
         }
