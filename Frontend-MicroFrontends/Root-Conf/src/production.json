@@ -1,0 +1,21 @@
+{
+  "imports": {
+    "@monkeysmedia/root-config": "http://mservices.themonkeysmedia.com/monkeysmedia-root-config.js",
+    "@monkeysmedia/navbar": "http://mservices.themonkeysmedia.com/monkeysmedia-navbar.js",
+    "@monkeysmedia/util-module": "http://mservices.themonkeysmedia.com/monkeysmedia-util-module.js",
+    "@monkeysmedia/globalStyles": "http://mservices.themonkeysmedia.com/monkeysmedia-globalStyles.js",
+    "@monkeysmedia/not-found": "http://mservices.themonkeysmedia.com/monkeysmedia-not-found.js",
+    "@monkeysmedia/create-post": "http://mservices.themonkeysmedia.com/monkeysmedia-create-post.js",
+    "@monkeysmedia/feed": "http://mservices.themonkeysmedia.com/monkeysmedia-feed.js",
+    "@monkeysmedia/post": "http://mservices.themonkeysmedia.com/monkeysmedia-post.js",
+    "@monkeysmedia/profile": "http://mservices.themonkeysmedia.com/monkeysmedia-profile.js",
+    "@monkeysmedia/login": "http://mservices.themonkeysmedia.com/monkeysmedia-login.js",
+    "@monkeysmedia/register": "http://mservices.themonkeysmedia.com/monkeysmedia-register.js",
+    "@monkeysmedia/freinds-chat": "http://mservices.themonkeysmedia.com/monkeysmedia-freinds-chat.js",
+    "@monkeysmedia/chat": "http://mservices.themonkeysmedia.com/monkeysmedia-chat.js",
+    "@monkeysmedia/search": "http://mservices.themonkeysmedia.com/monkeysmedia-search.js",
+    "@monkeysmedia/settings": "http://mservices.themonkeysmedia.com/monkeysmedia-settings.js",
+    "@monkeysmedia/notifications": "http://mservices.themonkeysmedia.com/monkeysmedia-notifications.js",
+    "@monkeysmedia/notifications-page": "http://mservices.themonkeysmedia.com/monkeysmedia-notifications-page.js"
+  }
+}
