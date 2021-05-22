@@ -57,16 +57,19 @@ export default function Root(props) {
 
   useEffect(() => {
     if (allMessages.length >= 0) {
-      document.getElementById("_scrolling").scrollTop = document.getElementById(
-        "_scrolling"
-      ).scrollHeight;
+      document.getElementById("_scrolling").scrollTop =
+        document.getElementById("_scrolling").scrollHeight;
     }
   }, [allMessages, sendToUser]);
 
   useEffect(() => {
     if (sendToUser !== "") {
       const token = localStorage.getItem("auth");
-      const wsUrl = `ws://localhost:8000/ws/chat/${sendToUser}/?token=${
+      let socketUrl: string;
+      System.import("@monkeysmedia/util-module").then(
+        (util) => (socketUrl = util.socketUrl)
+      );
+      const wsUrl = `${socketUrl}ws/chat/${sendToUser}/?token=${
         JSON.parse(token).token
       }`;
       setSocket(new WebSocket(wsUrl));

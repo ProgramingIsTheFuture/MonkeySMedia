@@ -31,9 +31,12 @@ export default function Root(props) {
   useEffect(() => {
     let token = localStorage.getItem("auth");
     token = JSON.parse(token).token;
-    setSocket(
-      new WebSocket(`ws://localhost:8000/ws/notification/?token=${token}`)
+    let socketUrl: string;
+    System.import("@monkeysmedia/util-module").then(
+      (util) => (socketUrl = util.socketUrl)
     );
+
+    setSocket(new WebSocket(`${socketUrl}ws/notification/?token=${token}`));
   }, []);
 
   useEffect(() => {
