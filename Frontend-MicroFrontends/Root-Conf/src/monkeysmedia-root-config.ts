@@ -1,4 +1,4 @@
-import { registerApplication, start } from "single-spa";
+import { registerApplication, start, navigateToUrl } from "single-spa";
 import {
   constructApplications,
   constructRoutes,
@@ -25,7 +25,7 @@ const applications = constructApplications({
         name != "@monkeysmedia/globalStyles" &&
         name != "@monkeysmedia/notifications"
       ) {
-        window.location.pathname = "/login/";
+        navigateToUrl("/login/");
       }
     }
     return System.import(name);
