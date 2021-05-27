@@ -72,31 +72,30 @@ class ChatNotificationConsumer(WebsocketConsumer):
         async_to_sync(self.channel_layer.group_add)(self.me.username, self.channel_name)
 
 
-    def disconnect(self, close_code):
-        pass
-
     def chat_message(self, event):
         self.send(text_data=event["data"])
 
 
 @receiver(post_save, sender=Message)
 def notification(sender, instance, created, **kwargs):
-    Notification(user=instance.receiver.id,
-            sender=instance.sender.id,
-            message=f"Nova Mensage de {instance.sender.username}").save()
+    if created:
+        Notification(user=instance.receiver.id,
+                sender=instance.sender.id,
+                message=f"Nova Mensage de {instance.sender.username}").save()
 
 
 @receiver(post_save, sender=Notification)
-def notification(sender, instance, created, **kwargs):
-    channel_layer = get_channel_layer()
-    data = {}
-    data['message'] = instance.message
-    data['profile'] = ProfileUserSerializer(ProfileUser.objects.get(pk=instance.sender.id)).data
+def notification_sender(sender, instance, created, **kwargs):
+    if created:
+        channel_layer = get_channel_layer()
+        data = {}
+        data['message'] = instance.message
+        data['profile'] = ProfileUserSerializer(ProfileUser.objects.get(pk=instance.sender.id)).data
 
-    async_to_sync(channel_layer.group_send)(User.objects.get(pk=instance.user.id).username, {
-        "type": "chat_message",
-        "data": json.dumps(data),
-    })
+        async_to_sync(channel_layer.group_send)(User.objects.get(pk=instance.user.id).username, {
+            "type": "chat_message",
+            "data": json.dumps(data),
+        })
 
 class ChatConsumer(AsyncConsumer):
 

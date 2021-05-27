@@ -10,6 +10,7 @@ class Stories(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.FileField(upload_to=upload_path)
     timestamp = models.DateTimeField(auto_now_add=True)
+    expiration_date = models.DateTimeField()
     
     def __str__(self):
-        return f"{self.image.name}"
+        return f"{self.user}"
