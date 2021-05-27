@@ -20,7 +20,7 @@ type MessagesDB = {
 export default function Root(props) {
   const [sendToUser, setSendToUser] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  const [socket, setSocket] = useState<any>(null);
+  const [socket, setSocket] = useState<WebSocket>(null);
   const [allMessages, setAllMessages] = useState<MessagesDB[]>([]);
 
   const [reloadMsg, setReloadMsg] = useState<boolean>(true);
