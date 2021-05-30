@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models.signals import post_save
 
 from django.contrib.auth.models import User
+from StorieSMedia.models import UserStories
 
 
 def upload_path(instance, filename):
@@ -47,6 +48,7 @@ class ProfileUser(models.Model):
 def user_did_save(sender, instance, created, *args, **kwargs):
     if created:
         ProfileUser.objects.get_or_create(user=instance)
+        UserStories.objects.get_or_create(user=instance)
 
 
 post_save.connect(user_did_save, sender=User)
