@@ -4,6 +4,8 @@ from .models import Stories, UserStories
 from ProfileSMedia.models import ProfileUser
 from ProfileSMedia.serializers import ProfileUserSerializer
 
+from django.utils import timezone
+
 
 class StoriesSerializer(serializers.ModelSerializer):
 
@@ -26,7 +28,7 @@ class UserStoriesSerializer(serializers.ModelSerializer):
         return serializers.data
 
     def get_stories(self, obj):
-        stories = obj.stories.all()
+        stories = obj.stories.all().filter(expiration_date__gt=timezone.now())
 
         serializer = StoriesSerializer(stories, many=True)
         return serializer.data

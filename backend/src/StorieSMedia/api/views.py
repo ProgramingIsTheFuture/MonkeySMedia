@@ -36,15 +36,13 @@ def list_all_stories(request):
     profiles = ProfileUser.objects.get(id=request.user.id)
     finalRes = []
     me_stories = UserStories.objects.get(id=request.user.id)
-    if me_stories.stories.all():
-        print(me_stories.stories.all())
+    if me_stories.stories.all().filter(expiration_date__gt=timezone.now()).__len__() >= 1:
         finalRes.append(me_stories)
 
     for profile in profiles.following.all():
-        print(profile.__dict__)
         user_stories = UserStories.objects.get(id=profile.id)
-        user_stories.stories = user_stories.filter(expiration_date__gt=timezone.now())
-        finalRes.append(user_stories)
+        if user_stories.stories.filter(expiration_date__gt=timezone.now()).__len__() >= 1:
+            finalRes.append(user_stories)
 
     serializers = UserStoriesSerializer(finalRes, many=True)
     return Response(serializers.data, 200)
