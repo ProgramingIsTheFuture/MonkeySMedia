@@ -27,7 +27,31 @@
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script">
 
   <% if (isLocal) { %>
-    <script type="systemjs-importmap" src="./development.json"></script>
+    <script type="systemjs-importmap">
+	{
+	  "imports": {
+		"@monkeysmedia/root-config": "//localhost:9000/monkeysmedia-root-config.js",
+		"@monkeysmedia/navbar": "//localhost:3000/monkeysmedia-navbar.js",
+		"@monkeysmedia/util-module": "//localhost:3001/monkeysmedia-util-module.js",
+		"@monkeysmedia/globalStyles": "//localhost:3002/monkeysmedia-globalStyles.js",
+		"@monkeysmedia/not-found": "//localhost:3003/monkeysmedia-not-found.js",
+		"@monkeysmedia/create-post": "//localhost:3004/monkeysmedia-create-post.js",
+		"@monkeysmedia/feed": "//localhost:3005/monkeysmedia-feed.js",
+		"@monkeysmedia/post": "//localhost:3006/monkeysmedia-post.js",
+		"@monkeysmedia/profile": "//localhost:3007/monkeysmedia-profile.js",
+		"@monkeysmedia/login": "//localhost:3008/monkeysmedia-login.js",
+		"@monkeysmedia/register": "//localhost:3009/monkeysmedia-register.js",
+		"@monkeysmedia/freinds-chat": "//localhost:3010/monkeysmedia-freinds-chat.js",
+		"@monkeysmedia/chat": "//localhost:3011/monkeysmedia-chat.js",
+		"@monkeysmedia/search": "//localhost:3012/monkeysmedia-search.js",
+		"@monkeysmedia/settings": "//localhost:3013/monkeysmedia-settings.js",
+		"@monkeysmedia/notifications": "//localhost:3014/monkeysmedia-notifications.js",
+		"@monkeysmedia/notifications-page": "//localhost:3015/monkeysmedia-notifications-page.js",
+		"@monkeysmedia/stories": "//localhost:3016/monkeysmedia-stories.js"
+	  }
+	}
+	</script>
+
 	<% } else {%>
 	<script type="systemjs-importmap" src="https://www.themonkeysmedia.com/production.json"></script>
 	<% } %>
@@ -52,6 +76,7 @@
                   <route path="/" exact>
 					  <application name="@monkeysmedia/navbar"></application>
 					  <application name="@monkeysmedia/create-post"></application>
+					  <application name="@monkeysmedia/stories"></application>
 					  <application name="@monkeysmedia/feed"></application>
 				  </route>
                   <route path="/login/" exact>

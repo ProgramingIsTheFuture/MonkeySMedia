@@ -16,6 +16,7 @@
     "@monkeysmedia/search": "http://mservices.themonkeysmedia.com/monkeysmedia-search.js",
     "@monkeysmedia/settings": "http://mservices.themonkeysmedia.com/monkeysmedia-settings.js",
     "@monkeysmedia/notifications": "http://mservices.themonkeysmedia.com/monkeysmedia-notifications.js",
-    "@monkeysmedia/notifications-page": "http://mservices.themonkeysmedia.com/monkeysmedia-notifications-page.js"
+    "@monkeysmedia/notifications-page": "http://mservices.themonkeysmedia.com/monkeysmedia-notifications-page.js",
+    "@monkeysmedia/stories": "http://mservices.themonkeysmedia.com/monkeysmedia-stories.js"
   }
 }

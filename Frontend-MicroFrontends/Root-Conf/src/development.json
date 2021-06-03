@@ -16,6 +16,7 @@
     "@monkeysmedia/search": "//localhost:3012/monkeysmedia-search.js",
     "@monkeysmedia/settings": "//localhost:3013/monkeysmedia-settings.js",
     "@monkeysmedia/notifications": "//localhost:3014/monkeysmedia-notifications.js",
-    "@monkeysmedia/notifications-page": "//localhost:3015/monkeysmedia-notifications-page.js"
+    "@monkeysmedia/notifications-page": "//localhost:3015/monkeysmedia-notifications-page.js",
+    "@monkeysmedia/stories": "//localhost:3016/monkeysmedia-stories.js"
   }
 }
