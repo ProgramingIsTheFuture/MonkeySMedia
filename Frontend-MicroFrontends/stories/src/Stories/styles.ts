@@ -2,22 +2,18 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  align-content: center;
 
-  flex-direction: row;
-  flex-wrap: nowrap;
-`;
+  div.horizontal-menu {
+    width: 100%;
+    justify-content: center;
 
-export const Storie = styled.div`
-  background: linear-gradient(45deg, red, yellow);
+    div.menu-wrapper {
+      width: 50%;
+      height: 100px;
 
-  border-radius: 100%;
-  height: 25px;
-  width: 25px;
-
-  padding: 2px;
-  margin: 2px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+      display: flex;
+      align-items: center;
+    }
+  }
 `;

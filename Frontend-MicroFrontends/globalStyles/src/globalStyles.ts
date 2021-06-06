@@ -54,6 +54,10 @@ export default createGlobalStyle`
     background-color: var(--shadow)!important;
   }
 
+	.ReactModal__Content {
+		padding: 0!important;
+	}
+
   .posts {
     width: 100vw;
   }
