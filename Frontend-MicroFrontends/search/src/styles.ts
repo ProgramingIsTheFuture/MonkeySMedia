@@ -36,6 +36,11 @@ export const BackIcon = styled(ArrowBack)`
   color: var(--shadow);
 `;
 
+export const ErrorMessage = styled.div`
+  font-size: 1.2rem;
+  text-align: center;
+`;
+
 export const SearchedItems = styled.div`
   display: flex;
   justify-content: center;

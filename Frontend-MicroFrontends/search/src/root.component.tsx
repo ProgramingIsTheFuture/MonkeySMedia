@@ -3,7 +3,13 @@ import { motion } from "framer-motion";
 import PostSearch from "./PostSearch";
 import ProfileSearch from "./ProfileSearch";
 
-import { Container, BackArrow, BackIcon, SearchedItems } from "./styles";
+import {
+  Container,
+  BackArrow,
+  BackIcon,
+  ErrorMessage,
+  SearchedItems,
+} from "./styles";
 
 interface ProfileInfoTypes {
   id: number;
@@ -29,6 +35,7 @@ interface PostType {
 }
 
 export default function Root(props) {
+  const [hasError, setHasError] = useState<string>("");
   const [searchValue, setSearchValue] = useState<string>("");
   const [postResponse, setPostResponse] = useState<any>([]);
   const [profileResponse, setProfileResponse] = useState<any>([]);
@@ -43,7 +50,9 @@ export default function Root(props) {
       .then((resp: any) => {
         setPostResponse(resp.data);
       })
-      .catch((e: Error) => {});
+      .catch((e: Error) => {
+        setHasError("Aconteceu algum erro a carregar os resultados!");
+      });
 
     System.import("@monkeysmedia/util-module")
       .then((util) =>
@@ -52,7 +61,9 @@ export default function Root(props) {
       .then((resp) => {
         setProfileResponse(resp.data);
       })
-      .catch((e: Error) => {});
+      .catch((e: Error) => {
+        setHasError("Aconteceu algum erro a carregar os resultados!");
+      });
   };
 
   return (
@@ -70,7 +81,16 @@ export default function Root(props) {
           </div>
           <img src="" alt="" />
         </form>
+        {hasError.length >= 1 ? <ErrorMessage>{hasError}</ErrorMessage> : null}
         <SearchedItems>
+          {postResponse.length === 0 &&
+          profileResponse.length === 0 &&
+          searchValue.length >= 1 ? (
+            <ErrorMessage>Não foram encontrados resultados</ErrorMessage>
+          ) : null}
+          {searchValue.length === 0 ? (
+            <ErrorMessage>Experimenta procurar alguma coisa</ErrorMessage>
+          ) : null}
           {postResponse.map((item: PostType) => (
             <motion.div
               initial={{ scale: 0 }}
