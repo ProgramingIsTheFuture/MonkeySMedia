@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import EditProfile from "../EditProfile";
 import EditModal from "../EditModal";
 import ChatBTN from "../ChatBTN";
@@ -29,12 +28,12 @@ interface ProfileInfoTypes {
 type Props = { username: string };
 
 const ProfileHeader: React.FC<Props> = ({ username }) => {
-  const historyRouter = useHistory();
   const [baseUrl, setBaseUrl] = useState<string>("");
   const [profile, setProfile] = useState<ProfileInfoTypes>(null);
   const [me, setMe] = useState<string>("");
   const [isModal, setIsModal] = useState<boolean>(false);
   const [newFollowers, setNewFollowers] = useState<number>(0);
+  const [error, setError] = useState<boolean>(false);
 
   window.addEventListener("@monkeysmedia/profile-follow-unfollow", (e: any) => {
     if (profile) {
@@ -76,13 +75,29 @@ const ProfileHeader: React.FC<Props> = ({ username }) => {
           setProfile(resp.data);
         })
         .catch(() => {
-          historyRouter.push("/");
+          setError(true);
+          setTimeout(
+            () =>
+              System.import("@monkeysmedia/util-module").then((util) =>
+                util.RedirectTo("/")
+              ),
+            5000
+          );
         });
     }
-  }, [username, historyRouter]);
+  }, [username]);
+
+  if (error) {
+    return (
+      <h1>
+        Ocurreu um error - Talvez o utilizador com este nome não exista ou tenha
+        trocado de nome, vai ser redirecionado para a home em 5 segundos.
+      </h1>
+    );
+  }
 
   if (!profile) {
-    return <h1>Loading</h1>;
+    return <h1>Loading! ...</h1>;
   }
 
   const callBack = (val: boolean) => {
