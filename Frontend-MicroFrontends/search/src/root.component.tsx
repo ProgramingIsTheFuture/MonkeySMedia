@@ -74,7 +74,7 @@ export default function Root(props) {
         </a>
       </BackArrow>
       <div>
-        <form>
+        <form style={{ width: "100%" }}>
           <img src="" alt="" />
           <div>
             <input type={"text"} onChange={SearchOnChange} />
