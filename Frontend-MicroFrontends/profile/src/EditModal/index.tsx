@@ -60,45 +60,54 @@ const EditModal: React.FC<Props> = ({
   return (
     <Container>
       <Modal ariaHideApp={false} isOpen={isModal}>
-        <Title>
-          <h1>Edit Profile</h1>
-          <CloseLeft onClick={handleQuit}></CloseLeft>
-        </Title>
+        <div
+          style={{
+            margin: "5px",
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+          }}
+        >
+          <Title>
+            <h1>Edit Profile</h1>
+            <CloseLeft onClick={handleQuit}></CloseLeft>
+          </Title>
 
-        <Form onSubmit={handleSubmit}>
-          <label htmlFor={"background_img"}>Imagem de fundo</label>
-          <input type={"file"} name={"background_img"} />
-          <label htmlFor={"profile_img"}>Imagem de Perfil</label>
-          <input type={"file"} name={"profile_img"} />
-          <label htmlFor={"username"}>Username</label>
-          <input
-            type={"text"}
-            name={"username"}
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-          />
-          <label htmlFor={"username"}>Username</label>
-          <textarea
-            name={"description"}
-            onChange={(e) => setDescription(e.target.value)}
-            value={description}
-          />
-          <label htmlFor={"first_name"}>Primeiro Nome</label>
-          <input
-            type={"text"}
-            name={"first_name"}
-            onChange={(e) => setFName(e.target.value)}
-            value={fname}
-          />
-          <label htmlFor={"last_name"}>Ultímo Nome</label>
-          <input
-            type={"text"}
-            name={"last_name"}
-            onChange={(e) => setLName(e.target.value)}
-            value={lname}
-          />
-          <input type={"submit"} value={"Save the changes!"} />
-        </Form>
+          <Form onSubmit={handleSubmit}>
+            <label htmlFor={"background_img"}>Imagem de fundo</label>
+            <input type={"file"} name={"background_img"} />
+            <label htmlFor={"profile_img"}>Imagem de Perfil</label>
+            <input type={"file"} name={"profile_img"} />
+            <label htmlFor={"username"}>Username</label>
+            <input
+              type={"text"}
+              name={"username"}
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+            />
+            <label htmlFor={"description"}>Descrição</label>
+            <textarea
+              name={"description"}
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
+            />
+            <label htmlFor={"first_name"}>Primeiro Nome</label>
+            <input
+              type={"text"}
+              name={"first_name"}
+              onChange={(e) => setFName(e.target.value)}
+              value={fname}
+            />
+            <label htmlFor={"last_name"}>Ultímo Nome</label>
+            <input
+              type={"text"}
+              name={"last_name"}
+              onChange={(e) => setLName(e.target.value)}
+              value={lname}
+            />
+            <input type={"submit"} value={"Save the changes!"} />
+          </Form>
+        </div>
       </Modal>
     </Container>
   );
