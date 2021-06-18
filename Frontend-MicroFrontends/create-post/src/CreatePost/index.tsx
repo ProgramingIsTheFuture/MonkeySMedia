@@ -47,22 +47,28 @@ const CreatePost: React.FC = () => {
   return (
     <Container>
       <form onSubmit={handleSubmit}>
+        <label htmlFor={"title"}>Titulo</label>
+
         <TitleInp
           type={"text"}
-          placeholder={"What do you want to tell us?"}
+          name={"title"}
+          placeholder={"O que nos queres dizer?"}
           value={title}
           onChange={(e) => handleChange(e, true)}
         />
         <br />
+        <label htmlFor={"description"}>Descrição</label>
         <TextInp
-          placeholder={"Write here what happend!"}
+          placeholder={"Escreve mais sobre isso"}
+          name={"description"}
           value={content}
           onChange={(e) => handleChange(e, false)}
         />
         <br />
-        <FileInp type={"file"} onChange={handleImage} />
+        <label htmlFor={"image"}>Imagem</label>
+        <FileInp type={"file"} name={"image"} onChange={handleImage} />
         <br />
-        <button type={"submit"}>Post</button>
+        <button type={"submit"}>Publicar</button>
       </form>
     </Container>
   );

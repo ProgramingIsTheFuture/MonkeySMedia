@@ -21,6 +21,7 @@ export default function Root(props) {
   const [sendToUser, setSendToUser] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [socket, setSocket] = useState<WebSocket>(null);
+  const [socketUrl, setSocketUrl] = useState<string>("");
   const [allMessages, setAllMessages] = useState<MessagesDB[]>([]);
 
   const [reloadMsg, setReloadMsg] = useState<boolean>(true);
@@ -35,6 +36,12 @@ export default function Root(props) {
       .then((util) => util.apiGet(url))
       .then((resp) => resp.data.username)
   );
+
+  useEffect(() => {
+    System.import("@monkeysmedia/util-module").then((util) =>
+      setSocketUrl(util.socketUrl)
+    );
+  }, []);
 
   useEffect(() => {
     if (reloadMsg && sendToUser !== "") {
@@ -63,18 +70,14 @@ export default function Root(props) {
   }, [allMessages, sendToUser]);
 
   useEffect(() => {
-    if (sendToUser !== "") {
+    if (sendToUser !== "" && socketUrl !== "") {
       const token = localStorage.getItem("auth");
-      let socketUrl: string;
-      System.import("@monkeysmedia/util-module").then(
-        (util) => (socketUrl = util.socketUrl)
-      );
       const wsUrl = `${socketUrl}ws/chat/${sendToUser}/?token=${
         JSON.parse(token).token
       }`;
       setSocket(new WebSocket(wsUrl));
     }
-  }, [sendToUser]);
+  }, [sendToUser, socketUrl]);
 
   useEffect(() => {
     if (socket) {

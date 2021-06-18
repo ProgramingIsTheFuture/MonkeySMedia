@@ -24,7 +24,7 @@ const Post: React.FC<any> = (props) => {
 
   useEffect(() => {
     // Getting "me" user infos
-    (async () =>
+    (() =>
       System.import("@monkeysmedia/util-module")
         .then((util) => util.apiGet("api/users/get-user/"))
         .then((resp: any) => {

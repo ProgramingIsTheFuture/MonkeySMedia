@@ -23,21 +23,26 @@ const CheckPermission = (noti: () => void) => {
 
 export default function Root(props) {
   const [socket, setSocket] = useState<WebSocket | null>(null);
+  const [socketUrl, setSocketUrl] = useState<string>("");
+
+  useEffect(() => {
+    System.import("@monkeysmedia/util-module").then((util) =>
+      setSocketUrl(util.socketUrl)
+    );
+  }, []);
 
   useEffect(() => {
     CheckPermission(() => {});
   }, []);
 
   useEffect(() => {
-    let token = localStorage.getItem("auth");
-    token = JSON.parse(token).token;
-    let socketUrl: string;
-    System.import("@monkeysmedia/util-module").then(
-      (util) => (socketUrl = util.socketUrl)
-    );
+    if (socketUrl !== "") {
+      let token = localStorage.getItem("auth");
+      token = JSON.parse(token).token;
 
-    setSocket(new WebSocket(`${socketUrl}ws/notification/?token=${token}`));
-  }, []);
+      setSocket(new WebSocket(`${socketUrl}ws/notification/?token=${token}`));
+    }
+  }, [socketUrl]);
 
   useEffect(() => {
     if (socket) {

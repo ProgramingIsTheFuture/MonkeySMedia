@@ -14,7 +14,9 @@ const DeleteModal = ({ visible, id, setVisible }) => {
   });
   const handleDelete = () => {
     window.dispatchEvent(
-      new CustomEvent("@monkeysmedia/Posts/delete", { detail: { id: id } })
+      new CustomEvent(`@monkeysmedia/Posts/delete/${id}`, {
+        detail: { id: id },
+      })
     );
     setVisible(false);
   };

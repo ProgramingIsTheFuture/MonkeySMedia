@@ -16,8 +16,11 @@ export const Wrapper = styled.div`
   height: 100%;
   width: 100%;
 
+  margin: 0 !important;
+  cursor: default !important;
+
   background-color: inherit;
-  display: flex;
+  display: flex !important;
 
   justify-content: center;
   align-items: center;
@@ -28,23 +31,30 @@ export const Items = styled.div`
   width: 50%;
   height: 25%;
 
-  display: flex;
+  display: flex !important;
   flex-direction: column;
 
   justify-content: center;
   align-items: center;
+
+  cursor: default !important;
 `;
 
 export const BTNGroup = styled.div`
   button {
     margin: 2.5px;
+    cursor: pointer;
+
+    background-color: var(--card);
+    border: 1px solid var(--primary);
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
 
     :first-child {
-      background-color: green;
     }
 
     :last-child {
-      background-color: red;
     }
   }
 `;

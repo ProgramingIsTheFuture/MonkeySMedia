@@ -11,8 +11,8 @@ const DeleteBTN: React.FC<Props> = ({ postID }) => {
   const [modal, setModal] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
 
-  window.addEventListener("@monkeysmedia/Posts/delete", () => {
-    setIsDelete(true);
+  window.addEventListener(`@monkeysmedia/Posts/delete/${postID}`, (e: any) => {
+    if (e.detail.id === postID) setIsDelete(true);
   });
 
   useEffect(() => {

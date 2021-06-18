@@ -80,15 +80,22 @@ const Feed: React.FC<Props> = ({ usernameProfile }) => {
     }
   });
 
-  window.addEventListener("@monkeysmedia/Posts/delete", async () => {
-    if (data) {
-      try {
-        await mutate();
-      } catch (error) {
-        console.error("Error creating new post or receiving the new one");
-      }
+  if (posts) {
+    for (let i = 0; i < posts.length; i++) {
+      window.addEventListener(
+        `@monkeysmedia/Posts/delete/${posts[i].id}`,
+        async () => {
+          if (data) {
+            try {
+              await mutate();
+            } catch (error) {
+              console.error("Error creating new post or receiving the new one");
+            }
+          }
+        }
+      );
     }
-  });
+  }
 
   if (isLoadingInitialData) {
     return <Loader />;
