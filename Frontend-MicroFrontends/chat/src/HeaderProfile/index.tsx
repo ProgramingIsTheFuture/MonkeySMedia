@@ -50,6 +50,7 @@ const HeaderProfile: React.FC<props> = ({ username }) => {
   return (
     <Container>
       <div
+        style={{ cursor: "pointer" }}
         onClick={() =>
           System.import("@monkeysmedia/util-module").then((util) =>
             util.RedirectTo(`/profile/${data.user}`)
@@ -69,10 +70,7 @@ const HeaderProfile: React.FC<props> = ({ username }) => {
           )}
         </div>
         <div>
-          <div>{data.user}</div>
-          <div>
-            {data.first_name} {data.last_name}
-          </div>
+          <div style={{ alignItems: "center" }}>{data.user}</div>
         </div>
       </div>
     </Container>
