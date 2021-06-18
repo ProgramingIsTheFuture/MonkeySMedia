@@ -79,8 +79,8 @@ class ChatNotificationConsumer(WebsocketConsumer):
 @receiver(post_save, sender=Message)
 def notification(sender, instance, created, **kwargs):
     if created:
-        Notification(user=instance.receiver.id,
-                sender=instance.sender.id,
+        Notification(user=instance.receiver,
+                sender=instance.sender,
                 message=f"Nova Mensage de {instance.sender.username}").save()
 
 
