@@ -40,8 +40,13 @@
 	</ul>
 	<ul>
 		<h2>chat/</h2>
-		<li><h3>all-messages//</h3> <span>get all the messages</span></li>
+		<li><h3>all-messages/</h3> <span>get all the messages</span></li>
 		<li><h3>list-users/</h3> <span>List the users that i'm following or that sent me a message</span></li>
 		<li><h3>list-notifications/</h3> <span>List all my notifications</span></li>
+	</ul>
+	<ul>
+		<h2>stories/</h2>
+		<li><h3>post-storie/</h3> <span>create a new storie</span></li>
+		<li><h3>list-stories/</h3> <span>List the stories available for that user</span></li>
 	</ul>
 </ul>
