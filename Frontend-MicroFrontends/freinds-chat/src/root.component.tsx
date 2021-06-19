@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, FreindDiv, FLName } from "./styles";
+import { Container, NavFixed, BackIcon, FreindDiv, FLName } from "./styles";
 
 export interface ProfileInfoTypes {
   id: number;
@@ -57,6 +57,11 @@ const Freinds: React.FC = () => {
   return (
     <Container>
       <div>
+        <NavFixed>
+          <div>
+            <BackIcon onClick={() => history.back()} />
+          </div>
+        </NavFixed>
         <input type={"text"} />
         <div>
           {profiles!.map((item: ProfileInfoTypes) => {

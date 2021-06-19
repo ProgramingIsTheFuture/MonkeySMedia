@@ -24,16 +24,26 @@ export const BackArrow = styled.nav`
   top: 0;
 
   width: 100%;
-  height: 50px;
+  height: 65px;
 
   position: fixed;
   background: var(--nav-color);
+
+  div {
+    height: 100%;
+    display: flex;
+
+    align-items: center;
+    justify-content: initial;
+  }
 `;
 
 export const BackIcon = styled(ArrowBack)`
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
+
   color: var(--shadow);
+  cursor: pointer;
 `;
 
 export const ErrorMessage = styled.div`

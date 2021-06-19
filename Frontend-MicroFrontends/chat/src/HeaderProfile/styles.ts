@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-  height: 50px;
+  height: 65px;
   z-index: 1;
 
   background-color: var(--nav-color);
@@ -24,6 +24,7 @@ export const Container = styled.header`
     color: var(--white);
 
     text-decoration: none;
+	align-items: center;
 
     div {
       img {

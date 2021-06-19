@@ -1,8 +1,28 @@
 import styled from "styled-components";
+import { ArrowBack } from "styled-icons/boxicons-regular";
 
 export const Container = styled.div`
   border-right: 1px solid var(--shadow);
   height: 100%;
+`;
+
+export const NavFixed = styled.nav`
+  height: 65px;
+  background-color: var(--nav-color);
+
+  div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+`;
+
+export const BackIcon = styled(ArrowBack)`
+  height: 40px;
+  width: 40px;
+  color: var(--shadow);
+
+  cursor: pointer;
 `;
 
 export const FreindDiv = styled.div`

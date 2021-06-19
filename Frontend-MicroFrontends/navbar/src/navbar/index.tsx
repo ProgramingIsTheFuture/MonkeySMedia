@@ -93,6 +93,23 @@ const Navbar: React.FC = () => {
               )
             }
           >
+            <img
+              width={"40px"}
+              height={"40px"}
+              src={`${baseUrl}media/logo/logo.png`}
+              alt={"logo"}
+            />
+          </div>
+        </li>
+
+        <li>
+          <div
+            onClick={() =>
+              System.import("@monkeysmedia/util-module").then((util) =>
+                util.RedirectTo("/")
+              )
+            }
+          >
             <HomeIcon />
           </div>
         </li>

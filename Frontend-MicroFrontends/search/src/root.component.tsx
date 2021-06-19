@@ -69,9 +69,9 @@ export default function Root(props) {
   return (
     <Container>
       <BackArrow>
-        <a href={"/"}>
-          <BackIcon />
-        </a>
+        <div>
+          <BackIcon onClick={() => history.back()} />
+        </div>
       </BackArrow>
       <div>
         <form style={{ width: "100%" }}>

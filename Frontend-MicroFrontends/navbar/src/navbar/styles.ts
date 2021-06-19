@@ -14,7 +14,7 @@ export const Container = styled.nav`
   text-align: center;
   justify-content: center;
 
-  height: 50px;
+  height: 65px;
   font-size: 0.95rem;
 `;
 
@@ -30,8 +30,8 @@ export const NavItems = styled.ul`
     margin-right: 2vw;
     margin-left: 2vw;
 
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
 
     div {
       color: var(--white);

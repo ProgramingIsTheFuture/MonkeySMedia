@@ -33,11 +33,18 @@ export const Container = styled.div`
   }
 `;
 
-export const NavFixed = styled.nav``;
+export const NavFixed = styled.nav`
+  height: 65px;
+  div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+`;
 
 export const BackIcon = styled(ArrowBack)`
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   color: var(--shadow);
 
   cursor: pointer;
