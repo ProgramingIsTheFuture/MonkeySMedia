@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import axios from "axios";
 
 import {
   Container,
   NavItems,
   ProfileImage,
-  HomeIcon,
   ChatIcon,
   NotificationCounter,
   NotificationIcon,
@@ -101,19 +99,6 @@ const Navbar: React.FC = () => {
             />
           </div>
         </li>
-
-        <li>
-          <div
-            onClick={() =>
-              System.import("@monkeysmedia/util-module").then((util) =>
-                util.RedirectTo("/")
-              )
-            }
-          >
-            <HomeIcon />
-          </div>
-        </li>
-
         <ProfileImage>
           <div
             onClick={() =>

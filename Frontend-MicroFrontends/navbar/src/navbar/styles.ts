@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Home } from "@styled-icons/heroicons-outline";
 import { Search } from "@styled-icons/boxicons-regular";
 import { ChatDotsFill } from "@styled-icons/bootstrap";
 import { CaretDown } from "styled-icons/boxicons-regular";
@@ -49,13 +48,6 @@ export const ProfileImage = styled.li`
     height: 100%;
     border-radius: 100%;
   }
-`;
-
-export const HomeIcon = styled(Home)`
-  width: 100%;
-  height: 100%;
-
-  color: white;
 `;
 
 export const ChatIcon = styled(ChatDotsFill)`
