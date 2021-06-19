@@ -20,6 +20,7 @@ export const Container = styled.header`
     height: 100%;
 
     flex-direction: row;
+	margin-left: 5px;
 
     color: var(--white);
 

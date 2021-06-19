@@ -91,12 +91,13 @@ const Freinds: React.FC = () => {
                     <FLName id="names">
                       <span>
                         <span dir="ltr">
-                          {(item.first_name + item.last_name).length > 10
-                            ? (item.first_name + item.last_name).substring(
-                                0,
-                                10
-                              )
-                            : item.first_name + item.last_name}
+                          {(item.first_name + " " + item.last_name).length > 18
+                            ? (
+                                item.first_name +
+                                " " +
+                                item.last_name
+                              ).substring(0, 16) + "..."
+                            : item.first_name + " " + item.last_name}
                         </span>
                       </span>
                     </FLName>

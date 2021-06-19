@@ -5,6 +5,9 @@ import {
   MessageContainer,
   Message,
   TimeStamp,
+  Form,
+  SubmitBTN,
+  SendIcon,
 } from "./styles";
 import useSWR from "swr";
 import HeaderProfile from "./HeaderProfile";
@@ -149,10 +152,19 @@ export default function Root(props) {
         </MessageContainer>
       </Messages>
       <footer>
-        <form onSubmit={handleSubmit}>
-          <input type={"text"} onChange={messageChange} value={message} />
-          <input type={"submit"} />
-        </form>
+        <Form onSubmit={handleSubmit}>
+          <input
+            type={"text"}
+            placeholder={"Escreva a sua mensagem"}
+            onChange={messageChange}
+            value={message}
+          />
+          <SubmitBTN type={"submit"} disabled={message === "" ? true : false}>
+            <div>
+              <SendIcon />
+            </div>
+          </SubmitBTN>
+        </Form>
       </footer>
     </Container>
   );

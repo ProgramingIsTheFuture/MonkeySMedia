@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Send } from "@styled-icons/fluentui-system-regular";
 
 export const Container = styled.div`
   display: flex;
@@ -69,4 +70,39 @@ export const TimeStamp = styled.div`
   span {
     font-size: 1rem;
   }
+`;
+
+export const Form = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input[type="text"] {
+    width: 88%;
+    height: 48px;
+  }
+`;
+
+export const SubmitBTN = styled.button`
+  height: 54px;
+  width: 54px;
+
+  margin: 10px;
+  border-radius: 25px;
+
+  cursor: pointer;
+
+  div {
+    position: relative;
+  }
+`;
+
+export const SendIcon = styled(Send)`
+  height: 40px;
+  width: 40px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
