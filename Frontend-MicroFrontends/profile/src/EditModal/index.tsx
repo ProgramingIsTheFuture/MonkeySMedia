@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 
-import { Container, Title, CloseLeft, Form } from "./styles";
+import { Container, Wrapper, Title, CloseLeft, Form } from "./styles";
 
 interface ProfileInfoTypes {
   id: number;
@@ -60,14 +60,7 @@ const EditModal: React.FC<Props> = ({
   return (
     <Container>
       <Modal ariaHideApp={false} isOpen={isModal}>
-        <div
-          style={{
-            margin: "5px",
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-          }}
-        >
+        <Wrapper>
           <Title>
             <h1>Edit Profile</h1>
             <CloseLeft onClick={handleQuit}></CloseLeft>
@@ -107,7 +100,7 @@ const EditModal: React.FC<Props> = ({
             />
             <input type={"submit"} value={"Save the changes!"} />
           </Form>
-        </div>
+        </Wrapper>
       </Modal>
     </Container>
   );
