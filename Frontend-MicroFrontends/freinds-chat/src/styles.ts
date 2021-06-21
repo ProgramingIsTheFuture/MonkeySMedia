@@ -4,6 +4,24 @@ import { ArrowBack } from "styled-icons/boxicons-regular";
 export const Container = styled.div`
   border-right: 1px solid var(--shadow);
   height: 100%;
+
+  div {
+    form {
+      display: flex;
+      justify-content: center;
+
+      flex-direction: column;
+      text-align: left;
+
+      align-items: center;
+      margin: 5px;
+
+      input {
+        width: 80%;
+        text-align: center;
+      }
+    }
+  }
 `;
 
 export const NavFixed = styled.nav`

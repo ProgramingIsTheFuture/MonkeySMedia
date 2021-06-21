@@ -16,14 +16,19 @@ export interface ProfileInfoTypes {
 const Freinds: React.FC = () => {
   const [profiles, setProfiles] = useState<[ProfileInfoTypes] | null>(null);
   const [baseUrl, setBaseUrl] = useState<string>("");
+  const [searchText, setSearchText] = useState<string>("");
+  const [refresh, setRefresh] = useState<boolean>(true);
 
   useEffect(() => {
-    System.import("@monkeysmedia/util-module")
-      .then((util) => util.apiGet(`api/chat/list-users/`))
-      .then((resp) => {
-        setProfiles(resp.data);
-      });
-  }, []);
+    if (refresh) {
+      System.import("@monkeysmedia/util-module")
+        .then((util) => util.apiGet(`api/chat/list-users/`))
+        .then((resp) => {
+          setProfiles(resp.data);
+        });
+      setRefresh(false);
+    }
+  }, [refresh, setRefresh]);
 
   const changeChat = (e: any, user: string) => {
     e.preventDefault();
@@ -44,14 +49,33 @@ const Freinds: React.FC = () => {
     );
   }, []);
 
+  const onChangeSearch = (e: any) => {
+    if (e.target.value !== "") {
+      setSearchText(e.target.value);
+      System.import("@monkeysmedia/util-module")
+        .then((util) =>
+          util.apiGet(`api/profile/search-profile?search=${searchText}`, false)
+        )
+        .then((resp: any) => {
+          setProfiles(
+            resp.data.map((i: ProfileInfoTypes) => {
+              i.profile_image = i.profile_image.replace(
+                baseUrl.substring(1),
+                ""
+              );
+              return i;
+            })
+          );
+        })
+        .catch((e: Error) => {});
+      return;
+    }
+    setRefresh(true);
+    return;
+  };
+
   if (!profiles) {
     return <h2>Loading!!!! </h2>;
-  } else if (profiles!.length <= 0) {
-    return (
-      <Container>
-        <h2>Without freinds here!</h2>
-      </Container>
-    );
   }
 
   return (
@@ -62,8 +86,21 @@ const Freinds: React.FC = () => {
             <BackIcon onClick={() => history.back()} />
           </div>
         </NavFixed>
-        <input type={"text"} />
+        <form>
+          <label htmlFor={"search"}>Procurar</label>
+          <input
+            type={"text"}
+            name={"search"}
+            placeholder={"Procurar"}
+            onChange={onChangeSearch}
+          />
+        </form>
         <div>
+          {searchText.length >= 1 && profiles!.length < 1 ? (
+            <h3 style={{ textAlign: "center" }}>
+              Não foram encontrados resultados!
+            </h3>
+          ) : null}
           {profiles!.map((item: ProfileInfoTypes) => {
             return (
               <FreindDiv key={item.id}>
