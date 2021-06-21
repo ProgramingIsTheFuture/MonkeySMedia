@@ -149,37 +149,32 @@ const Navbar: React.FC = () => {
           </div>
         </SearchLink>
         <DropDown>
-          <motion.div
-            initial={{ scale: 1.1, rotate: 180 }}
-            whileHover={{ scale: 1.1, rotate: 360 }}
-          >
-            <DropDownIcon></DropDownIcon>
-            <DropDownItems>
-              <li>
-                <div
-                  onClick={() =>
-                    System.import("@monkeysmedia/util-module").then((util) =>
-                      util.RedirectTo("/settings/")
-                    )
-                  }
-                >
-                  Settings
-                </div>
-              </li>
-              <li>
-                <div
-                  onClick={() => {
-                    logOut();
-                    System.import("@monkeysmedia/util-module").then((util) =>
-                      util.RedirectTo("/login/")
-                    );
-                  }}
-                >
-                  Logout
-                </div>
-              </li>
-            </DropDownItems>
-          </motion.div>
+          <DropDownIcon></DropDownIcon>
+          <DropDownItems>
+            <li>
+              <div
+                onClick={() =>
+                  System.import("@monkeysmedia/util-module").then((util) =>
+                    util.RedirectTo("/settings/")
+                  )
+                }
+              >
+                Settings
+              </div>
+            </li>
+            <li>
+              <div
+                onClick={() => {
+                  logOut();
+                  System.import("@monkeysmedia/util-module").then((util) =>
+                    util.RedirectTo("/login/")
+                  );
+                }}
+              >
+                Logout
+              </div>
+            </li>
+          </DropDownItems>
         </DropDown>
       </NavItems>
     </Container>

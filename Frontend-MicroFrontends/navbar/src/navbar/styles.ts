@@ -113,7 +113,7 @@ export const DropDown = styled.li`
       visibility: visible;
 
       width: 80px;
-      height: 80px;
+      height: 100px;
     }
   }
 `;
@@ -121,8 +121,6 @@ export const DropDown = styled.li`
 export const DropDownIcon = styled(CaretDown)`
   width: 100%;
   height: 100%;
-
-  transform: rotate(180deg);
 `;
 
 export const DropDownItems = styled.ul`
