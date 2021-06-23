@@ -17,6 +17,11 @@ export const Title = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
+
+  h1 {
+    text-align: center;
+    width: calc(100% - 50px);
+  }
 `;
 
 export const CloseLeft = styled(Close)`

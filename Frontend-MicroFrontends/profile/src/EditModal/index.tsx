@@ -18,7 +18,7 @@ interface ProfileInfoTypes {
 type Props = {
   callBack: (val: boolean) => void;
   isModal: boolean;
-  setProfile: (any) => void;
+  setProfile: (arg0: ProfileInfoTypes) => void;
   profile: ProfileInfoTypes;
 };
 
