@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Close } from "styled-icons/evaicons-solid";
 
 export const Container = styled.div`
   width: 100%;
@@ -20,6 +21,14 @@ export const Header = styled.header`
   margin: 15px;
 
   background: rgba(0, 0, 0, 0.5);
+`;
+
+export const CloseLeft = styled(Close)`
+  width: 50px;
+  height: 50px;
+
+  align-self: center;
+  cursor: pointer;
 `;
 
 export const Username = styled.span`

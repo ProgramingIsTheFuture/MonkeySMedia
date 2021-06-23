@@ -75,7 +75,7 @@ const Stories: React.FC = (): ReactElement => {
     ]);
   }, []);
 
-  const onSelect = (key) => {
+  const onSelect = (key: string) => {
     setSelected(key);
   };
 
@@ -84,10 +84,11 @@ const Stories: React.FC = (): ReactElement => {
   }
   return (
     <Container>
+      <h2 style={{ textAlign: "center" }}>Stories</h2>
       <ScrollMenu
-        data={stories.map((storie: TStories) => (
-          <StorieModal key={storie.id} storie={storie}></StorieModal>
-        ))}
+        data={stories.map((storie: TStories) => {
+          return <StorieModal key={storie.id} storie={storie}></StorieModal>;
+        })}
         arrowLeft={<div>{"<"}</div>}
         arrowRight={<div>{">"}</div>}
         selected={selected}
