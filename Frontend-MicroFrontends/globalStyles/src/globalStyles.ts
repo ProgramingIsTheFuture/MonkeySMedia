@@ -56,6 +56,7 @@ export default createGlobalStyle`
 
 	.ReactModal__Content {
 		padding: 0!important;
+		background-color: var(--primary)!important;
 	}
 
   .posts {

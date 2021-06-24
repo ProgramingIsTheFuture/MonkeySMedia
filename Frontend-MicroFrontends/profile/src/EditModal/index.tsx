@@ -32,6 +32,8 @@ const EditModal: React.FC<Props> = ({
   const [lname, setLName] = useState<string>(profile.last_name);
   const [username, setUsername] = useState<string>(profile.user);
   const [description, setDescription] = useState<string>(profile.description);
+  const [pimage, setPimage] = useState<any>(null);
+  const [bimage, setBimage] = useState<any>(null);
 
   const handleQuit = (e: any) => {
     e.preventDefault();
@@ -40,16 +42,20 @@ const EditModal: React.FC<Props> = ({
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    const profileEdit = new FormData();
+    profileEdit.append("first_name", fname);
+    profileEdit.append("last_name", lname);
+    profileEdit.append("username", username);
+    profileEdit.append("description", description);
+    if (pimage) {
+      profileEdit.append("profile_image", pimage, pimage.name);
+    }
+    if (bimage) {
+      profileEdit.append("background_profile_image", bimage, bimage.name);
+    }
 
     System.import("@monkeysmedia/util-module")
-      .then((util) =>
-        util.apiPost("api/profile/edit-my-profile/", {
-          first_name: fname,
-          last_name: lname,
-          description: description,
-          username: username,
-        })
-      )
+      .then((util) => util.apiPost("api/profile/edit-my-profile/", profileEdit))
       .then((resp) => {
         setProfile(resp.data);
         callBack(false);
@@ -68,9 +74,19 @@ const EditModal: React.FC<Props> = ({
 
           <Form onSubmit={handleSubmit}>
             <label htmlFor={"background_img"}>Imagem de fundo</label>
-            <input type={"file"} name={"background_img"} />
+            <input
+              type={"file"}
+              name={"background_img"}
+              onChange={(e) => setBimage(e.target.files[0])}
+            />
             <label htmlFor={"profile_img"}>Imagem de Perfil</label>
-            <input type={"file"} name={"profile_img"} />
+            <input
+              type={"file"}
+              name={"profile_img"}
+              onChange={(e) => {
+                setPimage(e.target.files[0]);
+              }}
+            />
             <label htmlFor={"username"}>Username</label>
             <input
               type={"text"}

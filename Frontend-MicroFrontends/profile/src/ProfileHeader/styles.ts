@@ -54,20 +54,20 @@ export const BackgroundImage = styled.div`
   width: 100vw;
 
   img {
-    width: 100%
+    width: 100%;
     height: 100%;
-    min-height: 150px;
+    min-height: 200px;
+    max-height: 200px;
 
     object-fit: cover;
     image-rendering: auto;
   }
 
- 
   @media screen and (max-width: 500px) {
     img {
-	  object-fit: fill;
-	}
-  } 
+      object-fit: fill;
+    }
+  }
 `;
 
 export const PersonalInfos = styled.div`

@@ -43,7 +43,7 @@ export const FileInp = styled.input`
 
   text-rendering: none;
   ::before {
-    content: "Share a photo or a video";
+    content: "Partilha uma foto!";
   }
 
   ::-webkit-file-upload-button {
