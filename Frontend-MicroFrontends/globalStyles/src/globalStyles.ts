@@ -44,7 +44,7 @@ export default createGlobalStyle`
   }
 
 
-  button, input[type="button"], input[type="submit"] {
+  button, input[type="button"], input[type="text"], input[type="submit"], textarea {
     :focus{
       outline:0;
     }
