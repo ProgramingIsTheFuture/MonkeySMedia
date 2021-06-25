@@ -7,8 +7,14 @@ type Props = {
   storie: TStories;
 };
 
+// Mileseconds
+const image_time = 5000;
+
 const StorieImg: React.FC<Props> = ({ storie }) => {
   const [baseUrl, setBaseUrl] = useState("");
+  const [changeImg, setChangeImg] = useState<boolean>(true);
+  const [firstT, setFirstT] = useState<boolean>(true);
+  const [storiesElements, setStoriesElements] = useState<any>(null);
 
   useEffect(() => {
     System.import("@monkeysmedia/util-module").then((util) =>
@@ -16,10 +22,43 @@ const StorieImg: React.FC<Props> = ({ storie }) => {
     );
   }, []);
 
+  const ImageSlider = (i: any) => (
+    <div key={i.id}>
+      {baseUrl !== "" ? (
+        <Image
+          src={`${baseUrl}${i.image.substring(1)}`}
+          height={"100%"}
+          width={"100%"}
+          alt={"storie"}
+        />
+      ) : null}
+    </div>
+  );
+
+  useEffect(() => {
+    if (firstT === true && baseUrl !== "") {
+      setTimeout(() => {
+        setStoriesElements(storie.stories.map((i) => ImageSlider(i)));
+        setChangeImg(!changeImg);
+      }, 1);
+      setFirstT(false);
+    }
+  }, [baseUrl]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      let last_one = storie.stories.pop();
+      storie.stories.unshift(last_one);
+      setStoriesElements(storie.stories.map((i) => ImageSlider(i)));
+      setChangeImg(!changeImg);
+    }, image_time);
+  }, [changeImg]);
+
   const handleQuit = (e: Event) => {
     e.preventDefault();
     window.dispatchEvent(new Event("@monkeysmedia/stories/close-stories", {}));
   };
+
   return (
     <Container>
       <Header>
@@ -50,18 +89,7 @@ const StorieImg: React.FC<Props> = ({ storie }) => {
         </div>
       </Header>
       <div style={{ position: "absolute", width: "100%", height: "100%" }}>
-        {storie.stories.map((i) => (
-          <div key={i.id}>
-            {baseUrl !== "" ? (
-              <Image
-                src={`${baseUrl}${i.image.substring(1)}`}
-                height={"100%"}
-                width={"100%"}
-                alt={"storie"}
-              />
-            ) : null}
-          </div>
-        ))}
+        {storiesElements}
       </div>
     </Container>
   );

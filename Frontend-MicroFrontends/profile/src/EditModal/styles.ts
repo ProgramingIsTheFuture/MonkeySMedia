@@ -46,12 +46,24 @@ export const Form = styled.form`
     margin-bottom: 5px;
 
     width: 50%;
+
+    border: 1px solid rgba(0, 0, 0, 0.4);
   }
 
   textarea {
     height: 80px;
   }
 
+  input[type="file"] {
+    :before {
+      content: "Imagem de perfil";
+    }
+    :nth-child(2) {
+      :before {
+        content: "Imagem de fundo";
+      }
+    }
+  }
   input[type="submit"] {
     margin-top: 5px;
     width: auto !important;

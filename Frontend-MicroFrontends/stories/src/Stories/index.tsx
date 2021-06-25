@@ -24,64 +24,38 @@ export type TStories = {
 
 const Stories: React.FC = (): ReactElement => {
   const [stories, setStories] = useState<TStories[]>({} as TStories[]);
+  const [loading, setLoading] = useState<boolean>(true);
   const [selected, setSelected] = useState<string>();
 
   useEffect(() => {
-    setStories([
-      {
-        id: 1,
-        user: {
-          id: 1,
-          user: "root",
-          first_name: "",
-          last_name: "",
-          profile_image: "/media/default/face_img/1.svg",
-        },
-        stories: [
-          {
-            id: 1,
-            image: "/media/stories_images/rootreact_gig1.png",
-            timestamp: "2021-05-27T22:32:03.902155+01:00",
-          },
-          {
-            id: 2,
-            image: "/media/stories_images/roothomepage.png",
-            timestamp: "2021-05-30T14:16:53.866451+01:00",
-          },
-          {
-            id: 3,
-            image: "/media/stories_images/rootaaa_gyDovOh.png",
-            timestamp: "2021-05-30T14:40:42.782341+01:00",
-          },
-        ],
-      },
-      {
-        id: 2,
-        user: {
-          id: 2,
-          user: "admin",
-          first_name: "",
-          last_name: "",
-          profile_image: "/media/default/face_img/1.svg",
-        },
-        stories: [
-          {
-            id: 4,
-            image: "/media/stories_images/rootreact_gig1.png",
-            timestamp: "2021-05-27T22:32:03.902155+01:00",
-          },
-        ],
-      },
-    ]);
+    System.import("@monkeysmedia/util-module")
+      .then((util) => util.apiGet("/api/stories/list-stories/"))
+      .then((resp: any) => {
+        setStories(resp.data);
+        setLoading(false);
+      });
   }, []);
 
   const onSelect = (key: string) => {
     setSelected(key);
   };
 
-  if (Object.keys(stories).length === 0) {
-    return <h3>Loading stories</h3>;
+  if (Object.keys(stories).length === 0 && loading) {
+    return (
+      <Container>
+        <h3 style={{ textAlign: "center" }}>Loading stories</h3>
+      </Container>
+    );
   }
+
+  if (Object.keys(stories).length === 0 && !loading) {
+    return (
+      <Container>
+        <h3 style={{ textAlign: "center" }}>Não há stories novos</h3>
+      </Container>
+    );
+  }
+
   return (
     <Container>
       <h2 style={{ textAlign: "center" }}>Stories</h2>
