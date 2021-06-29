@@ -3,6 +3,7 @@ import {
   Container,
   NotificationContainer,
   ButtonDiv,
+  ButtonGENERIC,
   Notification,
   Profile,
 } from "./styles";
@@ -65,8 +66,11 @@ export default function Root(props) {
         </div>
         <NotificationContainer>
           <ButtonDiv>
-            <button onClick={markAsRead}>Marcar todos como visto</button>
+            <ButtonGENERIC onClick={markAsRead}>
+              Marcar todos como visto
+            </ButtonGENERIC>
           </ButtonDiv>
+          {notifications.length === 0 ? <h2>Não tem notificações</h2> : null}
           {notifications.map((item, index) => (
             <div key={index} style={{ width: "75%" }}>
               <Notification>
@@ -83,19 +87,36 @@ export default function Root(props) {
                         1
                       )}`}
                       alt={"profile img"}
-                      width={"70px"}
-                      height={"70px"}
+                      width={"50px"}
+                      height={"50px"}
+                      style={{ borderRadius: "25px" }}
                     />
                   </div>
-                  <div>
+                  <div style={{ marginLeft: "10px" }}>
                     <span>{item.sender.user}</span>
                   </div>
                 </Profile>
                 <strong style={{ marginRight: "15px" }}>-</strong>
-                <div>
+                <div style={{ display: "flex" }}>
                   <span style={{ color: item.is_read ? "" : "green" }}>
                     {item.message}
                   </span>
+
+                  {item.message.search("Nova Mensage de ") != -1 ? (
+                    <div style={{ marginLeft: "10px" }}>
+                      <ButtonGENERIC
+                        onClick={() =>
+                          System.import(
+                            "@monkeysmedia/util-module"
+                          ).then((util) =>
+                            util.RedirectTo(`chat/${item.sender.user}`)
+                          )
+                        }
+                      >
+                        Chat
+                      </ButtonGENERIC>
+                    </div>
+                  ) : null}
                 </div>
               </Notification>
             </div>

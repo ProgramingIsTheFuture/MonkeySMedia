@@ -23,6 +23,13 @@ export const ButtonDiv = styled.div`
   width: 75%;
 `;
 
+export const ButtonGENERIC = styled.button`
+  padding: 5px;
+
+  background-color: var(--secundary);
+  cursor: pointer;
+`;
+
 export const Notification = styled.div`
   display: flex;
   flex-direction: row;
