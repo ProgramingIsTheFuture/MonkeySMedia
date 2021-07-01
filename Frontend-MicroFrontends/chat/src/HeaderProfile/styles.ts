@@ -4,7 +4,7 @@ export const Container = styled.header`
   height: 65px;
   z-index: 1;
 
-  background-color: var(--nav-color);
+  background-color: var(--secundary);
   order: 0;
 
   top: 0;
@@ -29,6 +29,7 @@ export const Container = styled.header`
 
     div {
       img {
+		border-radius: 25px;
         object-fit: cover;
         margin-right: 15px;
       }

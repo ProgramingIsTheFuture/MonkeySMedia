@@ -58,7 +58,7 @@ export const Message = styled.div<Props>`
   div {
     margin: 0;
     background-color: ${(props: Props) =>
-      !props.right ? "var(--card)" : "var(--nav-color)"};
+      !props.right ? "var(--card)" : "var(--secundary)"};
 
     color: var(--white);
   }
