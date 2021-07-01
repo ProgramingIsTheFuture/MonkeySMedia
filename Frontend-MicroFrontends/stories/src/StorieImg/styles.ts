@@ -33,7 +33,7 @@ export const CloseLeft = styled(Close)`
 
 export const Username = styled.span`
   margin-left: 15px;
-  color: white;
+  color: var(--white);
 `;
 
 export const Image = styled.img`

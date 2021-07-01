@@ -20,3 +20,26 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const Form = styled.form`
+  display: flex;
+  justify-content: flex-end;
+
+  flex-direction: column;
+  align-items: flex-end;
+
+  div {
+    width: 80%;
+
+    input[type="file"] {
+      width: 115px;
+    }
+    button[type="submit"] {
+      background-color: var(--secundary);
+    }
+    input,
+    button {
+      margin: 5px;
+    }
+  }
+`;
