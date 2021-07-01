@@ -27,7 +27,7 @@ export const BackArrow = styled.nav`
   height: 65px;
 
   position: fixed;
-  background: var(--nav-color);
+  background: var(--secundary);
 
   div {
     height: 100%;

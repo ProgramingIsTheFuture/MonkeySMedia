@@ -5,7 +5,7 @@ export const Container = styled.button`
 
   background-color: transparent;
   border: 1px solid var(--primary);
-  color: white;
+  color: var(--white);
   cursor: pointer;
   padding: 5px 10px;
 `;

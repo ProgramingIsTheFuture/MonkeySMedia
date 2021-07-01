@@ -5,7 +5,7 @@ import { CaretDown } from "styled-icons/boxicons-regular";
 import { NotificationsActive } from "styled-icons/material-twotone";
 
 export const Container = styled.nav`
-  background: var(--nav-color);
+  background: var(--secundary);
 
   width: 100%;
   display: flex;
@@ -43,10 +43,15 @@ export const ProfileImage = styled.li`
   width: 100%;
   height: 100%;
 
-  img {
+  div {
     width: 100%;
     height: 100%;
-    border-radius: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+    }
   }
 `;
 
@@ -86,7 +91,7 @@ export const SearchLink = styled.li`
   height: 100%;
 
   div {
-    color: white;
+    color: var(--white);
     text-decoration: none;
   }
 `;
@@ -130,7 +135,7 @@ export const DropDownItems = styled.ul`
   top: 27px;
   left: 0;
 
-  background-color: var(--nav-color);
+  background-color: var(--secundary);
   box-shadow: 0px 8px 16px 0px var(--shadow);
 
   width: 50px;

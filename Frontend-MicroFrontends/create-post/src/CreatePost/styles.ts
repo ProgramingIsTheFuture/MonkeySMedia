@@ -10,7 +10,7 @@ export const Container = styled.div`
     width: max(38%, 250px);
   }
   button {
-    background: var(--nav-color);
+    background: var(--secundary);
     color: var(--white);
 
     width: 100%;

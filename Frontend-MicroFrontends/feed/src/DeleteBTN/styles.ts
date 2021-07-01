@@ -10,6 +10,6 @@ export const BTN = styled(Trash)`
   cursor: pointer;
 
   :hover {
-    color: var(--trash-red);
+    color: var(--red);
   }
 `;

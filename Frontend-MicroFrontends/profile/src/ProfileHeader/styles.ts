@@ -11,7 +11,7 @@ export const Container = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
 
-  background-color: var(--nav-color);
+  background-color: var(--secundary);
 
   scrollbar-width: none; /** Firefox */
   ::-webkit-scrollbar {

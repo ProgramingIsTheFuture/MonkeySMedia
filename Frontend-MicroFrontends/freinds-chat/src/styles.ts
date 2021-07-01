@@ -26,7 +26,7 @@ export const Container = styled.div`
 
 export const NavFixed = styled.nav`
   height: 65px;
-  background-color: var(--nav-color);
+  background-color: var(--secundary);
 
   div {
     display: flex;

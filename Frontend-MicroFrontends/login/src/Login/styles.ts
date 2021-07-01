@@ -37,7 +37,7 @@ export const Container = styled.div`
             transition: 0.20s;
 
             :focus {
-                border: 2px solid var(--nav-color);
+                border: 2px solid var(--secundary);
                 width: 250px;
             }
         }
@@ -56,7 +56,7 @@ export const Container = styled.div`
             transition: 0.20s;
 
             :hover {
-                border: 2px solid var(--nav-color);
+                border: 2px solid var(--secundary);
             }
         }
 
