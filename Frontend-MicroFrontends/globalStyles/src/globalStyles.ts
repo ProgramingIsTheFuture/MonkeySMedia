@@ -1,5 +1,28 @@
 import { createGlobalStyle } from "styled-components";
 
+let defaultTheme = {
+  primary: "rgba(255, 218, 97, 67)",
+  secundary: "rgba(159, 83, 18, 66)",
+  card: "rgba(129, 71, 21, 80)",
+  white: "#FFF",
+  red: "#ff0000",
+};
+
+localStorage.setItem("default-theme", JSON.stringify(defaultTheme));
+
+let theme = JSON.parse(localStorage.getItem("theme"));
+if (theme) {
+  theme =
+    String(Object.keys(theme).sort((a, b) => a.localeCompare(b))) ===
+    String(
+      ["primary", "secundary", "white", "card", "red"].sort((a, b) =>
+        a.localeCompare(b)
+      )
+    )
+      ? theme
+      : null;
+}
+
 export default createGlobalStyle`
   html {
     margin: 0px;
@@ -29,15 +52,15 @@ export default createGlobalStyle`
   }
 
   :root {
-    --primary: rgba(255, 218, 97, 67);
-    --nav-color: rgba(159, 83, 18, 66);
-    --card: rgba(129, 71, 21, 80);
-    --white: #FFF;
+	--primary: ${!theme ? defaultTheme.primary : theme.primary};
+	--secundary: ${!theme ? defaultTheme.secundary : theme.secundary};
+	--card: ${!theme ? defaultTheme.card : theme.card};
+	--white: ${!theme ? defaultTheme.white : theme.white};
 
     --shadow: rgba(0,0,0,0.7);
-    --trash-red: red;
+    --red: ${!theme ? defaultTheme.red : theme.red};
     /* --card: rgba(255, 218, 97, 67);
-    --nav-color: rgba(159, 83, 18, 66);
+    --secundary: rgba(159, 83, 18, 66);
     --primary: rgba(129, 71, 21, 80);
     --white: #FFF; */
 
