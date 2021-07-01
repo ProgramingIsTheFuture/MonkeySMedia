@@ -26,6 +26,7 @@
 	<ul>
 		<h2>users/</h2>
 		<li><h3>create/</h3> <span>Create a user with all fields</span></li>
+		<li><h3>change-password/</h3> <span>change the password<span></li>
 		<li><h3>get-user/</h3> <span>returns the username from the guy that send the token<span></li>
 		<li><h3>login/</h3> <span>Login a user</span></li>
 		<li><h3>logout/</h3> <span>logout the user</span></li>
