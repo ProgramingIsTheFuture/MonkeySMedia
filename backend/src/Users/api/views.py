@@ -19,6 +19,17 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserCreationSerializer
 
 
+@api_view(["POST"])
+@authentication_classes([TokenAuthentication, SessionAuthentication, BasicAuthentication])
+def change_password(request):
+    user = request.user
+    if request.data.get("password"):
+        user.set_password(request.data.get("password"))
+        user.save()
+        return Response({"message": "Changed successfuly"}, status=status.HTTP_200_OK)
+
+    return Response({}, status=status.HTTP_400_BAD_REQUEST)
+
 # Get the current user (using the application)
 
 @api_view(["POST", "GET"])
