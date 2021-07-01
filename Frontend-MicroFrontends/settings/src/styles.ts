@@ -3,9 +3,12 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100vw;
 
+  overflow-x: hidden;
+
   .Tab {
     display: grid;
   }
+
   div {
     margin: 0;
     padding: 0;
