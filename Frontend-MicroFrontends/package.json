@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This is the best social media ever. This is just the repository for the frontend :D",
   "scripts": {
-    "start-all": "concurrently \"cd Root-Conf && yarn start\" \"cd navbar && yarn start --port 3000\" \"cd util-module && yarn start --port 3001\" \"cd globalStyles && yarn start --port 3002\" \"cd not-found && yarn start --port 3003\" \"cd create-post && yarn start --port 3004\" \"cd feed && yarn start --port 3005\" \"cd post && yarn start --port 3006\" \"cd profile && yarn start --port 3007\" \"cd login && yarn start --port 3008\" \"cd register && yarn start --port 3009\" \"cd freinds-chat && yarn start --port 3010\" \"cd chat && yarn start --port 3011\" \"cd search && yarn start --port 3012\" \"cd settings && yarn start --port 3013\" \"cd notifications && yarn start --port 3014\" \"cd stories && yarn start --port 3016\""
+    "start-all": "concurrently \"cd Root-Conf && yarn start\" \"cd navbar && yarn start --port 3000\" \"cd util-module && yarn start --port 3001\" \"cd globalStyles && yarn start --port 3002\" \"cd not-found && yarn start --port 3003\" \"cd create-post && yarn start --port 3004\" \"cd feed && yarn start --port 3005\" \"cd post && yarn start --port 3006\" \"cd profile && yarn start --port 3007\" \"cd login && yarn start --port 3008\" \"cd register && yarn start --port 3009\" \"cd freinds-chat && yarn start --port 3010\" \"cd chat && yarn start --port 3011\" \"cd search && yarn start --port 3012\" \"cd settings && yarn start --port 3013\" \"cd notifications && yarn start --port 3014\" \"cd notifications-page && yarn start --port 3015\" \"cd stories && yarn start --port 3016\""
   },
   "author": "",
   "license": "ISC"
