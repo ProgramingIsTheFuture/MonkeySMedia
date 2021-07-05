@@ -26,6 +26,8 @@ export const Container = styled.div`
 export const TitleInp = styled.input`
   width: 100%;
   margin: 5px;
+
+  height: 25px;
 `;
 
 export const TextInp = styled.textarea`
