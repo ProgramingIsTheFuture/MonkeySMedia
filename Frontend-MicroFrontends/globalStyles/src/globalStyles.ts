@@ -1,11 +1,16 @@
 import { createGlobalStyle } from "styled-components";
 
+// rgba(166,82,8,1) castanho mais escuro
+// rgba(217,130,24,1) castanho claro
+// rgba(242,179,61,1) amarelo
+// rgba(242,210,114,1) amarelo mais claro
+
 let defaultTheme = {
-  primary: "rgba(255, 218, 97, 67)",
-  secundary: "rgba(159, 83, 18, 66)",
-  card: "rgba(129, 71, 21, 80)",
-  white: "#FFF",
-  red: "#ff0000",
+  primary: "rgba(242,179,61,1)", //rgba(255, 218, 97, 67)", Old color
+  secundary: "rgba(217,130,24,1)", // rgba(159, 83, 18, 66)",
+  card: "rgba(166,82,8,1)", // rgba(129, 71, 21, 80)",
+  white: "rgba(242,242,242,1)",
+  red: "rgba(255,0,0,1)",
 };
 
 localStorage.setItem("default-theme", JSON.stringify(defaultTheme));
