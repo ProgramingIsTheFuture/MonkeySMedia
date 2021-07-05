@@ -109,7 +109,7 @@ export default function Root(props) {
                           System.import(
                             "@monkeysmedia/util-module"
                           ).then((util) =>
-                            util.RedirectTo(`chat/${item.sender.user}`)
+                            util.RedirectTo(`/chat/${item.sender.user}`)
                           )
                         }
                       >
