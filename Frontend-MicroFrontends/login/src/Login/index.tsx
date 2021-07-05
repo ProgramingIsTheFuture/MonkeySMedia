@@ -5,6 +5,7 @@ import { Container } from "./styles";
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [errors, setErrors] = useState<string>("");
 
   const changeUsername = (e: any) => {
     setUsername(e.target.value);
@@ -33,7 +34,13 @@ const Login: React.FC = () => {
         )
       )
       .then()
-      .catch();
+      .catch((r) => {
+        if (r.response.status === 400) {
+          setErrors("Credenciais invalidas!");
+        } else {
+          setErrors("Ocorreu algum problema no servidor, tente mais tarde");
+        }
+      });
 
     System.import("@monkeysmedia/util-module")
       .then((util) =>
@@ -49,6 +56,7 @@ const Login: React.FC = () => {
     <Container>
       <form onSubmit={handleSubmit}>
         <h1>Login</h1>
+        {errors.length >= 1 ? <h4>{errors}</h4> : null}
         <div>
           <label htmlFor={"username"}>Username</label>
           <input
@@ -77,7 +85,7 @@ const Login: React.FC = () => {
               util.RedirectTo("/register/")
             )
           }
-          style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer", color: "#0095f6" }}
         >
           Register
         </div>

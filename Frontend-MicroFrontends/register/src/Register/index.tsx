@@ -15,6 +15,7 @@ const Register: React.FC = () => {
   const [last_name, setLast_name] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
+  const [errorMsg, setErrorMsg] = useState<string>("");
 
   const handlePassword = (e: any) => {
     setPassword(e.target.value);
@@ -42,32 +43,48 @@ const Register: React.FC = () => {
       csrftoken = util.getCookie("csrftoken");
     });
     if (
-      username &&
-      first_name &&
-      last_name &&
+      username.length >= 1 &&
+      first_name.length >= 1 &&
+      last_name.length >= 1 &&
       validateEmail(email) &&
-      password
+      password.length >= 1
     ) {
       System.import("@monkeysmedia/util-module")
         .then((util) =>
           util.apiPostRegister(
             "api/users/create/",
             {
-              username: username,
-              first_name: first_name,
-              last_name: last_name,
-              email: email,
+              username: username.split(" ").join(""),
+              first_name: first_name.split(" ").join(""),
+              last_name: last_name.split(" ").join(""),
+              email: email.split(" ").join(""),
               password: password,
             },
             { headers: { "X-CSRFToken": csrftoken }, withCredentials: true }
           )
         )
-        .then(() => {
-          window.location.href = "/login/";
+        .then((r) => {
+          if (r.status === 201) {
+            window.location.href = "/login/";
+          }
         })
-        .catch();
-    } else {
+        .catch((r) => {
+          console.log(r.response);
+        });
+    } else if (!validateEmail(email)) {
       setError(true);
+      setErrorMsg("Email não é valido!");
+    } else {
+      console.log(
+        username,
+        password,
+        first_name,
+        last_name,
+        email,
+        validateEmail(email)
+      );
+      setError(true);
+      setErrorMsg("Está a faltar algum campo!");
     }
   };
 
@@ -76,7 +93,10 @@ const Register: React.FC = () => {
       {/*<img src={register_monkey} alt={"Register Monkey"} height={"80%"} /> */}
       <form onSubmit={handleSubmit}>
         <h1>Register</h1>
-        <Message error={error}>Some field is missing!</Message>
+        <Message error={error}>{errorMsg}</Message>
+        <div style={{ marginBottom: "15px" }}>
+          <span>Não uses espaços no username!</span>
+        </div>
         <div>
           <label htmlFor={"username"}>Username</label>
           <input
@@ -137,7 +157,7 @@ const Register: React.FC = () => {
               util.RedirectTo("/login/")
             )
           }
-          style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer", color: "#0095f6" }}
         >
           Login
         </div>
