@@ -68,7 +68,7 @@ const EditModal: React.FC<Props> = ({
       <Modal ariaHideApp={false} isOpen={isModal}>
         <Wrapper>
           <Title>
-            <h1>Edit Profile</h1>
+            <h1>Editar Perfil</h1>
             <CloseLeft onClick={handleQuit}></CloseLeft>
           </Title>
 

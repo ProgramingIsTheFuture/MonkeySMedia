@@ -46,6 +46,7 @@ export const Form = styled.form`
     margin-bottom: 5px;
 
     width: 50%;
+    height: 25px;
 
     border: 1px solid rgba(0, 0, 0, 0.4);
   }
@@ -55,6 +56,7 @@ export const Form = styled.form`
   }
 
   input[type="file"] {
+    height: inherit;
     :before {
       content: "Imagem de perfil";
     }
@@ -68,5 +70,7 @@ export const Form = styled.form`
     margin-top: 5px;
     width: auto !important;
     padding: 10px 15px;
+
+    height: 45px;
   }
 `;
