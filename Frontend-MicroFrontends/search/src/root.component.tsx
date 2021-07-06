@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import PostSearch from "./PostSearch";
 import ProfileSearch from "./ProfileSearch";
@@ -39,6 +39,15 @@ export default function Root(props) {
   const [searchValue, setSearchValue] = useState<string>("");
   const [postResponse, setPostResponse] = useState<any>([]);
   const [profileResponse, setProfileResponse] = useState<any>([]);
+  const [baseUrl, setBaseUrl] = useState<string>("");
+
+  useEffect(() => {
+    if (baseUrl === "") {
+      System.import("@monkeysmedia/util-module").then((util) =>
+        setBaseUrl(util.baseUrl)
+      );
+    }
+  }, [baseUrl]);
 
   const SearchOnChange = (event: any) => {
     setSearchValue(event.target.value);
@@ -48,7 +57,12 @@ export default function Root(props) {
         util.apiGet(`api/posts/search-user-post?search=${searchValue}`, false)
       )
       .then((resp: any) => {
-        setPostResponse(resp.data);
+        setPostResponse(
+          resp.data.map((i: PostType) => {
+            i.image = (() => i.image.split(baseUrl.slice(0, -1))[1])();
+            return i;
+          })
+        );
       })
       .catch((e: Error) => {
         setHasError("Aconteceu algum erro a carregar os resultados!");
