@@ -1,2 +1,547 @@
-System.register(["react","react-dom"],(function(e,t){var n={},o={};return{setters:[function(e){n.default=e.default,n.useEffect=e.useEffect,n.useState=e.useState},function(e){o.default=e.default}],execute:function(){e((()=>{var e={722:(e,t,n)=>{const o=n(905).R;t.s=function(e){if(e||(e=1),!n.y.meta||!n.y.meta.url)throw console.error("__system_context__",n.y),Error("systemjs-webpack-interop was provided an unknown SystemJS context. Expected context.meta.url, but none was provided");n.p=o(n.y.meta.url,e)}},905:(e,t,n)=>{t.R=function(e,t){const n=document.createElement("a");n.href=e;const o="/"===n.pathname[0]?n.pathname:"/"+n.pathname;let r=0,a=o.length;for(;r!==t&&a>=0;)"/"===o[--a]&&r++;if(r!==t)throw Error("systemjs-webpack-interop: rootDirectoryLevel ("+t+") is greater than the number of directories ("+r+") in the URL path "+e);const i=o.slice(0,a+1);return n.protocol+"//"+n.host+i};Number.isInteger},297:e=>{"use strict";e.exports=n},268:e=>{"use strict";e.exports=o}},r={};function a(t){var n=r[t];if(void 0!==n)return n.exports;var o=r[t]={exports:{}};return e[t](o,o.exports,a),o.exports}a.y=t,a.d=(e,t)=>{for(var n in t)a.o(t,n)&&!a.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},a.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),a.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.p="";var i={};return(0,a(722).s)(1),(()=>{"use strict";a.r(i),a.d(i,{bootstrap:()=>E,mount:()=>w,unmount:()=>O});var e=a(297),t=a(268);function n(e){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function o(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function r(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var o=Object.getOwnPropertySymbols(e);t&&(o=o.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,o)}return n}function c(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?r(Object(n),!0).forEach((function(t){o(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):r(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}var u=null;try{u=require("react").createContext()}catch(n){}var s={React:null,ReactDOM:null,rootComponent:null,loadRootComponent:null,renderType:null,errorBoundary:null,errorBoundaryClass:null,domElementGetter:null,parcelCanUpdate:!0,suppressComponentDidCatchWarning:!1,domElements:{}};function l(e,t){return e.rootComponent?Promise.resolve():e.loadRootComponent(t).then((function(t){e.rootComponent=t}))}function p(e,t){return new Promise((function(n,o){e.suppressComponentDidCatchWarning||!function(e){if(!(e&&"string"==typeof e.version&&e.version.indexOf(".")>=0))return!1;var t=e.version.slice(0,e.version.indexOf("."));try{return Number(t)>=16}catch(e){return!1}}(e.React)||e.errorBoundary||(e.rootComponent.prototype?e.rootComponent.prototype.componentDidCatch||console.warn("single-spa-react: ".concat(t.name||t.appName||t.childAppName,"'s rootComponent should implement componentDidCatch to avoid accidentally unmounting the entire single-spa application.")):console.warn("single-spa-react: ".concat(t.name||t.appName||t.childAppName,"'s rootComponent does not implement an error boundary.  If using a functional component, consider providing an opts.errorBoundary to singleSpaReact(opts).")));var r=function(e,t){return t.domElement?function(){return t.domElement}:t.domElementGetter?t.domElementGetter:e.domElementGetter?e.domElementGetter:function(e){var t=e.appName||e.name;if(!t)throw Error("single-spa-react was not given an application name as a prop, so it can't make a unique dom element container for the react application");var n="single-spa-application:".concat(t);return function(){var e=document.getElementById(n);return e||((e=document.createElement("div")).id=n,document.body.appendChild(e)),e}}(t)}(e,t);if("function"!=typeof r)throw new Error("single-spa-react: the domElementGetter for react application '".concat(t.appName||t.name,"' is not a function"));var a=y(e,t),i=function(e,t){var n=e(t);if(!n)throw new Error("single-spa-react: domElementGetter function for application '".concat(t.appName||t.name,"' did not return a valid dom element. Please pass a valid domElement or domElementGetter via opts or props"));return n}(r,t);d({elementToRender:a,domElement:i,whenFinished:function(){n(this)},opts:e}),e.domElements[t.name]=i}))}function m(e,t){return Promise.resolve().then((function(){e.ReactDOM.unmountComponentAtNode(e.domElements[t.name]),delete e.domElements[t.name]}))}function f(e,t){return new Promise((function(n,o){d({elementToRender:y(e,t),domElement:e.domElements[t.name],whenFinished:function(){n(this)},opts:e})}))}function d(e){var t=e.opts,n=e.elementToRender,o=e.domElement,r=e.whenFinished;return["createRoot","unstable_createRoot","createBlockingRoot","unstable_createBlockingRoot"].indexOf(t.renderType)>=0?t.ReactDOM[t.renderType](o).render(n,r):"hydrate"===t.renderType?t.ReactDOM.hydrate(n,o,r):t.ReactDOM.render(n,o,r)}function y(e,t){var n=e.React.createElement(e.rootComponent,t),o=u?e.React.createElement(u.Provider,{value:t},n):n;return e.errorBoundary&&(e.errorBoundaryClass=e.errorBoundaryClass||function(e){function t(n){e.React.Component.apply(this,arguments),this.state={caughtError:null,caughtErrorInfo:null},t.displayName="SingleSpaReactErrorBoundary(".concat(n.name,")")}return t.prototype=Object.create(e.React.Component.prototype),t.prototype.render=function(){return this.state.caughtError?e.errorBoundary(this.state.caughtError,this.state.caughtErrorInfo,this.props):this.props.children},t.prototype.componentDidCatch=function(e,t){this.setState({caughtError:e,caughtErrorInfo:t})},t}(e),o=e.React.createElement(e.errorBoundaryClass,t,o)),o}function h(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,o=new Array(t);n<t;n++)o[n]=e[n];return o}function b(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var n=e&&("undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"]);if(null!=n){var o,r,a=[],i=!0,c=!1;try{for(n=n.call(e);!(i=(o=n.next()).done)&&(a.push(o.value),!t||a.length!==t);i=!0);}catch(e){c=!0,r=e}finally{try{i||null==n.return||n.return()}finally{if(c)throw r}}return a}}(e,t)||function(e,t){if(e){if("string"==typeof e)return h(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?h(e,t):void 0}}(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}var g=function(e){"granted"===Notification.permission?e():"default"!==Notification.permission&&"denied"!==Notification.permission||Notification.requestPermission().then((function(t){"granted"===t&&e()}))},v=function(e){if("object"!==n(e))throw new Error("single-spa-react requires a configuration object");var t=c(c({},s),e);if(!t.React)throw new Error("single-spa-react must be passed opts.React");if(!t.ReactDOM)throw new Error("single-spa-react must be passed opts.ReactDOM");if(!t.rootComponent&&!t.loadRootComponent)throw new Error("single-spa-react must be passed opts.rootComponent or opts.loadRootComponent");if(t.errorBoundary&&"function"!=typeof t.errorBoundary)throw Error("The errorBoundary opt for single-spa-react must either be omitted or be a function that returns React elements");!u&&t.React.createContext&&(u=t.React.createContext());var o={bootstrap:l.bind(null,t),mount:p.bind(null,t),unmount:m.bind(null,t)};return t.parcelCanUpdate&&(o.update=f.bind(null,t)),o}({React:e.default,ReactDOM:t.default,rootComponent:function(t){var n=b((0,e.useState)(null),2),o=n[0],r=n[1],a=b((0,e.useState)(""),2),i=a[0],c=a[1];return(0,e.useEffect)((function(){System.import("@monkeysmedia/util-module").then((function(e){return c(e.socketUrl)}))}),[]),(0,e.useEffect)((function(){g((function(){}))}),[]),(0,e.useEffect)((function(){if(""!==i){var e=localStorage.getItem("auth");e=JSON.parse(e).token,r(new WebSocket("".concat(i,"ws/notification/?token=").concat(e)))}}),[i]),(0,e.useEffect)((function(){o&&(o.onopen=function(){},o.onmessage=function(e){g((function(){return t=JSON.parse(e.data).message,new Notification("Nova Notificação",{body:t});var t})),window.dispatchEvent(new CustomEvent("@monkeysmedia/notification/new",{}))},o.onclose=function(e){console.info(e)},o.onerror=function(e){console.error(e)})}),[o]),e.default.createElement(e.default.Fragment,null)},errorBoundary:function(e,t,n){return null}}),E=v.bootstrap,w=v.mount,O=v.unmount})(),i})())}}}));
+System.register(["react","react-dom"], function(__WEBPACK_DYNAMIC_EXPORT__, __system_context__) {
+	var __WEBPACK_EXTERNAL_MODULE_react__ = {};
+	var __WEBPACK_EXTERNAL_MODULE_react_dom__ = {};
+	Object.defineProperty(__WEBPACK_EXTERNAL_MODULE_react__, "__esModule", { value: true });
+	Object.defineProperty(__WEBPACK_EXTERNAL_MODULE_react_dom__, "__esModule", { value: true });
+	return {
+		setters: [
+			function(module) {
+				Object.keys(module).forEach(function(key) {
+					__WEBPACK_EXTERNAL_MODULE_react__[key] = module[key];
+				});
+			},
+			function(module) {
+				Object.keys(module).forEach(function(key) {
+					__WEBPACK_EXTERNAL_MODULE_react_dom__[key] = module[key];
+				});
+			}
+		],
+		execute: function() {
+			__WEBPACK_DYNAMIC_EXPORT__(
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _arrayLikeToArray)
+/* harmony export */ });
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _arrayWithHoles)
+/* harmony export */ });
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _iterableToArrayLimit)
+/* harmony export */ });
+function _iterableToArrayLimit(arr, i) {
+  var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]);
+
+  if (_i == null) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+
+  var _s, _e;
+
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _nonIterableRest)
+/* harmony export */ });
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _slicedToArray)
+/* harmony export */ });
+/* harmony import */ var _arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayWithHoles.js */ "./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js");
+/* harmony import */ var _iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./iterableToArrayLimit.js */ "./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js");
+/* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./unsupportedIterableToArray.js */ "./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js");
+/* harmony import */ var _nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nonIterableRest.js */ "./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js");
+
+
+
+
+function _slicedToArray(arr, i) {
+  return (0,_arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__.default)(arr) || (0,_iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__.default)(arr, i) || (0,_unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__.default)(arr, i) || (0,_nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__.default)();
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _unsupportedIterableToArray)
+/* harmony export */ });
+/* harmony import */ var _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayLikeToArray.js */ "./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js");
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return (0,_arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__.default)(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return (0,_arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__.default)(o, minLen);
+}
+
+/***/ }),
+
+/***/ "./src/root.component.tsx":
+/*!********************************!*\
+  !*** ./src/root.component.tsx ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Root)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+
+
+
+var ShowNotification = function ShowNotification(message) {
+  return new Notification("Nova Notificação", {
+    body: message
+  });
+};
+
+var CheckPermission = function CheckPermission(noti) {
+  if (Notification.permission === "granted") {
+    noti();
+  } else if (Notification.permission === "default" || Notification.permission === "denied") {
+    Notification.requestPermission().then(function (p) {
+      if (p === "granted") {
+        noti();
+      }
+    });
+  }
+};
+
+function Root(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState2 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState, 2),
+      socket = _useState2[0],
+      setSocket = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState4 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState3, 2),
+      socketUrl = _useState4[0],
+      setSocketUrl = _useState4[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    System["import"]("@monkeysmedia/util-module").then(function (util) {
+      return setSocketUrl(util.socketUrl);
+    });
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    CheckPermission(function () {});
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (socketUrl !== "") {
+      var token = localStorage.getItem("auth");
+      token = JSON.parse(token).token;
+      setSocket(new WebSocket("".concat(socketUrl, "ws/notification/?token=").concat(token)));
+    }
+  }, [socketUrl]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (socket) {
+      socket.onopen = function () {};
+
+      socket.onmessage = function (event) {
+        CheckPermission(function () {
+          return ShowNotification(JSON.parse(event.data).message);
+        });
+        window.dispatchEvent(new CustomEvent("@monkeysmedia/notification/new", {}));
+      };
+
+      socket.onclose = function (event) {
+        console.info(event);
+      };
+
+      socket.onerror = function (error) {
+        console.error(error);
+      };
+    }
+  }, [socket]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.default.createElement(react__WEBPACK_IMPORTED_MODULE_1__.default.Fragment, null);
+}
+
+/***/ }),
+
+/***/ "./node_modules/single-spa-react/lib/esm/single-spa-react.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/single-spa-react/lib/esm/single-spa-react.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "SingleSpaContext": () => (/* binding */ r)
+/* harmony export */ });
+function e(t){return(e="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(t)}function t(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function n(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var o=Object.getOwnPropertySymbols(e);t&&(o=o.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,o)}return n}function o(e){for(var o=1;o<arguments.length;o++){var r=null!=arguments[o]?arguments[o]:{};o%2?n(Object(r),!0).forEach((function(n){t(e,n,r[n])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(r)):n(Object(r)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(r,t))}))}return e}var r=null;try{r=require("react").createContext()}catch(e){}var a={React:null,ReactDOM:null,rootComponent:null,loadRootComponent:null,renderType:null,errorBoundary:null,errorBoundaryClass:null,domElementGetter:null,parcelCanUpdate:!0,suppressComponentDidCatchWarning:!1,domElements:{}};function c(t){if("object"!==e(t))throw new Error("single-spa-react requires a configuration object");var n=o(o({},a),t);if(!n.React)throw new Error("single-spa-react must be passed opts.React");if(!n.ReactDOM)throw new Error("single-spa-react must be passed opts.ReactDOM");if(!n.rootComponent&&!n.loadRootComponent)throw new Error("single-spa-react must be passed opts.rootComponent or opts.loadRootComponent");if(n.errorBoundary&&"function"!=typeof n.errorBoundary)throw Error("The errorBoundary opt for single-spa-react must either be omitted or be a function that returns React elements");!r&&n.React.createContext&&(r=n.React.createContext());var c={bootstrap:i.bind(null,n),mount:p.bind(null,n),unmount:u.bind(null,n)};return n.parcelCanUpdate&&(c.update=l.bind(null,n)),c}function i(e,t){return e.rootComponent?Promise.resolve():e.loadRootComponent(t).then((function(t){e.rootComponent=t}))}function p(e,t){return new Promise((function(n,o){e.suppressComponentDidCatchWarning||!function(e){if(!(e&&"string"==typeof e.version&&e.version.indexOf(".")>=0))return!1;var t=e.version.slice(0,e.version.indexOf("."));try{return Number(t)>=16}catch(e){return!1}}(e.React)||e.errorBoundary||(e.rootComponent.prototype?e.rootComponent.prototype.componentDidCatch||console.warn("single-spa-react: ".concat(t.name||t.appName||t.childAppName,"'s rootComponent should implement componentDidCatch to avoid accidentally unmounting the entire single-spa application.")):console.warn("single-spa-react: ".concat(t.name||t.appName||t.childAppName,"'s rootComponent does not implement an error boundary.  If using a functional component, consider providing an opts.errorBoundary to singleSpaReact(opts).")));var r=function(e,t){return t.domElement?function(){return t.domElement}:t.domElementGetter?t.domElementGetter:e.domElementGetter?e.domElementGetter:function(e){var t=e.appName||e.name;if(!t)throw Error("single-spa-react was not given an application name as a prop, so it can't make a unique dom element container for the react application");var n="single-spa-application:".concat(t);return function(){var e=document.getElementById(n);return e||((e=document.createElement("div")).id=n,document.body.appendChild(e)),e}}(t)}(e,t);if("function"!=typeof r)throw new Error("single-spa-react: the domElementGetter for react application '".concat(t.appName||t.name,"' is not a function"));var a=m(e,t),c=function(e,t){var n=e(t);if(!n)throw new Error("single-spa-react: domElementGetter function for application '".concat(t.appName||t.name,"' did not return a valid dom element. Please pass a valid domElement or domElementGetter via opts or props"));return n}(r,t);s({elementToRender:a,domElement:c,whenFinished:function(){n(this)},opts:e}),e.domElements[t.name]=c}))}function u(e,t){return Promise.resolve().then((function(){e.ReactDOM.unmountComponentAtNode(e.domElements[t.name]),delete e.domElements[t.name]}))}function l(e,t){return new Promise((function(n,o){s({elementToRender:m(e,t),domElement:e.domElements[t.name],whenFinished:function(){n(this)},opts:e})}))}function s(e){var t=e.opts,n=e.elementToRender,o=e.domElement,r=e.whenFinished;return["createRoot","unstable_createRoot","createBlockingRoot","unstable_createBlockingRoot"].indexOf(t.renderType)>=0?t.ReactDOM[t.renderType](o).render(n,r):"hydrate"===t.renderType?t.ReactDOM.hydrate(n,o,r):t.ReactDOM.render(n,o,r)}function m(e,t){var n=e.React.createElement(e.rootComponent,t),o=r?e.React.createElement(r.Provider,{value:t},n):n;return e.errorBoundary&&(e.errorBoundaryClass=e.errorBoundaryClass||function(e){function t(n){e.React.Component.apply(this,arguments),this.state={caughtError:null,caughtErrorInfo:null},t.displayName="SingleSpaReactErrorBoundary(".concat(n.name,")")}return t.prototype=Object.create(e.React.Component.prototype),t.prototype.render=function(){return this.state.caughtError?e.errorBoundary(this.state.caughtError,this.state.caughtErrorInfo,this.props):this.props.children},t.prototype.componentDidCatch=function(e,t){this.setState({caughtError:e,caughtErrorInfo:t})},t}(e),o=e.React.createElement(e.errorBoundaryClass,t,o)),o}/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (c);
+//# sourceMappingURL=single-spa-react.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/systemjs-webpack-interop/auto-public-path/auto-public-path.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/systemjs-webpack-interop/auto-public-path/auto-public-path.js ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+const resolveDirectory = __webpack_require__(/*! ../public-path */ "./node_modules/systemjs-webpack-interop/public-path.js").resolveDirectory;
+
+exports.autoPublicPath = function autoPublicPath(rootDirLevel) {
+  if (!rootDirLevel) {
+    rootDirLevel = 1;
+  }
+
+  if (true) {
+    if (false) {}
+
+    if (!__webpack_require__.y.meta || !__webpack_require__.y.meta.url) {
+      console.error("__system_context__", __webpack_require__.y);
+      throw Error(
+        "systemjs-webpack-interop was provided an unknown SystemJS context. Expected context.meta.url, but none was provided"
+      );
+    }
+
+    __webpack_require__.p = resolveDirectory(
+      __webpack_require__.y.meta.url,
+      rootDirLevel
+    );
+  }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/systemjs-webpack-interop/public-path.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/systemjs-webpack-interop/public-path.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+exports.setPublicPath = function setPublicPath(
+  systemjsModuleName,
+  rootDirectoryLevel
+) {
+  if (!rootDirectoryLevel) {
+    rootDirectoryLevel = 1;
+  }
+  if (
+    typeof systemjsModuleName !== "string" ||
+    systemjsModuleName.trim().length === 0
+  ) {
+    throw Error(
+      "systemjs-webpack-interop: setPublicPath(systemjsModuleName) must be called with a non-empty string 'systemjsModuleName'"
+    );
+  }
+
+  if (
+    typeof rootDirectoryLevel !== "number" ||
+    rootDirectoryLevel <= 0 ||
+    isNaN(rootDirectoryLevel) ||
+    !isInteger(rootDirectoryLevel)
+  ) {
+    throw Error(
+      "systemjs-webpack-interop: setPublicPath(systemjsModuleName, rootDirectoryLevel) must be called with a positive integer 'rootDirectoryLevel'"
+    );
+  }
+
+  let moduleUrl;
+  try {
+    moduleUrl = window.System.resolve(systemjsModuleName);
+    if (!moduleUrl) {
+      throw Error();
+    }
+  } catch (err) {
+    throw Error(
+      "systemjs-webpack-interop: There is no such module '" +
+        systemjsModuleName +
+        "' in the SystemJS registry. Did you misspell the name of your module?"
+    );
+  }
+
+  __webpack_require__.p = resolveDirectory(moduleUrl, rootDirectoryLevel);
+};
+
+function resolveDirectory(urlString, rootDirectoryLevel) {
+  // Our friend IE11 doesn't support new URL()
+  // https://github.com/single-spa/single-spa/issues/612
+  // https://gist.github.com/jlong/2428561
+
+  const a = document.createElement("a");
+  a.href = urlString;
+
+  const pathname = a.pathname[0] === "/" ? a.pathname : "/" + a.pathname;
+  let numDirsProcessed = 0,
+    index = pathname.length;
+  while (numDirsProcessed !== rootDirectoryLevel && index >= 0) {
+    const char = pathname[--index];
+    if (char === "/") {
+      numDirsProcessed++;
+    }
+  }
+
+  if (numDirsProcessed !== rootDirectoryLevel) {
+    throw Error(
+      "systemjs-webpack-interop: rootDirectoryLevel (" +
+        rootDirectoryLevel +
+        ") is greater than the number of directories (" +
+        numDirsProcessed +
+        ") in the URL path " +
+        urlString
+    );
+  }
+
+  const finalPath = pathname.slice(0, index + 1);
+
+  return a.protocol + "//" + a.host + finalPath;
+}
+
+exports.resolveDirectory = resolveDirectory;
+
+// borrowed from https://github.com/parshap/js-is-integer/blob/master/index.js
+const isInteger =
+  Number.isInteger ||
+  function isInteger(val) {
+    return typeof val === "number" && isFinite(val) && Math.floor(val) === val;
+  };
+
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
+
+/***/ }),
+
+/***/ "react-dom":
+/*!****************************!*\
+  !*** external "react-dom" ***!
+  \****************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE_react_dom__;
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/__system_context__ */
+/******/ 	(() => {
+/******/ 		__webpack_require__.y = __system_context__;
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		__webpack_require__.p = "";
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+(() => {
+/*!*********************************************************************!*\
+  !*** ./node_modules/systemjs-webpack-interop/auto-public-path/1.js ***!
+  \*********************************************************************/
+const autoPublicPath = __webpack_require__(/*! ./auto-public-path */ "./node_modules/systemjs-webpack-interop/auto-public-path/auto-public-path.js").autoPublicPath;
+
+autoPublicPath(1);
+
+})();
+
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+/*!********************************************!*\
+  !*** ./src/monkeysmedia-notifications.tsx ***!
+  \********************************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "bootstrap": () => (/* binding */ bootstrap),
+/* harmony export */   "mount": () => (/* binding */ mount),
+/* harmony export */   "unmount": () => (/* binding */ unmount)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "react-dom");
+/* harmony import */ var single_spa_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! single-spa-react */ "./node_modules/single-spa-react/lib/esm/single-spa-react.js");
+/* harmony import */ var _root_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./root.component */ "./src/root.component.tsx");
+
+
+
+
+var lifecycles = (0,single_spa_react__WEBPACK_IMPORTED_MODULE_2__.default)({
+  React: react__WEBPACK_IMPORTED_MODULE_0__.default,
+  ReactDOM: react_dom__WEBPACK_IMPORTED_MODULE_1__.default,
+  rootComponent: _root_component__WEBPACK_IMPORTED_MODULE_3__.default,
+  errorBoundary: function errorBoundary(err, info, props) {
+    // Customize the root error boundary for your microfrontend here.
+    return null;
+  }
+});
+var bootstrap = lifecycles.bootstrap,
+    mount = lifecycles.mount,
+    unmount = lifecycles.unmount;
+
+})();
+
+/******/ 	return __webpack_exports__;
+/******/ })()
+
+			);
+		}
+	};
+});
 //# sourceMappingURL=monkeysmedia-notifications.js.map

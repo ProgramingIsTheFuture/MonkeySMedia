@@ -1,5 +1,9 @@
-import axios, { Canceler } from "axios";
-import { navigateToUrl, getMountedApps } from "single-spa";
+import axios from "axios";
+import { navigateToUrl } from "single-spa";
+
+import styled from "styled-components";
+
+export const monkeysmedia_styled = styled;
 
 export function getCookie(name: string) {
   let cookieValue = null;

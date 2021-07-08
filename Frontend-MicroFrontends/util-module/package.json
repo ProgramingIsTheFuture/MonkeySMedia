@@ -2,7 +2,7 @@
   "scripts": {
     "start": "webpack serve",
     "start:standalone": "webpack serve --env standalone",
-    "build": "webpack --mode=production",
+    "build": "webpack",
     "analyze": "webpack --mode=production --env analyze",
     "lint": "eslint src --ext js,ts,tsx",
     "format": "prettier --write './**'",
@@ -49,6 +49,7 @@
     "@types/systemjs": "^6.1.0",
     "@types/webpack-env": "^1.16.0",
     "axios": "^0.21.1",
+    "react": "^17.0.2",
     "single-spa": "^5.9.2"
   }
 }
