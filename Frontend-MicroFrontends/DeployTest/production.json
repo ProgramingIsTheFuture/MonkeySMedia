@@ -1,0 +1,22 @@
+{
+  "imports": {
+    "@monkeysmedia/root-config": "http://localhost:5000/monkeysmedia-root-config.js",
+    "@monkeysmedia/navbar": "http://localhost:5000/monkeysmedia-navbar.js",
+    "@monkeysmedia/util-module": "http://localhost:5000/monkeysmedia-util-module.js",
+    "@monkeysmedia/globalStyles": "http://localhost:5000/monkeysmedia-globalStyles.js",
+    "@monkeysmedia/not-found": "http://localhost:5000/monkeysmedia-not-found.js",
+    "@monkeysmedia/create-post": "http://localhost:5000/monkeysmedia-create-post.js",
+    "@monkeysmedia/feed": "http://localhost:5000/monkeysmedia-feed.js",
+    "@monkeysmedia/post": "http://localhost:5000/monkeysmedia-post.js",
+    "@monkeysmedia/profile": "http://localhost:5000/monkeysmedia-profile.js",
+    "@monkeysmedia/login": "http://localhost:5000/monkeysmedia-login.js",
+    "@monkeysmedia/register": "http://localhost:5000/monkeysmedia-register.js",
+    "@monkeysmedia/freinds-chat": "http://localhost:5000/monkeysmedia-freinds-chat.js",
+    "@monkeysmedia/chat": "http://localhost:5000/monkeysmedia-chat.js",
+    "@monkeysmedia/search": "http://localhost:5000/monkeysmedia-search.js",
+    "@monkeysmedia/settings": "http://localhost:5000/monkeysmedia-settings.js",
+    "@monkeysmedia/notifications": "http://localhost:5000/monkeysmedia-notifications.js",
+    "@monkeysmedia/notifications-page": "http://localhost:5000/monkeysmedia-notifications-page.js",
+    "@monkeysmedia/stories": "http://localhost:5000/monkeysmedia-stories.js"
+  }
+}
