@@ -4114,7 +4114,7 @@ System.register(
                         {
                           className: "accountName",
                         },
-                        props.username
+                        props.username.substring(0, 10)
                       )
                     );
                   };
@@ -4157,7 +4157,7 @@ System.register(
                       (_templateObject = (0,
                       _babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__.default)(
                         [
-                          "\n  padding: 2px;\n  background: linear-gradient(\n    200deg,\n    $gradient-one 25%,\n    $gradient-two 50%,\n    $gradient-three 75%,\n    $gradient-four 100%\n  );\n  border-radius: 50%;\n\n  img {\n    border-radius: 50%;\n    border: 2px solid purple;\n    display: block;\n    width: 60px;\n    height: 60px;\n\n    &:hover {\n      cursor: pointer;\n    }\n  }\n",
+                          "\n  padding: 2px;\n  background: linear-gradient(\n    200deg,\n    $gradient-one 25%,\n    $gradient-two 50%,\n    $gradient-three 75%,\n    $gradient-four 100%\n  );\n  border-radius: 50%;\n\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n\n  img {\n    border-radius: 50%;\n    border: 2px solid purple;\n    display: block;\n    width: 60px;\n    height: 60px;\n\n    &:hover {\n      cursor: pointer;\n    }\n  }\n",
                         ]
                       ))
                   );

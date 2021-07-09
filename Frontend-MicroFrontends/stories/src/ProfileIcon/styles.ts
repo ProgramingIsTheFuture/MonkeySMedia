@@ -11,6 +11,10 @@ export const Container = styled.div`
   );
   border-radius: 50%;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   img {
     border-radius: 50%;
     border: 2px solid purple;

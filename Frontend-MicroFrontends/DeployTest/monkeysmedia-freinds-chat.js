@@ -1107,15 +1107,6 @@ System.register(
                                   "div",
                                   null,
                                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.default.createElement(
-                                    "div",
-                                    null,
-                                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.default.createElement(
-                                      "span",
-                                      null,
-                                      item.user
-                                    )
-                                  ),
-                                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.default.createElement(
                                     _styles__WEBPACK_IMPORTED_MODULE_2__.FLName,
                                     {
                                       id: "names",
@@ -1128,14 +1119,23 @@ System.register(
                                         {
                                           dir: "ltr",
                                         },
-                                        (item.first_name + " " + item.last_name)
-                                          .length > 18
+                                        (
+                                          item.user +
+                                          " " +
+                                          item.first_name +
+                                          " " +
+                                          item.last_name
+                                        ).length > 22
                                           ? (
+                                              item.user +
+                                              " " +
                                               item.first_name +
                                               " " +
                                               item.last_name
-                                            ).substring(0, 16) + "..."
-                                          : item.first_name +
+                                            ).substring(0, 22) + "..."
+                                          : item.user +
+                                              " " +
+                                              item.first_name +
                                               " " +
                                               item.last_name
                                       )

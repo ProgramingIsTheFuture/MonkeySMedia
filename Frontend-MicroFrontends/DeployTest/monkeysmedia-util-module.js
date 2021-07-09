@@ -8862,8 +8862,8 @@ object-assign
 
                 return cookieValue;
               }
-              var baseUrl = "http://localhost:8000/";
-              var socketUrl = "ws://localhost:8000/";
+              var baseUrl = "http://api.themonkeysmedia.com:8000/";
+              var socketUrl = "ws://api.themonkeysmedia.com:8000/";
               var api = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
                 baseURL: baseUrl,
               });

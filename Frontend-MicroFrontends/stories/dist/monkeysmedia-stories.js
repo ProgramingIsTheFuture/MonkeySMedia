@@ -1716,7 +1716,7 @@ var ProfileIcon = function ProfileIcon(props) {
     alt: "profile"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.default.createElement("span", {
     className: "accountName"
-  }, props.username));
+  }, props.username.substring(0, 10)));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProfileIcon);
@@ -1741,7 +1741,7 @@ __webpack_require__.r(__webpack_exports__);
 var _templateObject;
 
 
-var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__.default.div(_templateObject || (_templateObject = (0,_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__.default)(["\n  padding: 2px;\n  background: linear-gradient(\n    200deg,\n    $gradient-one 25%,\n    $gradient-two 50%,\n    $gradient-three 75%,\n    $gradient-four 100%\n  );\n  border-radius: 50%;\n\n  img {\n    border-radius: 50%;\n    border: 2px solid purple;\n    display: block;\n    width: 60px;\n    height: 60px;\n\n    &:hover {\n      cursor: pointer;\n    }\n  }\n"])));
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__.default.div(_templateObject || (_templateObject = (0,_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__.default)(["\n  padding: 2px;\n  background: linear-gradient(\n    200deg,\n    $gradient-one 25%,\n    $gradient-two 50%,\n    $gradient-three 75%,\n    $gradient-four 100%\n  );\n  border-radius: 50%;\n\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n\n  img {\n    border-radius: 50%;\n    border: 2px solid purple;\n    display: block;\n    width: 60px;\n    height: 60px;\n\n    &:hover {\n      cursor: pointer;\n    }\n  }\n"])));
 
 /***/ }),
 
