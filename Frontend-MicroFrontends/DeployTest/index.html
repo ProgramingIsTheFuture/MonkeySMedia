@@ -1,99 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>TheMonkeySMedia</title>
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="http://api.themonkeysmedia.com:8000/media/logo/logo.png"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/regenerator-runtime@0.13.7/runtime.min.js"></script>
-    <meta name="importmap-type" content="systemjs-importmap" />
-    <script type="systemjs-importmap">
-      {
-        "imports": {
-          "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
-          "react": "https://unpkg.com/react@17/umd/react.development.js",
-          "react-dom": "https://unpkg.com/react-dom@17/umd/react-dom.development.js",
-          "react-router-dom": "https://unpkg.com/react-router-dom@5.2.0/umd/react-router-dom.min.js",
-          "react-is": "https://unpkg.com/react-is@17.0.1/umd/react-is.production.min.js",
-          "styled-components": "https://unpkg.com/styled-components@5.2.2/dist/styled-components.min.js"
-        }
-      }
-    </script>
-    <link
-      rel="preload"
-      href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js"
-      as="script"
-    />
-    <script
-      type="systemjs-importmap"
-      src="http://www.themonkeysmedia.com:5000/production.json"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.2.0/dist/import-map-overrides.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script>
-    <template id="single-spa-layout" style="display: none"
-      ><single-spa-router base="/"
-        ><main style="height: 100%; height: 100%">
-          <application name="@monkeysmedia/globalStyles"></application
-          ><application name="@monkeysmedia/notifications"></application
-          ><route default
-            ><application name="@monkeysmedia/not-found"></application></route
-          ><route path="/" exact
-            ><application name="@monkeysmedia/navbar"></application
-            ><application name="@monkeysmedia/create-post"></application
-            ><application name="@monkeysmedia/stories"></application
-            ><application name="@monkeysmedia/feed"></application></route
-          ><route path="/login/" exact
-            ><application name="@monkeysmedia/login"></application></route
-          ><route path="/register/" exact
-            ><application name="@monkeysmedia/register"></application></route
-          ><route path="/search/" exact
-            ><application name="@monkeysmedia/search"></application></route
-          ><route path="/settings/" exact
-            ><application name="@monkeysmedia/navbar"></application
-            ><application name="@monkeysmedia/settings"></application></route
-          ><route path="/profile/:username/" exact
-            ><application name="@monkeysmedia/profile"></application></route
-          ><route path="/notifications/" exact
-            ><application name="@monkeysmedia/navbar"></application
-            ><application
-              name="@monkeysmedia/notifications-page"
-            ></application></route
-          ><route path="/chat/"
-            ><div
-              class="chat"
-              style="
-                display: grid;
-                grid-template-columns: min(max(40%, 250px), 350px) auto;
-                height: 100%;
-              "
-            >
-              <application name="@monkeysmedia/freinds-chat"></application
-              ><route path=":username/"
-                ><application name="@monkeysmedia/chat"></application
-              ></route></div
-          ></route></main></single-spa-router
-    ></template>
-    <style>
-      @media screen and (max-width: 650px) {
-        div.chat {
-          display: none !important;
-        }
-      }
-    </style>
-  </head>
+    <meta charset="utf-8">
+    <title>Webpack App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><main>
+      <h1>Your Microfrontend is not here</h1>
+      <p>
+        The @monkeysmedia/profile microfrontend is running in "integrated" mode, since standalone-single-spa-webpack-plugin is disabled. This means that
+        it does not work as a standalone application without changing configuration.
+      </p>
+      <h2>How do I develop this microfrontend?</h2>
+      <p>
+        To develop this microfrontend, try the following steps:
+        <ol>
+          <li>
+            Copy the following URL to your clipboard: <a target="_blank" rel="noopener" id="mf-url"></a>
+          </li>
+          <li>
+            In a new browser tab, go to the your single-spa web app. This is where your "root config" is running. You do not have to run the root config locally
+            if it is already running on a deployed environment - go to the deployed environment directly.
+          </li>
+          <li>
+            In the browser console, run <code>localStorage.setItem('devtools', true);</code> Refresh the page.
+          </li>
+          <li>
+            A yellowish rectangle should appear at the bottom right of your screen. Click on it. Find the name @monkeysmedia/profile
+            and click on it. If it is not present, click on Add New Module.
+          </li>
+          <li>
+            Paste the URL above into the input that appears. Refresh the page.
+          </li>
+          <li>
+            Congrats, your local code is now being used!
+          </li>
+        </ol>
+      </p>
+      <p>
+        For further information about "integrated" mode, see the following links:
+        <ul>
+          <li>
+            <a target="_blank" rel="noopener" href="https://single-spa.js.org/docs/recommended-setup#local-development">
+              Local Development Overview
+            </a>
+          </li>
+          <li>
+            <a target="_blank" rel="noopener" href="https://github.com/joeldenning/import-map-overrides">
+              Import Map Overrides Documentation
+            </a>
+          </li>
+        </ul>
+      </p>
+      <h2>If you prefer Standalone mode</h2>
+      <p>
+        To run this microfrontend in "standalone" mode, the standalone-single-spa-webpack-plugin must not be disabled. In some cases,
+        this is done by running <code>npm run start:standalone</code>. Alternatively, you can add <code>--env standalone</code> to your package.json start script
+        if you are using webpack-config-single-spa.
+      </p>
+        If neither of those work for you, see more details about enabling standalone mode at
+        <a target="_blank" rel="noopener" href="https://github.com/single-spa/standalone-single-spa-webpack-plugin">Standalone Plugin Documentation</a>.
+      </p>
+      <script>
+        const mfLink = document.getElementById('mf-url');
+        const fullSrc = new URL('/monkeysmedia-profile.js', window.location.href);
+        mfLink.href = fullSrc;
+        mfLink.textContent = fullSrc;
+      </script>
+    </main></head>
   <body>
-    <script>
-      System.import("@monkeysmedia/root-config");
-    </script>
-    <import-map-overrides-full
-      show-when-local-storage="devtools"
-      dev-libs
-    ></import-map-overrides-full>
   </body>
 </html>
