@@ -12,7 +12,7 @@ const EditProfile: React.FC<Props> = ({ callBack }) => {
     callBack(true);
   };
 
-  return <Container onClick={handleClick}>Edit Profile</Container>;
+  return <Container onClick={handleClick}>Editar o perfil</Container>;
 };
 
 export default EditProfile;
