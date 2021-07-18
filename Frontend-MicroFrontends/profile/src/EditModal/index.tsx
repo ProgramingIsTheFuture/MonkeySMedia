@@ -107,7 +107,7 @@ const EditModal: React.FC<Props> = ({
               onChange={(e) => setFName(e.target.value)}
               value={fname}
             />
-            <label htmlFor={"last_name"}>Ultímo Nome</label>
+            <label htmlFor={"last_name"}>Ultimo Nome</label>
             <input
               type={"text"}
               name={"last_name"}
