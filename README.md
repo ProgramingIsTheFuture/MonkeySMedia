@@ -8,6 +8,8 @@
 
 #### Each user will have their own profiles and will be able to change it how ever he want.
 
+I used this app to learn about microfrontends with [SingleSPA](https://single-spa.js.org/docs/4.x/getting-started-overview/) (React - typescript) and [django](https://www.djangoproject.com/) with postgreSQL.
+
 Here are some photos showing how the app is.
 
 ##### Create posts:
